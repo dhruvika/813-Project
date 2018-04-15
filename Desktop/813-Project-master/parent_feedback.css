@@ -1,0 +1,62 @@
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	width: 100%;
+  	height: 100%;
+  	font-family: Times, serif;
+  	font-weight: bold;
+}
+
+.container{
+	display: inline-grid;
+	grid-template-columns: 20% 60% 20%;
+	height: 100%;
+	width: 100%;
+}
+
+.leftcol{
+	grid-column: 1;
+}
+
+.middlecol{
+	grid-column: 2;
+	display: inline-grid;
+	align-items: center;
+	justify-items: center;
+}
+
+.middlebox{
+	height: 100%;
+	width: 100%;
+	display: inline-grid;
+	grid-template-rows: 10% 90%;
+	justify-items: center;
+}
+
+h1{
+	grid-row: 1;
+}
+
+.form_div{
+	width: 100%;
+	grid-row: 2;
+	display: inline-grid;
+	align-items: center;
+	justify-items: center;
+}
+
+.submit_button{
+	padding: 0.5vw 2em;
+    text-align: center;
+    font-size: 0.8em;
+    border-radius: 1px;
+
+}
+
+.rightcol{
+	grid-column: 3;
+}
