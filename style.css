@@ -1,25 +1,30 @@
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+
+@import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 
 body {
-  font: 14px/1 'Open Sans', sans-serif;
+  font: 16px/1 'Advent Pro', sans-serif;
   background: #eee;
 }
 h1 {
-  padding: 50px;
+  padding: 30px;
   font-weight: 700;
   text-align: center;
+  font: 45px/1 'Advent Pro', sans-serif;
 
 }
 
 p{
   margin: 0 0 20px;
   line-height: 1.5;
+  font: 16px;
 }
 
 main {
   padding: 50px;
   margin: 0 auto;
+
 
 }
 
@@ -27,6 +32,21 @@ section {
   display: none;
   padding: 20px 0 0;
   border-top: 1px solid #ddd;
+  width: auto;
+  height: 400px;
+}
+
+section[id*='1'] {
+  background-color: #E6B098;
+}
+section[id*='2'] {
+  background-color: #CC4452;
+}
+section[id*='3'] {
+  background-color: #723147;
+}
+section[id*='4'] {
+  background-color: #31152B;
 }
 
 input {
@@ -36,29 +56,30 @@ input {
 label {
   display: inline-block;
   margin: 0 0 -1px;
-  padding: 15px 25px;
+  padding: 15px 50px;
   font-weight: 600;
   text-align: center;
   border-radius: 20px 20px 0px 0px;
   position: relative;
-  color: #bbb;
+  color: white;
 }
 
+
 label[for*='1']{
-  background-color: blue;
-  left: -25%;
+  background-color: #E6B098;
+  left: -35.5%;
 }
 label[for*='2']{
-  background-color: red;
-  left: -8%;
+  background-color: #CC4452;
+  left: -15%;
 }
 label[for*='3']{
-  background-color: green;
-  left: 8%;
+  background-color: #723147;
+  left: 6%;
 }
 label[for*='4']{
-  background-color: purple;
-  left: 24%;
+  background-color: #31152B;
+  left: 26%;
 
 }
 label:hover {
@@ -73,7 +94,8 @@ input{
 
 input:checked + label{
   color: white;
-  border: 1px solid black;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
   z-index: 10;
   border-top: 2px solid orange;
 
