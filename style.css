@@ -49,6 +49,30 @@ section[id*='4'] {
   background-color: #31152B;
 }
 
+
+#allButtons {
+  width: 900;
+  margin: 30px 30px 10px 200px;
+  height: 300px;
+  display: inline-block;
+  font-weight: 600;
+  text-align: center;
+
+}
+
+#Engagement, #Feedback, #Settings{
+    margin: 100px 50px 50px 10px;
+    width: 200px;
+    height: 200px;
+    background-color: snow;
+}
+
+#Engagement, #Feedback, #Settings:hover{
+  color: #888;
+  cursor: pointer;
+}
+
+
 input {
   display: none;
   position: absolute;
