@@ -1,8 +1,5 @@
 
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro');
-
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
 body {
   font: 16px/1 'Advent Pro', sans-serif;
   background: #eee;
@@ -33,7 +30,7 @@ section {
   padding: 20px 0 0;
   border-top: 1px solid #ddd;
   width: auto;
-  height: 400px;
+  height: 500px;
 }
 
 section[id*='1'] {
@@ -53,7 +50,7 @@ section[id*='4'] {
 #allButtons {
   width: 900;
   margin: 30px 30px 10px 200px;
-  height: 300px;
+  height: 600px;
   display: inline-block;
   font-weight: 600;
   text-align: center;
@@ -65,11 +62,22 @@ section[id*='4'] {
     width: 200px;
     height: 200px;
     background-color: snow;
+    vertical-align: middle;
+    color: grey;
+    box-shadow: 1px 1px 1px 1px;
 }
 
-#Engagement, #Feedback, #Settings:hover{
-  color: #888;
+#Engagement:hover{
   cursor: pointer;
+  color: black
+}
+#Settings:hover{
+  cursor: pointer;
+  color: black
+}
+#Feedback:hover{
+  cursor: pointer;
+  color: black
 }
 
 
