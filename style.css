@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700');
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+
+body {
+  font: 14px/1 'Open Sans', sans-serif;
+  background: #eee;
+}
+h1 {
+  padding: 50px;
+  font-weight: 700;
+  text-align: center;
+
+}
+
+p{
+  margin: 0 0 20px;
+  line-height: 1.5;
+}
+
+main {
+  padding: 50px;
+  margin: 0 auto;
+
+}
+
+section {
+  display: none;
+  padding: 20px 0 0;
+  border-top: 1px solid #ddd;
+}
+
+input {
+  display: none;
+  position: absolute;
+}
+label {
+  display: inline-block;
+  margin: 0 0 -1px;
+  padding: 15px 25px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 20px 20px 0px 0px;
+  position: relative;
+  color: #bbb;
+}
+
+label[for*='1']{
+  background-color: blue;
+  left: -25%;
+}
+label[for*='2']{
+  background-color: red;
+  left: -8%;
+}
+label[for*='3']{
+  background-color: green;
+  left: 8%;
+}
+label[for*='4']{
+  background-color: purple;
+  left: 24%;
+
+}
+label:hover {
+  color: #888;
+  cursor: pointer;
+}
+
+input{
+  margin: 10px;
+}
+
+
+input:checked + label{
+  color: white;
+  border: 1px solid black;
+  z-index: 10;
+  border-top: 2px solid orange;
+
+}
+
+input[type=radio]: checked {
+  z-index: 10;
+}
+
+
+#class1:checked ~ #content1,
+#class2:checked ~ #content2,
+#class3:checked ~ #content3,
+#class4:checked ~ #content4 {
+  display: block;
+}
