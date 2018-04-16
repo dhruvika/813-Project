@@ -5,7 +5,7 @@ body {
   background: #eee;
 }
 h1 {
-  padding: 30px;
+  padding: 20px 10px 0px 10px;
   font-weight: 700;
   text-align: center;
   font: 45px/1 'Advent Pro', sans-serif;
@@ -28,7 +28,7 @@ p{
 }
 
 main {
-  padding: 50px;
+  padding: 10px 50px 50px 50px;
   margin: 0 auto;
 
 
@@ -39,7 +39,7 @@ section {
   padding: 20px 0 0;
   border-top: 1px solid #ddd;
   width: auto;
-  height: 500px;
+  height: 700px;
 }
 
 section[id*='1'] {
@@ -55,6 +55,11 @@ section[id*='4'] {
   background-color: #31152B;
 }
 
+#feedbackCell {
+  padding: 20px 100px 20px 455px;
+  width: 1000px;
+  height: 600px;
+}
 
 #allButtons {
   width: 900;

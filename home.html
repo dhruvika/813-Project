@@ -6,7 +6,6 @@
       <link rel="stylesheet" href="style.css">
       <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 
-      <link rel="stylesheet" href="parent_feedback.css">
 </head>
 
 <body>
@@ -36,7 +35,7 @@
           </div>
 
       </button>
-        <button id="Feedback" onclick="load_feedback(1)">
+        <button id="Feedback">
           <div>
             <i class="fas fa-comment-alt fa-4x"></i>
             <br>
@@ -68,7 +67,7 @@
           </div>
 
       </button>
-        <button id="Feedback" onclick="load_feedback(2)">
+        <button id="Feedback">
           <div>
             <i class="fas fa-comment-alt fa-4x"></i>
             <br>
@@ -99,7 +98,7 @@
           </div>
 
       </button>
-        <button onclick="load_feedback(3)" id="Feedback">
+        <button id="Feedback">
           <div>
             <i class="fas fa-comment-alt fa-4x"></i>
             <br>
@@ -130,7 +129,7 @@
           </div>
 
       </button>
-        <button onclick="load_feedback(4)" id="Feedback">
+        <button id="Feedback">
           <div>
             <i class="fas fa-comment-alt fa-4x"></i>
             <br>
@@ -152,11 +151,5 @@
 
 </main>
 
-<script type="text/javascript">
-  function load_feedback(num) {
-       document.getElementById("content" + num).innerHTML='<object id="feedbackCell" type="text/html" data="parent_feedback.html" ></object>';
-     }
-
-</script>
 </body>
 </html>
