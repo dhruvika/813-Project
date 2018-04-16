@@ -61,6 +61,12 @@ section[id*='4'] {
   height: 600px;
 }
 
+#settingsCell {
+  padding: 20px 100px 20px 105px;
+  width: 1000px;
+  height: 600px;
+}
+
 #allButtons {
   width: 900;
   margin: 30px 30px 10px 200px;
