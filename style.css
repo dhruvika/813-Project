@@ -43,16 +43,16 @@ section {
 }
 
 section[id*='1'] {
-  background-color: #E6B098;
+  background-color: #226764;
 }
 section[id*='2'] {
-  background-color: #CC4452;
+  background-color: #9F3548;
 }
 section[id*='3'] {
-  background-color: #723147;
+  background-color: #C0783A;
 }
 section[id*='4'] {
-  background-color: #31152B;
+  background-color: #2D4571;
 }
 
 #feedbackCell {
@@ -113,19 +113,19 @@ label {
 
 
 label[for*='1']{
-  background-color: #E6B098;
-  left: -35.5%;
+  background-color: #226764;
+  left: -35%;
 }
 label[for*='2']{
-  background-color: #CC4452;
+  background-color: #9F3548;
   left: -15%;
 }
 label[for*='3']{
-  background-color: #723147;
+  background-color: #C0783A;
   left: 6%;
 }
 label[for*='4']{
-  background-color: #31152B;
+  background-color: #2D4571;
   left: 26%;
 
 }
