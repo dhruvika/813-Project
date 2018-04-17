@@ -67,6 +67,8 @@ Util.events(document, {
 		for (var i = 0, row; row = table.rows[i]; i++) {
 			if (row.querySelector('.select:checked')){
 				table.deleteRow(i);
+				i--;
+
 			}
 		}
 		

@@ -1,8 +1,8 @@
 
-.tableGrid {
+#tableGrid {
     font-family: arial, sans-serif;
-    /*border-collapse: collapse;*/
-    width: 100%;
+    border-collapse: collapse;
+    width: 75%;
 }
 
 td, th {
@@ -16,5 +16,26 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
-.in
+#delete {
+	height:20px; 
+    width:100px; 
+    margin: -20px -50px; 
+    position:relative;
+    top:50%; 
+    left:50%;
+    margin-bottom: 20px;
+    
+}
+
+#add {
+	height:20px; 
+    width:100px; 
+    margin: -20px -50px; 
+    position:relative;
+    top:50%; 
+    left:50%;
+    margin-top: 10px;
+    
+}
+
 
