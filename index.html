@@ -27,7 +27,7 @@
 
     <section id = "content1">
       <div id="allButtons">
-        <button id="Engagement" >
+        <button onclick="load_engagement(1)" id="Engagement" >
           <div>
             <i class="fas fa-star fa-4x"></i>
             <br>
@@ -44,7 +44,7 @@
             </h2>
           </div>
         </button>
-        <button id="Settings">
+        <button onclick="load_settings(1)" id="Settings">
 
           <div>
             <i class="fas fa-wrench fa-4x"></i>
@@ -59,7 +59,7 @@
 
     <section id = "content2">
       <div id="allButtons">
-        <button id="Engagement" >
+        <button onclick="load_engagement(2)" id="Engagement" >
           <div>
             <i class="fas fa-star fa-4x"></i>
             <br>
@@ -76,7 +76,7 @@
             </h2>
           </div>
         </button>
-        <button id="Settings">
+        <button onclick="load_settings(2)" id="Settings">
 
           <div>
             <i class="fas fa-wrench fa-4x"></i>
@@ -90,7 +90,7 @@
 
     <section id = "content3">
       <div id="allButtons">
-        <button id="Engagement" >
+        <button onclick="load_engagement(3)" id="Engagement" >
           <div>
             <i class="fas fa-star fa-4x"></i>
             <br>
@@ -107,7 +107,7 @@
             </h2>
           </div>
         </button>
-        <button id="Settings">
+        <button onclick="load_settings(3)" id="Settings">
 
           <div>
             <i class="fas fa-wrench fa-4x"></i>
@@ -138,7 +138,7 @@
             </h2>
           </div>
         </button>
-        <button id="Settings">
+        <button onclick="load_settings(4)"id="Settings">
 
           <div>
             <i class="fas fa-wrench fa-4x"></i>
@@ -156,6 +156,10 @@
   function load_feedback(num) {
        document.getElementById("content" + num).innerHTML='<object id="feedbackCell" type="text/html" data="parent_feedback.html" ></object>';
      }
+
+     function load_settings(num) {
+          document.getElementById("content" + num).innerHTML='<object id="settingsCell" type="text/html" data="Taranjit/index.html" ></object>';
+        }
 
 </script>
 </body>
