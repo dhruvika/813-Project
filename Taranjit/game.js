@@ -30,7 +30,6 @@ Util.events(document, {
 
 			  row.appendChild(cell);
 			}
-
 		// add the row to the end of the table body
 			grid.appendChild(row);
 		}
@@ -51,6 +50,11 @@ Util.events(document, {
 				else{
 					var cellInputId = tableColumns[c].id
 					cell.innerHTML = document.getElementById(cellInputId).value;
+					var regex = new RegExp(/\s/);
+					if (regex.test(cell.innerHTML) || cell.innerHTML === ""){
+						table.deleteRow(-1);
+						break;
+					}
 				}
 				row.setAttribute('id', cell.innerHTML)
 				selectInput.setAttribute('id', cell.innerHTML)
@@ -59,12 +63,14 @@ Util.events(document, {
 		});
 
 		Util.one("#delete").addEventListener("click", function(){
+		var table = document.getElementById("tableGrid");
+		for (var i = 0, row; row = table.rows[i]; i++) {
+			if (row.querySelector('.select:checked')){
+				table.deleteRow(i);
+			}
+		}
 		
-
 		});
-
-
-
 
 	},
 
