@@ -1,5 +1,5 @@
 var wide = (780 - 15) / 16,
-  tall = (780 - 17) / 16; // set the square dimensions. this can be incorporated into the grid() function with 16 replaced by 'original'
+tall = (780 - 17) / 16; // set the square dimensions. this can be incorporated into the grid() function with 16 replaced by 'original'
 
 function grid(x, y) {
   var original = x,
@@ -26,8 +26,6 @@ function grid(x, y) {
   )
 }
 
-grid(16, 16); // starting dimension
-
 function gridq() {
   $('.squares').removeClass('hover-general');
   $('div').remove('.squares');
@@ -39,3 +37,14 @@ function gridq() {
     grid(newgrid, newgrid);
   }
 }
+
+// Attaching events on document because then we can do it without waiting for
+// the DOM to be ready (i.e. before DOMContentLoaded fires)
+Util.events(document, {
+  // Final initalization entry point: the Javascript code inside this block
+  // runs at the end of start-up when the DOM is ready
+  "DOMContentLoaded": function() {
+    grid(16, 16); // starting dimension
+  }
+});
+
