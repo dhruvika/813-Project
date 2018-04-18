@@ -16,6 +16,11 @@ tr:nth-child(even) {
     background-color: #dddddd;
 }
 
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+
 #delete {
 	height:20px; 
     width:100px; 
