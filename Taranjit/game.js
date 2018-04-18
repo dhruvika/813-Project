@@ -28,7 +28,7 @@ Util.events(document, {
 			  console.log(cell.innerHTML)
 			  cell.style.fontWeight = 'bold';
 			  cell.style.borderColor = "#dddddd"
-			  cell.style.backgroundColor = "white"
+			  cell.style.backgroundColor = "red"
 
 			  row.appendChild(cell);
 			}
