@@ -27,6 +27,7 @@ Util.events(document, {
 			  cell.innerHTML = headings[j];
 			  console.log(cell.innerHTML)
 			  cell.style.fontWeight = 'bold';
+			  cell.style.borderColor = "#dddddd"
 
 			  row.appendChild(cell);
 			}
@@ -53,6 +54,7 @@ Util.events(document, {
 					var regex = new RegExp(/\s/);
 					if (regex.test(cell.innerHTML) || cell.innerHTML === ""){
 						table.deleteRow(-1);
+						document.getElementById(cellInputId).style.borderColor = "#ff5050"
 						break;
 					}
 				}
@@ -72,6 +74,10 @@ Util.events(document, {
 			}
 		}
 		
+		});
+
+		Util.one('.addInput').addEventListener("focus", function (event){
+			document.getElementById(event['path'][0].id).style.borderColor = "#dddddd"
 		});
 
 	},
