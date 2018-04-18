@@ -25,9 +25,10 @@
     padding: 14px 600px 12px 45px;
     border: none;
     border-bottom: 1px solid #ddd;
+
 }
 
-#myInput:focus {outline: 3px solid #ddd;}
+#myInput:focus {outline: 3px solid #ddd; }
 
 .dropdown {
     position: relative;
@@ -42,29 +43,57 @@
     overflow: auto;
     border: 1px solid #ddd;
     z-index: 1;
+    max-height: 500px;
 }
-.leftbutt{
-	align-items: center;
+.leftbt{
+	float: right;
 }
-.button {
+.button-minus {
+    background-color: #FF0000; /* Green */
+    border: none;
+    color: white;
+    width: 30px;
+    padding-left: 100px 100px;
+    text-align: center;
+    display: inline-block;
+    font-size: 12px;
+    border-radius: 12px;
+    margin: 4px 4px;
+    cursor: pointer;
+}
+
+.button-minus:hover{
+    background: #8B0000;
+}
+
+.button-plus {
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
     padding-left: 100px 100px;
+    width: 30px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 10px;
+    font-size: 12px;
+    border-radius: 12px;
+    margin: 4px 2px;
+    cursor: pointer;
+
 }
 
-.dropdown-content a {
+.button-plus:hover{
+    background: #006400;
+}
+
+.dropdown-content b {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown a:hover {background-color: #ddd}
+.dropdown b:hover {background-color: #ddd}
 
 .show {display:block;}
 </style>
@@ -72,21 +101,130 @@
 <body>
 
 <div class="dropdown">
-  <div id="myDropdown" class="dropdown-content">
+  <div id="myDropdown" class="dropdown-content" style="overflow-y: scroll;">
     <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <a> Apurva Shrivastava
+    <b> Apurva Shrivastava
     	<div class = "leftbt">
-    	<span class="button">
-    		Hello
-    	</span>
-    </div>
-    </a>
-    <a>Dhruvika Sahni</a>
-    <a>Eswar Anandapadmanabhan</a>
-    <a>Student Five</a>
-    <a>Student Six</a>
-    <a>Student Seven</a>
-    <a>Student Eight</a>
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+    	<button class="button-plus">
+    		+
+    	</button>
+        </div>
+    </b>
+    <b>Dhruvika Sahni
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+
+
+    </b>
+    <b>Eswar Anandapadmanabhan
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+
+
+
+    </b>
+    <b>Student Five
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+
+    </b>
+    <b>Student Six
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+
+
+
+    </b>
+    <b>Student Seven
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+
+
+
+    </b>
+    <b>Student Eight
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+
+
+
+    </b>
+    <b>Student Nine
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div></b>
+    <b>Student Ten </b>
+    <b>Student Eleven</b>
+    <b>Student Twelve</b>
+    <b>Student Thirteen</b>
   </div>
 </div>
 

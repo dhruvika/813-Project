@@ -1,0 +1,15 @@
+#main {
+  background-color: antiquewhite;
+  position: relative;
+}
+.squares {
+  margin: 1px;
+  padding: 0;
+  background-color: blue;
+  display: inline-block;
+  float: left;
+
+}
+.hover-general{
+  background-color: gray;
+}
