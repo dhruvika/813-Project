@@ -12,3 +12,8 @@
 .squares:hover{
   background-color: gray;
 }
+
+.squares img {
+   height: 100%;
+   width: 100%;
+}
