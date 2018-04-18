@@ -11,8 +11,8 @@ class_to_student = {
 student_to_img = {}
 
 for (var key in class_to_student){
-	var class_name = class_to_student[key];
-	var class_list = class_to_student[class_name];
+	var class_name = key;
+	var class_list = class_to_student[key];
 	for( i=0; i < class_list.length; i++){
 		var student_name = class_list[i];
 		var student_img = student_img_folder+class_name+"/"+student_name+".jpg";
