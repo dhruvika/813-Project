@@ -5,12 +5,11 @@
 .squares {
   margin: 1px;
   padding: 0;
-  background-color: aquamarine;
+  background-color: blue;
   display: inline-block;
   float: left;
-  height: 500px;
-  width: 600px;
+
 }
-.hover {
-  background-color: red;
+.hover-general{
+  background-color: gray;
 }
