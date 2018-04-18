@@ -1,0 +1,16 @@
+#main {
+  background-color: antiquewhite;
+  position: relative;
+}
+.squares {
+  margin: 1px;
+  padding: 0;
+  background-color: aquamarine;
+  display: inline-block;
+  float: left;
+  height: 500px;
+  width: 600px;
+}
+.hover {
+  background-color: red;
+}
