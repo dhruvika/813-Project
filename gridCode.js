@@ -68,6 +68,40 @@ Util.events(document, {
   "DOMContentLoaded": function() {
     grid(16, 16); // starting dimension
     addStudentImages();
+  },
+  
+  
+  "mousedown": function(e){
+      e.preventDefault();
+      globalimage = e.target;
+      start_x = e.pageX;
+      start_y = e.pageY;
+      moved_x = e.pageX;
+      moved_y = e.pageY;
+  },
+
+  "mousemove": function(e){
+      if (image){
+        var dx = e.pageX - moved_x;
+        var dy = e.pageY - moved_y;
+        moved_x = e.pageX;
+        moved_y = e.pageY;
+        globalimage.style.top = moved_y + "px";
+        globalimage.style.left = moved_x + "px"
+      }
+  },
+
+
+  "mouseup": function(e){
+    var dx = e.pageX - start_x;
+    var dy = e.pageY - start_y;
+    var newimage = e.target;
+    if (image){
+      var divsq = getDivAt(e.pageX, e.pageY);
+      var origdivsq = getDivAt(start_x, stary_y);
+      divsq.appendChild(globalimage);
+      origdivsq.appendChild(newimage);
+    }
   }
 });
 
