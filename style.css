@@ -85,6 +85,12 @@ section[id*='4'] {
   width: 1000px;
   height: 600px;
 }
+#engagementCell{
+  padding: 50px;
+  width: 1200px;
+  height: 600px;
+
+}
 
 #home{
   margin-left: 20px;
