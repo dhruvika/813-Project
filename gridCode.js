@@ -5,6 +5,19 @@ var wide = (600 - 9) / grid_cols;
 var tall = (600 - 11) / grid_rows; // set the square dimensions. this can be incorporated into the grid() function with 16 replaced by 'original'
 current_class = "class1";
 
+
+
+
+var image = false;
+var globalimage;
+var original_sq;
+var start_x;
+var start_y;
+var moved_x;
+var moved_y;
+var prev_pos_x;
+var prev_pos_y;
+
 function grid(x, y) {
   var original = x,
     y = y;
@@ -46,6 +59,10 @@ function addStudentImages(){
     var student_img_src = student_to_img[student_name];
     div = document.getElementById("div_r"+current_row+"c"+current_col);
     student_img = document.createElement('img');
+    student_img.style.top = 0 + "px";
+    student_img.style.left = 0 + "px";
+    student_img.style.position = "relative";
+    student_img.counter = 0;
     if(current_col < grid_cols){      
       student_img.id = "img_r"+current_row+"c"+current_col;
       student_img.src = student_img_src;
@@ -66,42 +83,95 @@ Util.events(document, {
   // Final initalization entry point: the Javascript code inside this block
   // runs at the end of start-up when the DOM is ready
   "DOMContentLoaded": function() {
-    grid(16, 16); // starting dimension
+    grid(10, 10); // starting dimension
     addStudentImages();
+    var img_array = document.querySelectorAll("div_r");
   },
   
   
   "mousedown": function(e){
       e.preventDefault();
+      console.log("mousedown", e);
       globalimage = e.target;
+      if (globalimage.id.includes("img")){
+        image = true;
+        console.log("found image");
+
+      }
+      original_sq = globalimage.parentElement;
+      console.log(globalimage);
       start_x = e.pageX;
       start_y = e.pageY;
       moved_x = e.pageX;
       moved_y = e.pageY;
+      prev_pos_x = 0;
+      prev_pos_y = 0;
   },
 
   "mousemove": function(e){
+    e.preventDefault();
       if (image){
-        var dx = e.pageX - moved_x;
-        var dy = e.pageY - moved_y;
+        console.log("moving")
+        var dx = e.pageX - start_x;
+        var dy = e.pageY - start_y;
         moved_x = e.pageX;
         moved_y = e.pageY;
-        globalimage.style.top = moved_y + "px";
-        globalimage.style.left = moved_x + "px"
+        prev_pos_x = prev_pos_x + dx;
+        prev_pos_y = prev_pos_y + dy;
+        console.log("prev_pos_x", dx);
+        console.log("prev_pos_y", dy);
+        console.log("globalimage", globalimage);
+        globalimage.style.top = dy + "px";
+        globalimage.style.left = dx + "px";
+        globalimage.style.zIndex = 1;
+        globalimage.classList.add("pointer-events-none");
       }
   },
 
 
   "mouseup": function(e){
+    e.preventDefault();
+    console.log("mouseup", e.toElement);
     var dx = e.pageX - start_x;
     var dy = e.pageY - start_y;
-    var newimage = e.target;
     if (image){
-      var divsq = getDivAt(e.pageX, e.pageY);
-      var origdivsq = getDivAt(start_x, stary_y);
-      divsq.appendChild(globalimage);
-      origdivsq.appendChild(newimage);
+      globalimage.style.top = 0 + "px";
+      globalimage.style.left = 0 + "px";
+      globalimage.style.zIndex = 1;
+      var divsq = e.toElement;
+      if (divsq == globalimage){
+        var counter = globalimage.counter;
+        if (counter == 0){
+          divsq.classList.add("add-present-border");
+
+        } else if (counter == 1){
+          divsq.classList.remove("add-present-border");
+          divsq.classList.add("add-late-border");
+        } else if (counter == 2){
+          divsq.classList.remove("add-late-border");
+          divsq.classList.add("add-absent-border");
+        } else if (counter == 3){
+          counter = -1;
+          divsq.classList.remove("add-absent-border");
+
+        }
+        counter += 1;
+        globalimage.counter = counter;
+      }
+      if (divsq.id.includes("div_")){
+        divsq.appendChild(globalimage);
+      } else if (divsq.id.includes("img")){
+        original_sq.appendChild(divsq);
+        divsq.parentElement.appendChild(globalimage);
+      }
+
+      //var origdivsq = getDivAt(start_x, stary_y);
+      
+      //origdivsq.appendChild(newimage);
+
+      globalimage.classList.remove("pointer-events-none");
     }
+    image = false;
   }
 });
 
