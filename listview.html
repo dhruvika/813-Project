@@ -86,14 +86,14 @@
     background: #006400;
 }
 
-.dropdown-content b {
+.dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
 }
 
-.dropdown b:hover {background-color: #ddd}
+.dropdown a:hover {background-color: #ddd}
 
 .show {display:block;}
 </style>
@@ -103,26 +103,26 @@
 <div class="dropdown">
   <div id="myDropdown" class="dropdown-content" style="overflow-y: scroll;">
     <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-    <b> Apurva Shrivastava
+    <a> Apurva Shrivastava
     	<div class = "leftbt">
         <button class="button-minus">
             -
         </button>
 
-        0
+        2
 
     	<button class="button-plus">
     		+
     	</button>
         </div>
-    </b>
-    <b>Dhruvika Sahni
+    </a>
+    <a>Dhruvika Sahni
         <div class = "leftbt">
         <button class="button-minus">
             -
         </button>
 
-        0
+        1
 
         <button class="button-plus">
             +
@@ -130,44 +130,14 @@
         </div>
 
 
-    </b>
-    <b>Eswar Anandapadmanabhan
+    </a>
+    <a>Eswar Anandapadmanabhan
         <div class = "leftbt">
         <button class="button-minus">
             -
         </button>
 
-        0
-
-        <button class="button-plus">
-            +
-        </button>
-        </div>
-
-
-
-    </b>
-    <b>Student Five
-        <div class = "leftbt">
-        <button class="button-minus">
-            -
-        </button>
-
-        0
-
-        <button class="button-plus">
-            +
-        </button>
-        </div>
-
-    </b>
-    <b>Student Six
-        <div class = "leftbt">
-        <button class="button-minus">
-            -
-        </button>
-
-        0
+        1
 
         <button class="button-plus">
             +
@@ -176,8 +146,22 @@
 
 
 
-    </b>
-    <b>Student Seven
+    </a>
+    <a> Taranjit Singh
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        -10
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+
+    </a>
+    <a> Jacob Yang
         <div class = "leftbt">
         <button class="button-minus">
             -
@@ -192,8 +176,8 @@
 
 
 
-    </b>
-    <b>Student Eight
+    </a>
+    <a> Jayda Brown
         <div class = "leftbt">
         <button class="button-minus">
             -
@@ -208,8 +192,8 @@
 
 
 
-    </b>
-    <b>Student Nine
+    </a>
+    <a> Karla Casique
         <div class = "leftbt">
         <button class="button-minus">
             -
@@ -220,11 +204,82 @@
         <button class="button-plus">
             +
         </button>
-        </div></b>
-    <b>Student Ten </b>
-    <b>Student Eleven</b>
-    <b>Student Twelve</b>
-    <b>Student Thirteen</b>
+        </div>
+
+
+
+    </a>
+    <a> Leondra Fair
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+    </a>
+    <a>Maria Anderson
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+
+     </a>
+    <a>Harris Thompson
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+
+    </a>
+    <a>Bob Junior
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+
+
+    </a>
+    <a>Daniel Zurier
+        <div class = "leftbt">
+        <button class="button-minus">
+            -
+        </button>
+
+        0
+
+        <button class="button-plus">
+            +
+        </button>
+        </div>
+
+
+    </a>
   </div>
 </div>
 
@@ -244,7 +299,7 @@ function filterFunction() {
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
     div = document.getElementById("myDropdown");
-    a = div.getElementsByTagName("b");
+    a = div.getElementsByTagName("a");
     for (i = 0; i < a.length; i++) {
         if (a[i].innerHTML.toUpperCase().indexOf(filter) > -1) {
             a[i].style.display = "";
