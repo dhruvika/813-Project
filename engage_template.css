@@ -83,6 +83,14 @@ button[id*="button"]{
 	width: 800px;
 	height: 800px;
 }
+#mode {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
 
 .date_form_div{
 	width: 100%;

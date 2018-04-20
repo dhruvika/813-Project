@@ -34,21 +34,21 @@ function load_listview(){
 	var buttong = document.getElementById("grid_icon");
 
 	if(current.name == "gridview"){
-		console.log("gridview")
-		buttong.class = "glyphicon glyphicon-th";
+		console.log(buttong)
+		buttong.className = "glyphicon glyphicon-th";
+		document.getElementById("participate_button").className = "active";
+		document.getElementById("attend_button").className = "inactive";
 		current.data = "listview.html";
-		document.getElementById("participate_button").class = "active";
-		document.getElementById("attend_button").class = "inactive";
-
 		current.name = "listview"
 	}
 	else{
 		console.log("list")
+		console.log(buttong)
 
-		buttong.class = "glyphicon glyphicon-th-list";
+		buttong.className = "glyphicon glyphicon-th-list";
+		document.getElementById("participate_button").className = "inactive";
+		document.getElementById("attend_button").className = "active";
 		current.data = "gridview.html";
-		document.getElementById("participate_button").class = "inactive";
-		document.getElementById("attend_button").class = "active";
 		current.name = "gridview"
 	}
 
