@@ -1,5 +1,33 @@
 
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+
+/*
+
+section[id*='1'] {
+  background-color: #226764;
+}
+section[id*='2'] {
+  background-color: #9F3548;
+}
+section[id*='3'] {
+  background-color: #C0783A;
+}
+section[id*='4'] {
+  background-color: #2D4571;
+}
+green tab1 - #226764
+red tab 2 - #9F3548
+
+orange tab3 - #C0783A
+
+blue tab4 - 2D4571
+
+
+*/
+
+
+
+
 body {
   font: 16px/1 'Advent Pro', sans-serif;
   background: #eee;
@@ -65,6 +93,12 @@ section[id*='4'] {
   padding: 20px 100px 20px 105px;
   width: 1000px;
   height: 600px;
+}
+
+#home{
+  margin-left: 20px;
+  position: absolute;
+  margin-top: 20px;
 }
 
 #allButtons {
