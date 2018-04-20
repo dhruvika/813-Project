@@ -7,6 +7,7 @@
       <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 
       <link rel="stylesheet" href="parent_feedback.css">
+      <script src="home.js"></script>
 </head>
 
 <body>
@@ -22,12 +23,17 @@
   <input id="class2" type="radio" name="tabs" >
   <label for="class2"> History2 </label>
 
-  <input id="class1" type="radio" name="tabs" checked>
+  <input id="class1" type="radio" name="tabs">
   <label for="class1"> History1 </label>
 
     <section id = "content1">
+      
+
       <div id="allButtons">
-        <button onclick="load_engagement(1)" id="Engagement" >
+
+
+
+        <button onclick="load_engagement()" id="Engagement" >
           <div>
             <i class="fas fa-star fa-4x"></i>
             <br>
@@ -44,7 +50,7 @@
             </h2>
           </div>
         </button>
-        <button onclick="load_settings(1)" id="Settings">
+        <button onclick="load_settings()" id="Settings">
 
           <div>
             <i class="fas fa-wrench fa-4x"></i>
@@ -59,7 +65,12 @@
 
     <section id = "content2">
       <div id="allButtons">
-        <button onclick="load_engagement(2)" id="Engagement" >
+        <button onclick="load_feedback()" id="Home2">
+          <div>
+            <i class="fas fa-home fa-4x"></i>
+          </div>
+        </button>
+        <button onclick="load_engagement()" id="Engagement" >
           <div>
             <i class="fas fa-star fa-4x"></i>
             <br>
@@ -68,7 +79,7 @@
           </div>
 
       </button>
-        <button id="Feedback" onclick="load_feedback(2)">
+        <button id="Feedback" onclick="load_feedback()">
           <div>
             <i class="fas fa-comment-alt fa-4x"></i>
             <br>
@@ -76,7 +87,7 @@
             </h2>
           </div>
         </button>
-        <button onclick="load_settings(2)" id="Settings">
+        <button onclick="load_settings()" id="Settings">
 
           <div>
             <i class="fas fa-wrench fa-4x"></i>
@@ -90,7 +101,13 @@
 
     <section id = "content3">
       <div id="allButtons">
-        <button onclick="load_engagement(3)" id="Engagement" >
+
+        <button onclick="load_feedback()" id="Home3">
+          <div>
+            <i class="fas fa-home fa-4x"></i>
+          </div>
+        </button>
+        <button onclick="load_engagement()" id="Engagement" >
           <div>
             <i class="fas fa-star fa-4x"></i>
             <br>
@@ -99,7 +116,7 @@
           </div>
 
       </button>
-        <button onclick="load_feedback(3)" id="Feedback">
+        <button onclick="load_feedback()" id="Feedback">
           <div>
             <i class="fas fa-comment-alt fa-4x"></i>
             <br>
@@ -107,7 +124,7 @@
             </h2>
           </div>
         </button>
-        <button onclick="load_settings(3)" id="Settings">
+        <button onclick="load_settings()" id="Settings">
 
           <div>
             <i class="fas fa-wrench fa-4x"></i>
@@ -121,6 +138,11 @@
 
     <section id = "content4">
       <div id="allButtons">
+        <button onclick="load_feedback()" id="Home4">
+          <div>
+            <i class="fas fa-home fa-4x"></i>
+          </div>
+        </button>
         <button id="Engagement" >
           <div>
             <i class="fas fa-star fa-4x"></i>
@@ -130,7 +152,7 @@
           </div>
 
       </button>
-        <button onclick="load_feedback(4)" id="Feedback">
+        <button onclick="load_feedback()" id="Feedback">
           <div>
             <i class="fas fa-comment-alt fa-4x"></i>
             <br>
@@ -138,7 +160,7 @@
             </h2>
           </div>
         </button>
-        <button onclick="load_settings(4)"id="Settings">
+        <button onclick="load_settings()"id="Settings">
 
           <div>
             <i class="fas fa-wrench fa-4x"></i>
@@ -152,15 +174,5 @@
 
 </main>
 
-<script type="text/javascript">
-  function load_feedback(num) {
-       document.getElementById("content" + num).innerHTML='<object id="feedbackCell" type="text/html" data="parent_feedback.html" ></object>';
-     }
-
-     function load_settings(num) {
-          document.getElementById("content" + num).innerHTML='<object id="settingsCell" type="text/html" data="Taranjit/index.html" ></object>';
-        }
-
-</script>
 </body>
 </html>
