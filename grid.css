@@ -2,18 +2,41 @@
   background-color: antiquewhite;
   position: relative;
 }
+
+.pointer-events-none{
+  pointer-events: none;
+}
+
+.add-present-border{
+  border-style: solid;
+  border-color: green;
+  border-width: 2px;
+}
+
+.add-absent-border{
+  border-style: solid;
+  border-color: red;
+  border-width: 2px;
+}
+.add-late-border{
+  border-style: solid;
+  border-color: #DAA520;
+  border-width: 2px;
+}
+
 .squares {
   margin: 1px;
-  padding: 0;
   background-color: #F8F8F8;
   display: inline-block;
   float: left;
+  vertical-align: middle;
 }
 .squares:hover{
   background-color: gray;
 }
 
 .squares img {
-   height: 100%;
-   width: 100%;
+  align-self: center;
+   height: 95%;
+   width: 95%;
 }
