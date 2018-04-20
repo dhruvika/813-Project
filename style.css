@@ -1,5 +1,21 @@
 
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+
+/*
+
+green tab1 - #226764
+red tab 2 - #9F3548
+
+orange tab3 - #C0783A
+
+blue tab4 - 2D4571
+
+
+*/
+
+
+
+
 body {
   font: 16px/1 'Advent Pro', sans-serif;
   background: #eee;
@@ -43,16 +59,17 @@ section {
 }
 
 section[id*='1'] {
-  background-color: #226764;
+  background-color: #8C9BAB;
 }
 section[id*='2'] {
-  background-color: #9F3548;
+  background-color: #E39496;
 }
 section[id*='3'] {
-  background-color: #C0783A;
+  background-color: #EBA060;
 }
 section[id*='4'] {
-  background-color: #2D4571;
+  background-color: #98B879;
+
 }
 
 #feedbackCell {
@@ -65,6 +82,12 @@ section[id*='4'] {
   padding: 20px 100px 20px 105px;
   width: 1000px;
   height: 600px;
+}
+
+#home{
+  margin-left: 20px;
+  position: absolute;
+  margin-top: 20px;
 }
 
 #allButtons {
@@ -119,11 +142,11 @@ label {
 
 
 label[for*='1']{
-  background-color: #226764;
+  background-color: #0A5DBA;
   left: -35%;
 }
 label[for*='2']{
-  background-color: #9F3548;
+  background-color: #D92A2E;
   left: -15%;
 }
 label[for*='3']{
@@ -131,7 +154,7 @@ label[for*='3']{
   left: 6%;
 }
 label[for*='4']{
-  background-color: #2D4571;
+  background-color: #5A9620;
   left: 26%;
 
 }
