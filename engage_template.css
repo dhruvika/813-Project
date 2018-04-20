@@ -1,0 +1,86 @@
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	width: 100%;
+  	height: 100%;
+}
+
+.container{
+	display: inline-grid;
+	grid-template-rows: 9% 91%;
+	height: 100%;
+	width: 100%;
+}
+
+.top{
+	height: 100%;
+	width: 100%;
+	grid-row: 1;
+	display: inline-grid;
+	grid-template-columns: 35% 30% 35%;
+	align-items: center;
+	justify-items: center;
+}
+
+.button_div{
+	width: 100%;
+	grid-column: 2;
+	align-items: center;
+	justify-items: center;
+}
+
+button[id*="button"]{
+	width: 49.3%;
+	height: 70%;
+	text-align: center;
+	font-size: 0.9em;
+}
+
+.active{
+	background-color: #4169E1;
+	color: white;
+}
+
+.inactive{
+	background-color: gray;
+	color: black;
+}
+
+.icons{
+	width: 100%;
+	grid-column: 1;
+	display: inline-grid;
+	grid-template-columns: 20% 20% 60%;
+	justify-items: center;
+}
+
+#home_icon{
+	grid-column: 1;
+	font-size: 35px;
+	height: 100%
+	width: 100%;
+}
+
+#grid_icon{
+	grid-column: 2;
+	font-size: 35px;
+	height: 100%
+	width: 100%;
+}
+
+.date_form_div{
+	width: 100%;
+	height: 100%;
+	grid-column: 3;
+	display: inline-grid;
+	grid-template-rows: 100%;
+	justify-items: center;
+	align-items: end;
+}
+.date_form{
+	grid-row: 1;
+	text-align: center;	
+}
