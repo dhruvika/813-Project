@@ -51,11 +51,11 @@ function load_feedback() {
         window.location = "engagement.html?checked="+currentlyActive;
 
               }
-
+        
 
 
       window.onload = function () {
-        document.getElementById("class"+checked).checked = true;
+        window.document.getElementById("class"+checked).checked = true;
         //document.getElementById("content"+checked).style.display = "block";
 
       }

@@ -1,6 +1,8 @@
 #main {
+
   background-color: antiquewhite;
   position: relative;
+  margin: 0 auto;
 }
 
 .pointer-events-none{
