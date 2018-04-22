@@ -1,8 +1,8 @@
 // NOTE: Make sure to not reuse any variable names from class_data.js as it is "global"
-var grid_rows = 10
-var grid_cols = 10
-var wide = (500 - 9) / grid_cols;
-var tall = (500 - 11) / grid_rows; // set the square dimensions. this can be incorporated into the grid() function with 16 replaced by 'original'
+var grid_rows = 16
+var grid_cols = 16
+var wide = (1500 - 9) / grid_cols;
+var tall = (1500 - 11) / grid_rows; // set the square dimensions. this can be incorporated into the grid() function with 16 replaced by 'original'
 current_class = "class1";
 
 
@@ -83,7 +83,7 @@ Util.events(document, {
   // Final initalization entry point: the Javascript code inside this block
   // runs at the end of start-up when the DOM is ready
   "DOMContentLoaded": function() {
-    grid(10, 10); // starting dimension
+    grid(grid_rows, grid_cols); // starting dimension
     addStudentImages();
     var img_array = document.querySelectorAll("div_r");
   },
