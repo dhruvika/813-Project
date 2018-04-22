@@ -1,8 +1,8 @@
 // NOTE: Make sure to not reuse any variable names from class_data.js as it is "global"
 var grid_rows = 10
 var grid_cols = 10
-var wide = (600 - 9) / grid_cols;
-var tall = (600 - 11) / grid_rows; // set the square dimensions. this can be incorporated into the grid() function with 16 replaced by 'original'
+var wide = (500 - 9) / grid_cols;
+var tall = (500 - 11) / grid_rows; // set the square dimensions. this can be incorporated into the grid() function with 16 replaced by 'original'
 current_class = "class1";
 
 
@@ -63,7 +63,7 @@ function addStudentImages(){
     student_img.style.left = 0 + "px";
     student_img.style.position = "relative";
     student_img.counter = 0;
-    if(current_col < grid_cols){      
+    if(current_col < grid_cols){
       student_img.id = "img_r"+current_row+"c"+current_col;
       student_img.src = student_img_src;
       div.appendChild(student_img);
@@ -71,8 +71,8 @@ function addStudentImages(){
     }
     else {
       current_row += 1;
-      current_col = 0;     
-    }  
+      current_col = 0;
+    }
   }
 }
 
@@ -87,8 +87,8 @@ Util.events(document, {
     addStudentImages();
     var img_array = document.querySelectorAll("div_r");
   },
-  
-  
+
+
   "mousedown": function(e){
       e.preventDefault();
       console.log("mousedown", e);
@@ -166,7 +166,7 @@ Util.events(document, {
       }
 
       //var origdivsq = getDivAt(start_x, stary_y);
-      
+
       //origdivsq.appendChild(newimage);
 
       globalimage.classList.remove("pointer-events-none");
@@ -174,4 +174,3 @@ Util.events(document, {
     image = false;
   }
 });
-
