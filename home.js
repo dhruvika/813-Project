@@ -38,9 +38,24 @@ function load_feedback() {
       }
 
 
+      function load_engagement() {
+
+        for (i in classes) {
+          console.log(i)
+          if (document.getElementById("class" + classes[i]).checked){
+            currentlyActive = classes[i];
+            break
+          }
+        }
+
+        window.location = "engagement.html?checked="+currentlyActive;
+
+              }
+        
+
 
       window.onload = function () {
-        document.getElementById("class"+checked).checked = true;
+        window.document.getElementById("class"+checked).checked = true;
         //document.getElementById("content"+checked).style.display = "block";
 
       }

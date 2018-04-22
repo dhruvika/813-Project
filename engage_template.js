@@ -11,20 +11,47 @@ Util.events(document, {
 			attend_button.classList.add('active');
 			participate_button = document.getElementById('participate_button');
 			participate_button.classList.remove('active');
-			participate_button.classList.add('inactive');	
+			participate_button.classList.add('inactive');
 		});
 
 		Util.one('#participate_button').addEventListener("click", function (event){
 			participate_button = document.getElementById('participate_button');
 			participate_button.classList.remove('inactive');
-			participate_button.classList.add('active');	
+			participate_button.classList.add('active');
 			attend_button = document.getElementById('attend_button');
 			attend_button.classList.remove('active');
-			attend_button.classList.add('inactive');		
+			attend_button.classList.add('inactive');
 		});
 
 	},
 
-	
+
 });
 
+
+function load_listview(){
+	var current = document.getElementById("gridview");
+	var buttong = document.getElementById("grid_icon");
+
+	if(current.name == "gridview"){
+		console.log(buttong)
+		buttong.className = "glyphicon glyphicon-th";
+		document.getElementById("participate_button").className = "active";
+		document.getElementById("attend_button").className = "inactive";
+		current.data = "listview.html";
+		current.name = "listview"
+	}
+	else{
+		console.log("list")
+		console.log(buttong)
+
+		buttong.className = "glyphicon glyphicon-th-list";
+		document.getElementById("participate_button").className = "inactive";
+		document.getElementById("attend_button").className = "active";
+		current.data = "gridview.html";
+		current.name = "gridview"
+	}
+
+
+
+}
