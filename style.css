@@ -1,6 +1,8 @@
 
-@import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
 @import url('https://fonts.googleapis.com/css?family=Cherry+Swash');
+@import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+
 
 
 /*
@@ -32,7 +34,7 @@ h1 {
 h2 {
   font-weight: 50;
   text-align: center;
-  font: 25px/1 'Advent Pro', sans-serif;
+  font: 25px/1 'Do Hyeon', sans-serif;
 
 }
 
