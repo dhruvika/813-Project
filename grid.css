@@ -43,6 +43,7 @@
   align-self: center;
    height: 95%;
    width: 95%;
+   box-shadow: 2px;
 }
 body {
   overflow: hidden;
