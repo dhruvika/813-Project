@@ -9,8 +9,9 @@
 <body>
 <script src="util.js"></script>
 <script src="engage_template.js"></script>
-<script src="global_variables.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
+
+
 
 </head>
 
@@ -19,9 +20,11 @@
 	<div class="container">
 		<div class="top">
 			<div class="icons">
-				<i id="home_icon" class="glyphicon glyphicon-home"></i>
+				<button id="mode" onclick="loadHome()">
+					<i id="home_icon" class="glyphicon glyphicon-home"></i>
+				</button>
 				<button id="mode" onclick="load_listview()">
-					<i id="grid_icon" class="glyphicon glyphicon-th"></i>
+					<i id="grid_icon" class="glyphicon glyphicon-th-list"></i>
 				</button>
 			</div>
 			<div class="button_div">
@@ -36,7 +39,7 @@
 		</div>
 
 		<div class="bottom">
-			  <object id="gridview" type="text/html" data="gridview.html" ></object>
+			  <object id="gridview" name="gridview" type="text/html" data="gridview.html" ></object>
 		</div>
 	</div>
 

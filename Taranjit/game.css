@@ -4,11 +4,47 @@ h2 {
     font: 22px/1 'Do Hyeon', sans-serif;
 }
 
+body{
+  background:transparent;
+}
+
 #tableGrid {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 75%;
     font: 16px/1 'Do Hyeon', sans-serif;
+}
+
+#home_icon{
+	grid-column: 1;
+	font-size: 35px;
+	height: 100%
+	width: 100%;
+}
+#home_icon:hover{
+	color: white;
+}
+
+#grid_icon{
+	grid-column: 2;
+	font-size: 35px;
+	height: 100%
+	width: 100%;
+}
+#grid_icon:hover{
+	color: white;
+}
+#gridview{
+	width: 1200px;
+	height: 800px;
+}
+#mode {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
 }
 
 td, th {
@@ -29,15 +65,15 @@ tr:nth-child(odd) {
 
 #delete {
 	background-color: #F08080;
-	height:20px; 
-    width:100px; 
-    margin: -20px -50px; 
+	height:20px;
+    width:100px;
+    margin: -20px -50px;
     position:relative;
-    top:50%; 
+    top:50%;
     left:70%;
     margin-bottom: 20px;
     border-radius: 12px;
-    cursor: pointer; 
+    cursor: pointer;
 }
 
 #delete:hover{
@@ -46,16 +82,16 @@ tr:nth-child(odd) {
 
 #add {
 	background-color: #90EE90;
-	height:20px; 
-    width:100px; 
-    margin: -20px -50px; 
+	height:20px;
+    width:100px;
+    margin: -20px -50px;
     position:relative;
-    top:50%; 
+    top:50%;
     left:35%;
     margin-top: 10px;
     border-radius: 12px;
-    cursor: pointer; 
-    
+    cursor: pointer;
+
 }
 
 #add:hover{
@@ -69,8 +105,3 @@ tr:nth-child(odd) {
 .addInput:focus{
 	border-color: #dddddd;
 }
-
-
-
-
-

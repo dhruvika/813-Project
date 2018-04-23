@@ -73,12 +73,18 @@ button[id*="button"]{
 	height: 100%
 	width: 100%;
 }
+#home_icon:hover{
+	color: white;
+}
 
 #grid_icon{
 	grid-column: 2;
 	font-size: 35px;
 	height: 100%
 	width: 100%;
+}
+#grid_icon:hover{
+	color: white;
 }
 #gridview{
 	width: 1200px;
