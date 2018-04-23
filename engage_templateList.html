@@ -23,7 +23,7 @@
 				</button>
 			</div>
 			<div class="button_div">
-				<button id="attend_button" class="inactive" type="button"> ATTENDANCE </button>
+				<button id="attend_button" class="inactive" type="button" onclick = "changeView()"> ATTENDANCE </button>
 				<button id="participate_button" class="active" type="button"> PARTICIPATION </button>
 			</div>
 			<div class="date_form_div">
@@ -34,10 +34,16 @@
 		</div>
 
 		<div class="bottom">
-			  <object id="listview" type="text/html" data="listview.html" ></object>
-		</div>
+			<object id="gridview" name="gridview" type="text/html" data="listview.html" ></object>
 	</div>
 
 </body>
 
+<script>
+function changeView(){
+	var a = 
+	document.getElementByClassName("bottom").innerHTML = " <object id=\"listview\" type=\"text/html\" data=\"listviewattendance.html ></object> "
+}
+
+</script>
 </html>

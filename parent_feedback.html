@@ -6,16 +6,24 @@
 
 
 <!-- Load style sheets -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="parent_feedback.css">
+
 
 <div class="container">
 
 	<div class="leftcol">
+		<div class="icons">
+			<button id="mode" onclick="loadHome()">
+				<i id="home_icon" class="glyphicon glyphicon-home"></i>
+			</button>
+		</div>
 	</div>
 
 	<div class="middlecol">
 		<div class="middlebox">
 			<h1> Parent Feedback </h1>
+
 
 			<div class="form_div">
 
@@ -48,6 +56,11 @@
 	</div>
 
 </div>
+<script>
+function loadHome() {
+	top.location ="index.html";
+}
+</script>
 
 
 </html>

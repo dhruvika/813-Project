@@ -4,14 +4,23 @@ GR4 - Settings Page
 -->
 <html>
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
 <script src="util.js"></script>
 <script src="game.js"></script>
+
 <link rel="stylesheet" href="game.css">
 </head>
 
 <body>
   <h2 align="center">Settings</h2>
-  
+
+  <div class="icons">
+    <button id="mode" onclick="loadHome()">
+      <i id="home_icon" class="glyphicon glyphicon-home"></i>
+    </button>
+  </div>
+  </div>
 
   <table id="tableGrid" align="center"></table>
   <div align="center">
@@ -20,10 +29,17 @@ GR4 - Settings Page
   Email: <input type="email", class="addInput" id="email">
   </div>
   <button type="buttom" id="add"> Add </button>
-  <button type="button" id="delete"> Delete Selected</button>
+  <button type="button" id="delete"> Delete</button>
 
 
 </body>
+<script>
+function loadHome() {
+	top.location ="../index.html";
+
+
+}
+</script>
 
 
 

@@ -11,6 +11,7 @@ body {
   	height: 100%;
 	background-color: transparent;
 	overflow: hidden;
+
 }
 
 .container{
@@ -73,12 +74,18 @@ button[id*="button"]{
 	height: 100%
 	width: 100%;
 }
+#home_icon:hover{
+	color: white;
+}
 
 #grid_icon{
 	grid-column: 2;
 	font-size: 35px;
 	height: 100%
 	width: 100%;
+}
+#grid_icon:hover{
+	color: white;
 }
 #gridview{
 	width: 1200px;
@@ -105,4 +112,82 @@ button[id*="button"]{
 .date_form{
 	grid-row: 1;
 	text-align: center;
+}
+#main {
+
+  background-color: antiquewhite;
+  position: relative;
+  margin: 0 auto;
+
+}
+
+.pointer-events-none{
+  pointer-events: none;
+}
+
+.add-present-border{
+  border-style: solid;
+  border-color: green;
+  border-width: 3px;
+}
+
+.add-absent-border{
+  border-style: solid;
+  border-color: red;
+  border-width: 3px;
+}
+.add-late-border{
+  border-style: solid;
+  border-color: #DAA520;
+  border-width: 3px;
+}
+
+.squares {
+  margin: 0px;
+  background-color: transparent;
+  display: inline-block;
+  float: left;
+  vertical-align: middle;
+  border: 1px dashed silver;
+}
+.squares:hover{
+  background-color: gray;
+}
+
+.squares img {
+  align-self: center;
+   height: 95%;
+   width: 95%;
+   box-shadow: 2px;
+}
+
+
+.lightbox {
+	/** Default lightbox to hidden */
+	display: none;
+
+	/** Position and style */
+	position: fixed;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	top: 0;
+	left: 0;
+	background: rgba(0,0,0,0.8);
+}
+
+.lightbox img {
+	/** Pad the lightbox image */
+	max-width: 90%;
+	max-height: 80%;
+	margin-top: 2%;
+}
+
+.lightbox:target {
+	/** Remove default browser outline */
+	outline: none;
+
+	/** Unhide lightbox **/
+	display: block;
 }

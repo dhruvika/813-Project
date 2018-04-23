@@ -225,8 +225,10 @@ function load_listview(){
 		document.getElementById("attend_button").className = "inactive";
 		current.data = "listview.html";
 		current.name = "listview"
+		current.style.padding = "20px 180px";
 	}
 	else{
+		alert("You are in Grid View. To interact with students, you can drag, drop and mark attendance.")
 		console.log("list")
 		console.log(buttong)
 
@@ -235,8 +237,16 @@ function load_listview(){
 		document.getElementById("attend_button").className = "active";
 		current.data = "gridview.html";
 		current.name = "gridview"
+		current.style.padding = "0px";
 	}
 
+
+
+
+}
+
+function loadHome() {
+	top.location ="index.html";
 
 
 }
