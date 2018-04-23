@@ -5,6 +5,9 @@ Util.events(document, {
 	// runs at the end of start-up when the DOM is ready
 	"DOMContentLoaded": function() {
 
+		is_participation_mode = false
+		console.log("is_participation_mode has be set to False", is_participation_mode)
+
 		Util.one("#attend_button").addEventListener("click", function(){
 			attend_button = document.getElementById('attend_button');
 			attend_button.classList.remove('inactive');
@@ -12,6 +15,8 @@ Util.events(document, {
 			participate_button = document.getElementById('participate_button');
 			participate_button.classList.remove('active');
 			participate_button.classList.add('inactive');
+			is_participation_mode = false;
+			console.log("is_participation_mode has be set to False", is_participation_mode)
 		});
 
 		Util.one('#participate_button').addEventListener("click", function (event){
@@ -21,6 +26,8 @@ Util.events(document, {
 			attend_button = document.getElementById('attend_button');
 			attend_button.classList.remove('active');
 			attend_button.classList.add('inactive');
+			is_participation_mode = true;
+			console.log("participate_button set to true",is_participation_mode )
 		});
 
 	},

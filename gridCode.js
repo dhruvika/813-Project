@@ -63,6 +63,8 @@ function addStudentImages(){
     student_img.style.left = 0 + "px";
     student_img.style.position = "relative";
     student_img.counter = 0;
+    student_img.setAttribute("class", "studentImages");
+    student_img.setAttribute("onclick", "createLightBox()")
     if(current_col < grid_cols){
       student_img.id = "img_r"+current_row+"c"+current_col;
       student_img.src = student_img_src;
@@ -76,6 +78,13 @@ function addStudentImages(){
   }
 }
 
+function createLightBox(){
+  console.log("############################")
+  if (is_participation_mode) {
+    console.log("############################")
+  }
+}
+
 
 // Attaching events on document because then we can do it without waiting for
 // the DOM to be ready (i.e. before DOMContentLoaded fires)
@@ -86,6 +95,8 @@ Util.events(document, {
     grid(grid_rows, grid_cols); // starting dimension
     addStudentImages();
     var img_array = document.querySelectorAll("div_r");
+
+    
   },
 
 
@@ -130,6 +141,7 @@ Util.events(document, {
 
 
   "mouseup": function(e){
+    console.log(is_participation_mode);
     e.preventDefault();
     console.log("mouseup", e.toElement);
     var dx = e.pageX - start_x;
@@ -141,16 +153,16 @@ Util.events(document, {
       var divsq = e.toElement;
       if (divsq == globalimage){
         var counter = globalimage.counter;
-        if (counter == 0){
+        if ((counter == 0) && (!is_participation_mode)){
           divsq.classList.add("add-present-border");
 
-        } else if (counter == 1){
+        } else if ((counter == 1) && (!is_participation_mode)){
           divsq.classList.remove("add-present-border");
           divsq.classList.add("add-late-border");
-        } else if (counter == 2){
+        } else if ((counter == 2) && (!is_participation_mode)){
           divsq.classList.remove("add-late-border");
           divsq.classList.add("add-absent-border");
-        } else if (counter == 3){
+        } else if ((counter == 3) && (!is_participation_mode)){
           counter = -1;
           divsq.classList.remove("add-absent-border");
 
