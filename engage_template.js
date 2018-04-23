@@ -69,6 +69,10 @@ function load_listview(){
 
 function loadHome() {
 	top.location ="index.html";
+}
 
 
+function changeView(){
+	console.log("changeView()");
+	document.getElementByClassName("bottom").innerHTML = " <object id=\"listview\" type=\"text/html\" data=\"listviewattendance.html ></object> "
 }
