@@ -13,10 +13,19 @@ blue tab4 - 2D4571
 
 
 */
+main {
+}
+
+.container{
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
 
 body {
   font: 16px/1 'Advent Pro', sans-serif;
-  background: #eee;
+  background:transparent;
 }
 h1 {
   padding: 20px 10px 0px 10px;
@@ -48,15 +57,18 @@ main {
 }
 
 section {
-  display: none;
-  padding: 20px 0 0;
+
   border-top: 1px solid #ddd;
   width: auto;
   height: 700px;
+  display: None;
+  justify-content: center;
+  align-items: center;
 }
 
 section[id*='1'] {
   background-color: #8C9BAB;
+
 }
 section[id*='2'] {
   background-color: #E39496;
@@ -70,18 +82,15 @@ section[id*='4'] {
 }
 
 #feedbackCell {
-  padding: 20px 100px 20px 455px;
   width: 1000px;
   height: 600px;
 }
 
 #settingsCell {
-  padding: 20px 100px 20px 105px;
   width: 1000px;
   height: 600px;
 }
 #engagementCell{
-  padding: 50px;
   width: 1200px;
   height: 600px;
 
@@ -95,7 +104,6 @@ section[id*='4'] {
 
 #allButtons {
   width: 900;
-  margin: 30px 30px 10px 200px;
   height: 600px;
   display: inline-block;
   font-weight: 600;
@@ -186,5 +194,5 @@ input[type=radio]: checked {
 #class2:checked ~ #content2,
 #class3:checked ~ #content3,
 #class4:checked ~ #content4 {
-  display: block;
+  display: flex;
 }
