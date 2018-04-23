@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
+
 html {
 	height: 100%;
 	width: 100%;
 	background-color: transparent;
-
 }
 
 body {
 	width: 100%;
   	height: 100%;
-		background-color: transparent;
+	background-color: transparent;
+	overflow: hidden;
 }
 
 .container{
@@ -19,6 +21,7 @@ body {
 }
 
 .top{
+	font: 16px/1 'Do Hyeon', sans-serif;
 	height: 100%;
 	width: 100%;
 	grid-row: 1;
@@ -42,10 +45,9 @@ body {
 }
 
 button[id*="button"]{
-	width: 49.3%;
+	width: 49.275%;
 	height: 70%;
 	text-align: center;
-	font-size: 0.9em;
 }
 
 .active{

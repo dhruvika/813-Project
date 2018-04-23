@@ -1,8 +1,14 @@
+body {
+  height: 100%;
+  width: 100%;
+}
+
 #main {
 
   background-color: antiquewhite;
   position: relative;
   margin: 0 auto;
+
 }
 
 .pointer-events-none{
@@ -12,26 +18,27 @@
 .add-present-border{
   border-style: solid;
   border-color: green;
-  border-width: 2px;
+  border-width: 3px;
 }
 
 .add-absent-border{
   border-style: solid;
   border-color: red;
-  border-width: 2px;
+  border-width: 3px;
 }
 .add-late-border{
   border-style: solid;
   border-color: #DAA520;
-  border-width: 2px;
+  border-width: 3px;
 }
 
 .squares {
-  margin: 1px;
-  background-color: #F8F8F8;
+  margin: 0px;
+  background-color: transparent;
   display: inline-block;
   float: left;
   vertical-align: middle;
+  border: 1px dashed silver;
 }
 .squares:hover{
   background-color: gray;
@@ -41,4 +48,8 @@
   align-self: center;
    height: 95%;
    width: 95%;
+}
+body {
+  overflow: hidden;
+
 }

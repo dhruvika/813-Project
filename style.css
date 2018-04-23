@@ -1,6 +1,8 @@
-
-@import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+/*Home stylesheet*/
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
 @import url('https://fonts.googleapis.com/css?family=Cherry+Swash');
+@import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+
 
 
 /*
@@ -17,7 +19,6 @@ blue tab4 - 2D4571
 
 
 
-
 body {
   font: 16px/1 'Advent Pro', sans-serif;
   background: #eee;
@@ -26,14 +27,14 @@ h1 {
   padding: 20px 10px 0px 10px;
   font-weight: 700;
   text-align: center;
-  font: 45px/1 'Cherry Swash', sans-serif;
+  font: 50px/1 'Do Hyeon', sans-serif;
 
 }
 
 h2 {
   font-weight: 50;
   text-align: center;
-  font: 25px/1 'Advent Pro', sans-serif;
+  font: 25px/1 'Do Hyeon', sans-serif;
 
 }
 
