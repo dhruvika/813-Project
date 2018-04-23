@@ -1,10 +1,7 @@
-/*Home stylesheet*/
+/*Home stylesheet */
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
 @import url('https://fonts.googleapis.com/css?family=Cherry+Swash');
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro');
-
-
-
 /*
 
 green tab1 - #226764
@@ -17,8 +14,6 @@ blue tab4 - 2D4571
 
 */
 
-
-
 body {
   font: 16px/1 'Advent Pro', sans-serif;
   background: #eee;
@@ -28,17 +23,18 @@ h1 {
   font-weight: 700;
   text-align: center;
   font: 50px/1 'Do Hyeon', sans-serif;
-
 }
 
 h2 {
   font-weight: 50;
   text-align: center;
   font: 25px/1 'Do Hyeon', sans-serif;
-
 }
 
-
+.logo{
+  height: 10%;
+  width: 4.5%;
+}
 
 p{
   margin: 0 0 20px;
@@ -49,8 +45,6 @@ p{
 main {
   padding: 10px 50px 50px 50px;
   margin: 0 auto;
-
-
 }
 
 section {
@@ -144,7 +138,6 @@ label {
   font-weight: 600;
   text-align: center;
   border-radius: 20px 20px 0px 0px;
-  position: relative;
   color: white;
 
 }

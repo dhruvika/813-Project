@@ -32,7 +32,6 @@ body {
 }
 .bottom{
 	grid-row:2;
-  padding-left: 200px;
   padding-top: 20px
 }
 
@@ -82,7 +81,7 @@ button[id*="button"]{
 	width: 100%;
 }
 #gridview{
-	width: 800px;
+	width: 1200px;
 	height: 800px;
 }
 #mode {
