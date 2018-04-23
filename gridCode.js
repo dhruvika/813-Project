@@ -4,6 +4,8 @@ var grid_cols = 16
 var wide = (1500 - 9) / grid_cols;
 var tall = (1500 - 11) / grid_rows; // set the square dimensions. this can be incorporated into the grid() function with 16 replaced by 'original'
 current_class = "class1";
+var is_participation = false;;
+var list_of_students = [];
 
 
 
@@ -63,12 +65,17 @@ function addStudentImages(){
     student_img.style.left = 0 + "px";
     student_img.style.position = "relative";
     student_img.counter = 0;
-    student_img.setAttribute("class", "studentImages");
-    student_img.setAttribute("onclick", "createLightBox()")
+    link = document.createElement('a');
+    link.setAttribute("href","popup.png");
+    list_of_students.push(link);
+    //student_img.setAttribute("class", "studentImages");
+    link.appendChild(student_img);
+    //student_img.setAttribute("onclick", "createLightBox()")
+    div.appendChild(link);
     if(current_col < grid_cols){
       student_img.id = "img_r"+current_row+"c"+current_col;
       student_img.src = student_img_src;
-      div.appendChild(student_img);
+      //div.appendChild(link);
       current_col += 1;
     }
     else {
@@ -78,10 +85,55 @@ function addStudentImages(){
   }
 }
 
+
+
+function load_listview(){
+	var current = document.getElementById("gridview");
+	var buttong = document.getElementById("grid_icon");
+
+	if(current.name == "gridview"){
+		//console.log(buttong)
+		buttong.className = "glyphicon glyphicon-th";
+		document.getElementById("participate_button").className = "active";
+		document.getElementById("attend_button").className = "inactive";
+		current.data = "listview.html";
+		current.name = "listview"
+		current.style.padding = "20px 180px";
+
+
+	}
+	else{
+		//console.log("list")
+		//console.log(buttong)
+
+		buttong.className = "glyphicon glyphicon-th-list";
+		document.getElementById("participate_button").className = "inactive";
+		document.getElementById("attend_button").className = "active";
+		current.data = "gridview.html";
+		current.name = "gridview"
+		current.style.padding = "0px";
+    for (var i = 0; i < list_of_students.length; i++){
+      student_img = list_of_students[i];
+      student_img.removAttribute("class", "studentImages");
+
+    }
+	}
+
+
+
+
+}
+
+function loadHome() {
+	top.location ="index.html";
+
+
+}
+
 function createLightBox(){
-  console.log("############################")
-  if (is_participation_mode) {
-    console.log("############################")
+  //console.log("############################")
+  if (is_participation) {
+  //  console.log("############################")
   }
 }
 
@@ -96,13 +148,50 @@ Util.events(document, {
     addStudentImages();
     var img_array = document.querySelectorAll("div_r");
 
-    
+    		is_participation = false
+    		//console.log("is_participation has be set to False", is_participation)
+
+    		Util.one("#attend_button").addEventListener("click", function(){
+    			attend_button = document.getElementById('attend_button');
+    			attend_button.classList.remove('inactive');
+    			attend_button.classList.add('active');
+    			participate_button = document.getElementById('participate_button');
+    			participate_button.classList.remove('active');
+    			participate_button.classList.add('inactive');
+    			is_participation = false;
+          for (var i = 0; i < list_of_students.length; i++){
+            console.log(student_img);
+            student_img = list_of_students[i];
+            student_img.removeAttribute("data-lightbox","popup");
+
+          }
+    			//console.log("is_participation has be set to False", is_participation)
+    		});
+
+    		Util.one('#participate_button').addEventListener("click", function (event){
+    			participate_button = document.getElementById('participate_button');
+    			participate_button.classList.remove('inactive');
+    			participate_button.classList.add('active');
+    			attend_button = document.getElementById('attend_button');
+    			attend_button.classList.remove('active');
+    			attend_button.classList.add('inactive');
+    			is_participation = true;
+          for (var i = 0; i < list_of_students.length; i++){
+            console.log(student_img);
+            student_img = list_of_students[i];
+            student_img.setAttribute("data-lightbox","popup");
+
+          }
+    			//console.log("participate_button set to true",is_participation )
+    		});
+
+
   },
 
 
   "mousedown": function(e){
       e.preventDefault();
-      console.log("mousedown", e);
+      //console.log("mousedown", e);
       globalimage = e.target;
       if (globalimage.id.includes("img")){
         image = true;
@@ -110,7 +199,7 @@ Util.events(document, {
 
       }
       original_sq = globalimage.parentElement;
-      console.log(globalimage);
+      //console.log(globalimage);
       start_x = e.pageX;
       start_y = e.pageY;
       moved_x = e.pageX;
@@ -122,16 +211,16 @@ Util.events(document, {
   "mousemove": function(e){
     e.preventDefault();
       if (image){
-        console.log("moving")
+      //  console.log("moving")
         var dx = e.pageX - start_x;
         var dy = e.pageY - start_y;
         moved_x = e.pageX;
         moved_y = e.pageY;
         prev_pos_x = prev_pos_x + dx;
         prev_pos_y = prev_pos_y + dy;
-        console.log("prev_pos_x", dx);
-        console.log("prev_pos_y", dy);
-        console.log("globalimage", globalimage);
+      //  console.log("prev_pos_x", dx);
+        //console.log("prev_pos_y", dy);
+        //console.log("globalimage", globalimage);
         globalimage.style.top = dy + "px";
         globalimage.style.left = dx + "px";
         globalimage.style.zIndex = 1;
@@ -141,7 +230,7 @@ Util.events(document, {
 
 
   "mouseup": function(e){
-    console.log(is_participation_mode);
+    //console.log(is_participation);
     e.preventDefault();
     console.log("mouseup", e.toElement);
     var dx = e.pageX - start_x;
@@ -152,17 +241,19 @@ Util.events(document, {
       globalimage.style.zIndex = 1;
       var divsq = e.toElement;
       if (divsq == globalimage){
+        console.log("foundglobal");
         var counter = globalimage.counter;
-        if ((counter == 0) && (!is_participation_mode)){
+
+        if ((counter == 0) && (!is_participation)){
           divsq.classList.add("add-present-border");
 
-        } else if ((counter == 1) && (!is_participation_mode)){
+        } else if ((counter == 1) && (!is_participation)){
           divsq.classList.remove("add-present-border");
           divsq.classList.add("add-late-border");
-        } else if ((counter == 2) && (!is_participation_mode)){
+        } else if ((counter == 2) && (!is_participation)){
           divsq.classList.remove("add-late-border");
           divsq.classList.add("add-absent-border");
-        } else if ((counter == 3) && (!is_participation_mode)){
+        } else if ((counter == 3) && (!is_participation)){
           counter = -1;
           divsq.classList.remove("add-absent-border");
 
