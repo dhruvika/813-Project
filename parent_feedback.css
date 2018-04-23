@@ -1,3 +1,4 @@
+/*Parent Feedback css*/
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
 
 html {
@@ -10,7 +11,6 @@ body {
   	height: 100%;
   	font-weight: bold;
 	background-color: transparent;
-	font: 18px/1 'Do Hyeon', sans-serif;
 
 }
 
@@ -30,6 +30,7 @@ body {
 	display: inline-grid;
 	align-items: center;
 	justify-items: center;
+	font: 18px/1 'Do Hyeon', sans-serif;
 }
 
 .middlebox{
