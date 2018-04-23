@@ -34,7 +34,7 @@ tr:nth-child(odd) {
     margin: -20px -50px; 
     position:relative;
     top:50%; 
-    left:50%;
+    left:70%;
     margin-bottom: 20px;
     border-radius: 12px;
     cursor: pointer; 
@@ -51,7 +51,7 @@ tr:nth-child(odd) {
     margin: -20px -50px; 
     position:relative;
     top:50%; 
-    left:50%;
+    left:35%;
     margin-top: 10px;
     border-radius: 12px;
     cursor: pointer; 
