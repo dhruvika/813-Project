@@ -23,7 +23,7 @@
 				</button>
 			</div>
 			<div class="button_div">
-				<button id="attend_button" class="inactive" type="button" onclick = "changeView()"> ATTENDANCE </button>
+				<button id="attend_button" class="active" type="button" onclick = "changeView()"> ATTENDANCE </button>
 				<button id="participate_button" class="active" type="button"> PARTICIPATION </button>
 			</div>
 			<div class="date_form_div">
@@ -42,7 +42,7 @@
 
 <script>
 function changeView(){
-	var a = 
+	console.log("attendance button clicked");
 	document.getElementByClassName("bottom").innerHTML = " <object id=\"listview\" type=\"text/html\" data=\"listviewattendance.html ></object> "
 }
 

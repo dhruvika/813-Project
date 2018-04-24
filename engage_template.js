@@ -50,7 +50,6 @@ function load_listview(){
 		current.style.padding = "20px 180px";
 	}
 	else{
-		alert("You are in Grid View. To interact with students, you can drag, drop and mark attendance.")
 		console.log("list")
 		console.log(buttong)
 
