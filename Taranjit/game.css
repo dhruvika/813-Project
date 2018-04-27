@@ -19,7 +19,7 @@ body{
 #home_icon{
 	grid-column: 1;
 	font-size: 35px;
-	height: 100%
+	height: 100%;
 	width: 100%;
 }
 #home_icon:hover{
@@ -29,7 +29,7 @@ body{
 #grid_icon{
 	grid-column: 2;
 	font-size: 35px;
-	height: 100%
+	height: 100%;
 	width: 100%;
 }
 #grid_icon:hover{
@@ -48,12 +48,12 @@ body{
     outline:none;
 }
 
-td, th {
+/*td, th {
     border: 1px solid #dddddd;
     border-collapse: collapse;
     text-align: left;
     padding: 8px;
-}
+}*/
 
 tr:nth-child(even) {
     background-color: #dddddd;
@@ -64,45 +64,44 @@ tr:nth-child(odd) {
 }
 
 
-#delete {
-	background-color: #F08080;
-	height:20px;
-    width:100px;
-    margin: -20px -50px;
-    position:relative;
-    top:50%;
-    left:70%;
-    margin-bottom: 20px;
-    border-radius: 12px;
-    cursor: pointer;
-}
 
-#delete:hover{
-	background: #B22222;
-}
 
-#add {
-	background-color: #90EE90;
-	height:20px;
-    width:100px;
-    margin: -20px -50px;
-    position:relative;
-    top:50%;
-    left:35%;
-    margin-top: 10px;
-    border-radius: 12px;
-    cursor: pointer;
+@import "compass/css3";
 
+.table-editable {
+  position: relative;
 }
+  
+.glyphicon {
+    font-size: 20px;
+  }
 
-#add:hover{
-	background: #32CD32;
+.table-remove {
+  color: #700;
+  cursor: pointer;
 }
+  
+.table-remove:hover {
+    color: #f00;
+  }
 
-.addInput{
-	margin-top: 15px;
+.table-up, .table-down {
+  color: #007;
+  cursor: pointer;
 }
+  
+.table-up:hover, .table-down:hover {
+    color: #00f;
+  }
 
-.addInput:focus{
-	border-color: #dddddd;
+.table-add {
+  color: #070;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 15px;
 }
+  
+.table-add:hover {
+    color: #0b0;
+  }

@@ -6,13 +6,17 @@ GR4 - Settings Page
 <head>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="util.js"></script>
 <script src="game.js"></script>
+
+
 
 <link rel="stylesheet" href="game.css">
 </head>
 
-<body>
+<!-- <body>
   <h2 align="center">Settings</h2>
 
   <div class="icons">
@@ -32,14 +36,40 @@ GR4 - Settings Page
   <button type="button" id="delete"> Delete</button>
 
 
-</body>
+</body> -->
+
+<div class="container">
+
+  
+  <div id="table" class="table-editable">
+    <span class="table-add glyphicon glyphicon-plus" style="align: center"></span>
+    <table class="table">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <!-- This is our clonable table line -->
+      <tr class="hide">
+        <td contenteditable="true">First Name</td>
+        <td contenteditable="true">Last Name</td>
+        <td>
+          <span class="table-remove glyphicon glyphicon-remove"></span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+</div>
+
 <script>
 function loadHome() {
 	top.location ="../index.html";
 
 
 }
-</script>
+ </script>
 
 
 
