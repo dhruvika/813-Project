@@ -13,8 +13,6 @@ blue tab4 - 2D4571
 
 
 */
-main {
-}
 
 .container{
   background: transparent;
@@ -54,6 +52,24 @@ p{
 main {
   padding: 10px 50px 50px 50px;
   margin: 0 auto;
+}
+
+#add_class_icon {
+  font-size: 20px;
+  color: #135309;
+}
+
+#add_class_icon:hover {
+    color: #33A245;
+}
+
+#add_class {
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
 }
 
 section {
@@ -147,7 +163,6 @@ label {
   text-align: center;
   border-radius: 20px 20px 0px 0px;
   color: white;
-
 }
 
 
