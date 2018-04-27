@@ -1,5 +1,6 @@
 
 var currentlyActive;
+var previousContent = "content1";
 classes = ["1","2","3","4"]
 
 
@@ -88,6 +89,20 @@ function load_feedback() {
 
 	}
 
+	function classClick( classnum){
+		console.log("clicked")
+		var content = "content" + classnum;
+		console.log(document.getElementById(content));
+		document.getElementById(content).style["display"] = "flex";
+
+		if(previousContent != null){
+			document.getElementById(previousContent).style["display"] = "none";
+		}
+		previousContent = content;
+
+
+	}
+
 Util.events(document, {
 	// Final initalization entry point: the Javascript code inside this block
 	// runs at the end of start-up when the DOM is ready
@@ -106,5 +121,4 @@ Util.events(document, {
 
 
 });
-
 
