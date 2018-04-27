@@ -4,6 +4,7 @@ h2 {
     font: 22px/1 'Do Hyeon', sans-serif;
 }
 
+
 body{
   background:transparent;
 }
@@ -11,7 +12,7 @@ body{
 #tableGrid {
     font-family: arial, sans-serif;
     border-collapse: collapse;
-    width: 75%;
+    width: 74%;
     font: 16px/1 'Do Hyeon', sans-serif;
 }
 
