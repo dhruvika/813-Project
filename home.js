@@ -1,5 +1,6 @@
 
 var currentlyActive;
+var previousContent = "content1";
 classes = ["1","2","3","4"]
 
 
@@ -83,6 +84,20 @@ function load_feedback() {
 
 	}
 
+	function classClick( classnum){
+		console.log("clicked")
+		var content = "content" + classnum;
+		console.log(document.getElementById(content));
+		document.getElementById(content).style["display"] = "flex";
+
+		if(previousContent != null){
+			document.getElementById(previousContent).style["display"] = "none";
+		}
+		previousContent = content;
+
+
+	}
+
 	// Attaching events on document because then we can do it without waiting for
 // the DOM to be ready (i.e. before DOMContentLoaded fires)
 // Util.events(document, {
@@ -98,5 +113,3 @@ function load_feedback() {
 
 
 // });
-
-
