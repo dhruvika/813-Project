@@ -19,6 +19,10 @@ var moved_x;
 var moved_y;
 var prev_pos_x;
 var prev_pos_y;
+// When the user clicks on <span> (x), close the modal
+
+
+
 
 function grid(x, y) {
   var original = x,
@@ -29,10 +33,14 @@ function grid(x, y) {
   var current_col = 0;
   var current_row = 0;
   var main_div = document.getElementById('main');
+  var no_student = false;
   for (var i = 0; i < original * y; i++) {
 
     var square = document.createElement('div');
     square.classList.add('squares');
+    if (no_student){ //any table that has no students should be disabled
+      square.classList.add('pointer-events-none');
+    }
     main_div.appendChild(square);
     if(current_col < grid_cols){
       square.id = "div_r"+current_row+"c"+current_col;
@@ -81,12 +89,8 @@ function addStudentImages(){
 }
 
 function createLightBox(){
-  console.log("############################")
-  if (is_participation_mode) {
-    console.log("############################")
-  }
+  
 }
-
 // Attaching events on document because then we can do it without waiting for
 // the DOM to be ready (i.e. before DOMContentLoaded fires)
 Util.events(document, {
@@ -95,9 +99,13 @@ Util.events(document, {
   "DOMContentLoaded": function() {
     grid(grid_rows, grid_cols); // starting dimension
     addStudentImages();
-    var img_array = document.querySelectorAll("div_r");
 
-    
+    var img_array = document.querySelectorAll("div_r");
+    var span = document.getElementById("x");
+    var modal = document.getElementById("myModal");
+    span.onclick = function() { 
+      modal.style.display = "none";
+    }
   },
 
 
@@ -120,26 +128,6 @@ Util.events(document, {
       prev_pos_y = 0;
   },
 
-  "mousemove": function(e){
-    e.preventDefault();
-      if (image){
-        console.log("moving")
-        var dx = e.pageX - start_x;
-        var dy = e.pageY - start_y;
-        moved_x = e.pageX;
-        moved_y = e.pageY;
-        prev_pos_x = prev_pos_x + dx;
-        prev_pos_y = prev_pos_y + dy;
-        console.log("prev_pos_x", dx);
-        console.log("prev_pos_y", dy);
-        console.log("globalimage", globalimage);
-        globalimage.style.top = dy + "px";
-        globalimage.style.left = dx + "px";
-        globalimage.style.zIndex = 1;
-        globalimage.classList.add("pointer-events-none");
-      }
-  },
-
 
   "mouseup": function(e){
     console.log(is_participation_mode);
@@ -148,41 +136,14 @@ Util.events(document, {
     var dx = e.pageX - start_x;
     var dy = e.pageY - start_y;
     if (image){
-      globalimage.style.top = 0 + "px";
-      globalimage.style.left = 0 + "px";
-      globalimage.style.zIndex = 1;
       var divsq = e.toElement;
       if (divsq == globalimage){
-        var counter = globalimage.counter;
-        if ((counter == 0) && (!is_participation_mode)){
-          divsq.classList.add("add-present-border");
-
-        } else if ((counter == 1) && (!is_participation_mode)){
-          divsq.classList.remove("add-present-border");
-          divsq.classList.add("add-late-border");
-        } else if ((counter == 2) && (!is_participation_mode)){
-          divsq.classList.remove("add-late-border");
-          divsq.classList.add("add-absent-border");
-        } else if ((counter == 3) && (!is_participation_mode)){
-          counter = -1;
-          divsq.classList.remove("add-absent-border");
-
-        }
-        counter += 1;
-        globalimage.counter = counter;
+        console.log("Click Detected Mouseup");
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+        var modalImg = document.getElementById("imgTest");
+        modalImg.src = "popup2.png";
       }
-      if (divsq.id.includes("div_")){
-        divsq.appendChild(globalimage);
-      } else if (divsq.id.includes("img")){
-        original_sq.appendChild(divsq);
-        divsq.parentElement.appendChild(globalimage);
-      }
-
-      //var origdivsq = getDivAt(start_x, stary_y);
-
-      //origdivsq.appendChild(newimage);
-
-      globalimage.classList.remove("pointer-events-none");
     }
     image = false;
   }
