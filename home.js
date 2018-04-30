@@ -50,7 +50,6 @@ function load_feedback() {
 		}
 
 		window.location = "engagement.html?checked="+currentlyActive;
-
 			}
 
 	window.onload = function () {
@@ -76,7 +75,13 @@ function load_feedback() {
 		new_class_label.for = "class"+class_num;
 		// new_class_label.classList.add("class_tabs");
 		new_class_label.innerHTML = defaultText;
-		// new_class_label.contentEditable = true;
+		new_class_label.contentEditable = true;
+	
+		new_class_label.addEventListener("keypress", function(e){
+				var label = e.target;
+				var key = e.which || e.keyCode;
+				if(key == 13)label.contentEditable = false;
+			});
 
 		var tabs_element = document.getElementById("main_tabs");
 		tabs_element.appendChild(new_class_radio);
@@ -99,18 +104,22 @@ function load_feedback() {
 
 	}
 
-	// Attaching events on document because then we can do it without waiting for
-// the DOM to be ready (i.e. before DOMContentLoaded fires)
-// Util.events(document, {
-// 	// Final initalization entry point: the Javascript code inside this block
-// 	// runs at the end of start-up when the DOM is ready
-// 	"DOMContentLoaded": function() {
+Util.events(document, {
+	// Final initalization entry point: the Javascript code inside this block
+	// runs at the end of start-up when the DOM is ready
 
-// 		Util.all("label").addEventListener("dblclick", function(e){
-// 			var label = e.target;
-// 			label.contentEditable = true;
-// 		});
-// 	},
+	"click": function(e) {
+		var target = e.target;
+		var labels = Util.all("label");
+		console.log(!(target.nodeName == "LABEL" || target.nodeName == "INPUT"))
+		if(!(target.nodeName == "LABEL" || target.nodeName == "INPUT")){
+			for(var i = 0; i < labels.length; i++){
+				var label = labels[i];
+				label.contentEditable = false;	
+			}
+		}
+	}
 
 
-// });
+});
+
