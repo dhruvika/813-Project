@@ -88,11 +88,12 @@ function load_feedback() {
 		console.log("clicked")
 		var content = "content" + classnum;
 		console.log(document.getElementById(content));
-		document.getElementById(content).style["display"] = "flex";
-
 		if(previousContent != null){
 			document.getElementById(previousContent).style["display"] = "none";
 		}
+		document.getElementById(content).style["display"] = "flex";
+
+
 		previousContent = content;
 
 
