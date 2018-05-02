@@ -53,10 +53,18 @@ function load_feedback() {
 			}
 
 	window.onload = function () {
+		var page_tabs_html = localStorage.getItem('tabs_code');
+		if(page_tabs_html != null) {
+			var page_tabs_element = document.getElementById("page_tabs");
+			page_tabs_element.innerHTML = page_tabs_html;
+		}
 		window.document.getElementById("class"+checked).checked = true;
-		//document.getElementById("content"+checked).style.display = "block";
 
 	}
+
+	// window.onbeforeunload = function() {
+	// 	localStorage.removeItem('tabs_code'); return ''; 
+	// }; 
 
 	function add_new_class(){
 		// Update class number and class list
@@ -86,6 +94,9 @@ function load_feedback() {
 		var tabs_element = document.getElementById("main_tabs");
 		tabs_element.appendChild(new_class_radio);
 		tabs_element.appendChild(new_class_label);
+		var page_tabs_html = document.getElementById("page_tabs").innerHTML;
+		window.localStorage.setItem("tabs_code", page_tabs_html);
+		console.log("Tabs Code: ", page_tabs_html);
 
 	}
 
