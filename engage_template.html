@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="engage_template.css">
 <body>
 <script src="util.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="engage_template.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.10/js/all.js" integrity="sha384-slN8GvtUJGnv6ca26v8EzVaR9DC58QEwsIk9q1QXdCU8Yu8ck/tL/5szYlBbqmS+" crossorigin="anonymous"></script>
 
@@ -28,8 +29,8 @@
 				</button>
 			</div>
 			<div class="button_div">
-				<button id="attend_button" class="active" type="button"> ATTENDANCE </button>
-				<button id="participate_button" class="inactive" type="button"> PARTICIPATION </button>
+				<button id="attend_button" class="active" type="button" onclick="switchToAttendance()"> ATTENDANCE </button>
+				<button id="participate_button" class="inactive" type="button" onclick="switchToParticipation()" > PARTICIPATION </button>
 			</div>
 			<div class="date_form_div">
 				<form class="date_form">
@@ -38,9 +39,14 @@
 			</div>
 		</div>
 
-		<div class="bottom">
-			  <object id="gridview" name="gridview" type="text/html" data="gridview.html" ></object>
+		<div class="bottom" id = "bottomdiv">
+			  <object id="gridview" name="gridview" type="text/html" data="gridViewEdit/gridViewEdit.html"></object>
+			  <!-- <object id="gridviewparticipation" name="gridview" type="text/html" data="gridviewparticipation.html" display=""></object> -->
 		</div>
+	</div>
+	<div id = "myModal" class = "modal">
+	<span class = "close"> &times;</span>
+	<img class = "modal-content" id = "imgTest">
 	</div>
 
 </body>

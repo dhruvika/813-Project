@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
+@import url('https://fonts.googleapis.com/css?family=Cherry+Swash');
+@import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+
+
+
+body {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGUlEQVQYV2NkIBIwEqmOYVQh3pAiNnj+AwALaAEKfsPrZgAAAABJRU5ErkJggg==);
+
+  background-position: 18px 11px;
+}
+
+
+
+.box {
+  margin: 0 auto;
+  margin-top: 0px;
+  width: 100px;
+  height:100px;
+  padding-top: 0px;
+  object-fit: contain;
+
+}
+
+.text {
+  margin-top: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+.opac {
+  opacity: .8;
+}
+
+.move-cursor {
+  cursor: move;
+}
+
+.grab-cursor {
+  cursor: grab;
+  cursor: -webkit-grab;
+}
+
+.studentImages{
+  width: 100%;
+  height:100%;
+  border-radius: 50%
+}
+
+.container{
+
+  display: flex;
+}
+
+.studentTable {
+  background-color: rgba(255,235,205, 0.7)
+}
+
+.name {
+  width: 100%;
+  height: 20px;
+  background: grey;
+  top:90px;
+  position:absolute;
+  color: gainsboro;
+  font: 16px/1 'Do Hyeon', sans-serif;
+  text-align:center;
+}

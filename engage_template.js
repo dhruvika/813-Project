@@ -68,6 +68,16 @@ function load_listview(){
 
 function loadHome() {
 	top.location ="index.html";
+}
 
+function switchToAttendance(){
+	var currDiv = document.getElementById('gridview');
+	currDiv.data = "gridview.html"
 
+}
+
+function switchToParticipation(){
+	var currDiv = document.getElementById('gridview');
+	currDiv.data = "gridviewparticipation.html";
+	
 }

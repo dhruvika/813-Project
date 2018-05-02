@@ -6,7 +6,9 @@ var tall = (1500 - 11) / grid_rows; // set the square dimensions. this can be in
 current_class = "class1";
 
 
-
+var absent_list;
+var present_list;
+var tardy_list;
 
 var image = false;
 var globalimage;
@@ -84,7 +86,6 @@ function createLightBox(){
     console.log("############################")
   }
 }
-
 
 // Attaching events on document because then we can do it without waiting for
 // the DOM to be ready (i.e. before DOMContentLoaded fires)
