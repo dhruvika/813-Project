@@ -4,7 +4,6 @@ h2 {
     font: 22px/1 'Do Hyeon', sans-serif;
 }
 
-
 body{
   background:transparent;
 }
@@ -48,12 +47,6 @@ body{
     outline:none;
 }
 
-/*td, th {
-    border: 1px solid #dddddd;
-    border-collapse: collapse;
-    text-align: left;
-    padding: 8px;
-}*/
 
 tr:nth-child(even) {
     background-color: #dddddd;
@@ -62,6 +55,7 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: white;
 }
+
 
 
 
@@ -85,14 +79,6 @@ tr:nth-child(odd) {
     color: #f00;
   }
 
-.table-up, .table-down {
-  color: #007;
-  cursor: pointer;
-}
-  
-.table-up:hover, .table-down:hover {
-    color: #00f;
-  }
 
 .table-add {
   color: #070;
