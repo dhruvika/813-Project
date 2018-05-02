@@ -39,13 +39,19 @@ GR4 - Settings Page
         <td contenteditable="true">First Name</td>
         <td contenteditable="true">Last Name</td>
         <td contenteditable="true">Email</td>
-        <td></td>
+        <td> 
+          <input type='file' onchange="readURL(this);" />
+          <img id="imgInput" src="#" alt="image" />
+        </td>
         <td>
           <span class="table-remove glyphicon glyphicon-remove"></span>
         </td>
       </tr>
     </table>
   </div>
+
+  <section id = "gridSettings">
+    <object id="gridViewSettings" type="text/html" data="../gridViewEdit/gridViewEdit.html" ></object>
   
 </div>
 

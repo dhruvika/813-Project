@@ -91,3 +91,14 @@ tr:nth-child(odd) {
 .table-add:hover {
     color: #0b0;
   }
+
+#gridViewSettings {
+  height: 400px;
+  width: 100%;
+  display: flex;
+}
+
+img{
+  max-width:180px;
+}
+
