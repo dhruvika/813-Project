@@ -142,15 +142,16 @@ function load_feedback() {
 			var icon = page_icons[option][1];
 			var option_button = document.createElement('button');
 			option_button.id = option;
-			option_button.name = "buttonMain";
-			option_button.onclick = "load_engagement()";
+			option_button.classList.add(option);
 
 			all_buttons_tag.appendChild(option_button);
 
 			var div_element = document.createElement('div');
+			div_element.classList.add(option);
 			option_button.appendChild(div_element);
 
 			var icon_element = document.createElement('i');
+			icon_element.classList.add(option);
 			icon_element.classList.add('fas');
 			icon_element.classList.add(icon);
 			icon_element.classList.add('fa-4x');
@@ -158,6 +159,7 @@ function load_feedback() {
 			div_element.appendChild(document.createElement('br'));
 
 			var heading_element = document.createElement('h2');
+			heading_element.classList.add(option);
 			heading_element.innerHTML = "<br>" + option;
 			div_element.appendChild(heading_element);
 		}
@@ -169,7 +171,6 @@ function load_feedback() {
 		 class_button.style.onclick = "classClick(class_num)";
 
 		classClick(class_num);
-
 	}
 
 
@@ -189,11 +190,7 @@ function load_feedback() {
 
 function checkChanges(){
 	$('input[name="tabs"]').change(function(e){
-		console.log("detectedChange");
-		// console.log(e.target.id);
 		var classId = e.target.id;
-		// console.log(typeof classId);
-		// console.log(classId[classId.length-1]);
 		var classNum = classId[classId.length-1];
 		classClick(classNum);
 	});
@@ -203,21 +200,23 @@ function checkChanges(){
 		var classId = e.target.id;
 		var classNum = classId[classId.length-1];
 		classClick(classNum);
-
 	});
 }
 
 function checkButtonsMain(){
-	$('Engagement').change(function(e){
-		// console.log("detectedChangeButton");
-		var page_icons = {"Engagement": [load_engagement, "fa-star"],
-											"Feedback": [load_feedback, "fa-comment-alt"],
-											"Settings": [load_settings, "fa-wrench"]}
-		var buttonId = e.target.id;
-		page_icons[buttonId][0]();
+	var page_icons = {"Engagement": [load_engagement, "fa-star"],
+										"Feedback": [load_feedback, "fa-comment-alt"],
+										"Settings": [load_settings, "fa-wrench"]}
 
+	for(var option in page_icons){
+		$('.'+option).on("click", function(e){
+			console.log("detectedChangeButton");			
+			page_icons[option][0]();
 
-	});
+		});
+
+	}
+	
 }
 
 
