@@ -203,20 +203,25 @@ function checkChanges(){
 	});
 }
 
-function checkButtonsMain(){
-	var page_icons = {"Engagement": [load_engagement, "fa-star"],
-										"Feedback": [load_feedback, "fa-comment-alt"],
-										"Settings": [load_settings, "fa-wrench"]}
+function checkEngagementButtons(){
 
-	for(var option in page_icons){
-		$('.'+option).on("click", function(e){
-			console.log("detectedChangeButton");			
-			page_icons[option][0]();
+		$('.Engagement').on("click", function(e){		
+			load_engagement();
+		});	
+}
 
-		});
+function checkFeedbackButtons(){
 
-	}
-	
+		$('.Feedback').on("click", function(e){		
+			load_feedback();
+		});	
+}
+
+function checkSettingsButtons(){
+
+		$('.Settings').on("click", function(e){		
+			load_settings();
+		});	
 }
 
 
@@ -230,7 +235,9 @@ Util.events(document, {
 			add_new_class(default_classes[i]);
 		}
 		checkChanges();
-		checkButtonsMain();
+		checkEngagementButtons();
+		checkFeedbackButtons();
+		checkSettingsButtons();
 		classClick(1);
 	},
 
