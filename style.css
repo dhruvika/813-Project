@@ -155,7 +155,8 @@ input {
   display: none;
   position: absolute;
 }
-label {
+
+label[for*='class'] {
   display: inline-block;
   margin: 0 5 -1px;
   padding: 15px 50px;
@@ -166,24 +167,36 @@ label {
 }
 
 
-label[for*='1']{
+label[for*='4']{
   background-color: #0A5DBA;
 
 }
-label[for*='2']{
+label[for*='3']{
   background-color: #D92A2E;
 }
-label[for*='3']{
+label[for*='2']{
   background-color: #C0783A;
 }
-label[for*='4']{
+label[for*='1']{
   background-color: #5A9620;
+}
 
-}
 label:hover {
-  color: #888;
   cursor: pointer;
+  filter: brightness(130%);
 }
+
+.fa-times{
+  color: white;
+  font-size: 15px;
+  position: relative;
+  left: 20px;
+}
+
+.fa-times:hover{
+  color: #696969;
+}
+
 
 input{
   margin: 10px;
