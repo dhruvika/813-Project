@@ -2,6 +2,8 @@
 var currentlyActive;
 var previousContent = "content1";
 classes = []
+var classesReady;
+var radios;
 //Format: button color, section color
 class_colors = [["#0A5DBA","#8C9BAB"], ["#D92A2E","#E39496"], ["#C0783A","#EBA060"], ["#5A9620","#98B879"], ["purple","#874a87"], ["#FF1493","#FFB6C1"]]
 
@@ -61,11 +63,12 @@ function load_feedback() {
 			page_tabs_element.innerHTML = page_tabs_html;
 		}
 		window.document.getElementById("class"+checked).checked = true;
+
 	}
 
 	// window.onbeforeunload = function() {
-	// 	localStorage.removeItem('tabs_code'); return ''; 
-	// }; 
+	// 	localStorage.removeItem('tabs_code'); return '';
+	// };
 
 	function classClick(classnum){
 		console.log("Class Click: ", classnum);
@@ -132,8 +135,8 @@ function load_feedback() {
 
 		section_tag.appendChild(all_buttons_tag);
 
-		var page_icons = {"Engagement": [load_engagement, "fa-star"], 
-											"Feedback": [load_feedback, "fa-comment-alt"], 
+		var page_icons = {"Engagement": [load_engagement, "fa-star"],
+											"Feedback": [load_feedback, "fa-comment-alt"],
 											"Settings": [load_settings, "fa-wrench"]}
 
 		for(option in page_icons){
@@ -141,8 +144,9 @@ function load_feedback() {
 			var icon = page_icons[option][1];
 			var option_button = document.createElement('button');
 			option_button.id = option;
+			option_button.name = "buttonMain";
 			option_button.onclick = "load_engagement()";
-			
+
 			all_buttons_tag.appendChild(option_button);
 
 			var div_element = document.createElement('div');
@@ -160,12 +164,12 @@ function load_feedback() {
 			div_element.appendChild(heading_element);
 		}
 
-		// CHECK HERE: 
+		// CHECK HERE:
 		// Problems: Without onclick, can't set:
 		// Delete x, switching contents, or main buttons
-		// var class_button = document.getElementById("class"+class_num);
-		// console.log("Button: ", class_button);
-		// class_button.onclick = classClick(class_num);
+		 var class_button = document.getElementById("class"+class_num);
+		 console.log("Button: ", class_button);
+		 class_button.style.onclick = "classClick(class_num)";
 
 		classClick(class_num);
 
@@ -175,6 +179,45 @@ function load_feedback() {
 	function delete_class(){
 		var class_num = classes.length - 1;
 	}
+
+if ($('class4:checked').length > 0){
+	console.log("found it");
+
+}
+	function checkButtons(){
+		console.log("checking");
+		if (classesReady){
+			console.log("checked");
+			console.log(document.getElementById("class4").checked);
+		}
+
+	}
+
+function checkChanges(){
+	$('input[name="tabs"]').change(function(e){
+		console.log("detectedChange");
+		console.log(e.target.id);
+		var classId = e.target.id;
+		console.log(typeof classId);
+		console.log(classId[classId.length-1]);
+		var classNum = classId[classId.length-1];
+		classClick(classNum);
+
+	});
+}
+
+function checkButtonsMain(){
+	$('Engagement').change(function(e){
+		console.log("detectedChangeButton");
+		var page_icons = {"Engagement": [load_engagement, "fa-star"],
+											"Feedback": [load_feedback, "fa-comment-alt"],
+											"Settings": [load_settings, "fa-wrench"]}
+		var buttonId = e.target.id;
+		page_icons[buttonId][0]();
+
+
+	});
+}
 
 
 Util.events(document, {
@@ -186,7 +229,8 @@ Util.events(document, {
 		for(var i=0; i<4; i++){
 			add_new_class(default_classes[i]);
 		}
-		
+		checkChanges();
+		checkButtonsMain();
 	},
 
 	// "dblclick": function(e) {
@@ -199,7 +243,7 @@ Util.events(document, {
 	// 			var label = labels[i];
 	// 			console.log("kiddos:", label.children, "of: ", label);
 	// 			var child_label = label.children[0];
-	// 			label.contentEditable = true;	
+	// 			label.contentEditable = true;
 	// 		}
 	// 	}
 
@@ -212,7 +256,7 @@ Util.events(document, {
 	// 		console.log("Clicked on uneditable thing: ", target.nodeName)
 	// 		for(var i = 0; i < labels.length; i++){
 	// 			var label = labels[i];
-	// 			label.contentEditable = false;	
+	// 			label.contentEditable = false;
 	// 		}
 
 	// 	}
@@ -224,7 +268,7 @@ Util.events(document, {
 	// 	if(e.keyCode == 13){
 	// 		for(var i = 0; i < labels.length; i++){
 	// 			var label = labels[i];
-	// 			label.contentEditable = false;	
+	// 			label.contentEditable = false;
 	// 		}
 	// 	}
 	// },
@@ -239,4 +283,3 @@ Util.events(document, {
 
 
 });
-
