@@ -16,7 +16,6 @@ var checked = getURLParam("checked") || "1"
 function load_feedback() {
 
 	for (i in classes) {
-		console.log(i)
 		if (document.getElementById("class" + classes[i]).checked){
 			currentlyActive = classes[i];
 			break
@@ -30,7 +29,7 @@ function load_feedback() {
  function load_settings() {
 
 	 for (i in classes) {
-		 console.log(i)
+		 // console.log(i)
 		 if (document.getElementById("class" + classes[i]).checked){
 			 currentlyActive = classes[i];
 			 break
@@ -45,7 +44,6 @@ function load_feedback() {
 	function load_engagement() {
 
 		for (i in classes) {
-			console.log(i)
 			if (document.getElementById("class" + classes[i]).checked){
 				currentlyActive = classes[i];
 				break
@@ -71,9 +69,9 @@ function load_feedback() {
 	// };
 
 	function classClick(classnum){
-		console.log("Class Click: ", classnum);
+		// console.log("Class Click: ", classnum);
 		var content = "content" + classnum;
-		console.log(document.getElementById(content));
+		// console.log(document.getElementById(content));
 		if(previousContent != null){
 			document.getElementById(previousContent).style["display"] = "none";
 		}
@@ -101,7 +99,7 @@ function load_feedback() {
 		new_class_label.id = "label"+class_num;
 
 		child_label_tag = document.createElement('label');
-		child_label_tag.classList.add('text');
+		child_label_tag.id = "text"+class_num;
 		child_label_tag.innerHTML = content;
 		new_class_label.appendChild(child_label_tag);
 
@@ -168,7 +166,6 @@ function load_feedback() {
 		// Problems: Without onclick, can't set:
 		// Delete x, switching contents, or main buttons
 		 var class_button = document.getElementById("class"+class_num);
-		 console.log("Button: ", class_button);
 		 class_button.style.onclick = "classClick(class_num)";
 
 		classClick(class_num);
@@ -180,14 +177,11 @@ function load_feedback() {
 		var class_num = classes.length - 1;
 	}
 
-if ($('class4:checked').length > 0){
-	console.log("found it");
 
-}
 	function checkButtons(){
-		console.log("checking");
+		// console.log("checking");
 		if (classesReady){
-			console.log("checked");
+			// console.log("checked");
 			console.log(document.getElementById("class4").checked);
 		}
 
@@ -196,10 +190,17 @@ if ($('class4:checked').length > 0){
 function checkChanges(){
 	$('input[name="tabs"]').change(function(e){
 		console.log("detectedChange");
-		console.log(e.target.id);
+		// console.log(e.target.id);
 		var classId = e.target.id;
-		console.log(typeof classId);
-		console.log(classId[classId.length-1]);
+		// console.log(typeof classId);
+		// console.log(classId[classId.length-1]);
+		var classNum = classId[classId.length-1];
+		classClick(classNum);
+	});
+
+	$('label[id*="text"]').on("click", function(e){
+		console.log("clicked label");
+		var classId = e.target.id;
 		var classNum = classId[classId.length-1];
 		classClick(classNum);
 
@@ -208,7 +209,7 @@ function checkChanges(){
 
 function checkButtonsMain(){
 	$('Engagement').change(function(e){
-		console.log("detectedChangeButton");
+		// console.log("detectedChangeButton");
 		var page_icons = {"Engagement": [load_engagement, "fa-star"],
 											"Feedback": [load_feedback, "fa-comment-alt"],
 											"Settings": [load_settings, "fa-wrench"]}
@@ -231,6 +232,7 @@ Util.events(document, {
 		}
 		checkChanges();
 		checkButtonsMain();
+		classClick(1);
 	},
 
 	// "dblclick": function(e) {
@@ -249,7 +251,8 @@ Util.events(document, {
 
 	// },
 
-	// "click": function(e) {
+	"click": function(e) {
+		console.log("Clicked on: ", e.target.nodeName)
 	// 	var target = e.target;
 	// 	var labels = Util.all("label.text");
 	// 	if(!(target.nodeName == "LABEL" || target.nodeName == "INPUT" || target.nodeName == "TEXT")){
@@ -260,7 +263,7 @@ Util.events(document, {
 	// 		}
 
 	// 	}
-	// },
+	},
 
 	// "keypress": function(e) {
 	// 	var target = e.target;
