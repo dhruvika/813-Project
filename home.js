@@ -68,6 +68,7 @@ function load_feedback() {
 	// }; 
 
 	function classClick(classnum){
+		console.log("Class Click: ", classnum);
 		var content = "content" + classnum;
 		console.log(document.getElementById(content));
 		if(previousContent != null){
