@@ -4,13 +4,13 @@
 @import "compass/css3";
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
 
-body {
+/*body {
   
   background:transparent;
   
 }
-
-#contain {
+*/
+/*#contain {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGUlEQVQYV2NkIBIwEqmOYVQh3pAiNnj+AwALaAEKfsPrZgAAAABJRU5ErkJggg==);
   background-position: 18px 11px;
   height: 500px;
@@ -73,7 +73,7 @@ body {
   color: gainsboro;
   font: 16px/1 'Do Hyeon', sans-serif;
   text-align:center;
-}
+}*/
 
 
 
@@ -130,10 +130,6 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
     background-color: white;
 }
-
-
-
-
 
 
 
