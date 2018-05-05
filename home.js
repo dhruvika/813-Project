@@ -117,6 +117,11 @@ function load_feedback() {
 
 		add_new_section(class_num);
 
+		checkChanges();
+		checkEngagementButtons();
+		checkFeedbackButtons();
+		checkSettingsButtons();
+
 	}
 
 	function add_new_section(class_num){
@@ -234,10 +239,7 @@ Util.events(document, {
 		for(var i=0; i<4; i++){
 			add_new_class(default_classes[i]);
 		}
-		checkChanges();
-		checkEngagementButtons();
-		checkFeedbackButtons();
-		checkSettingsButtons();
+
 		classClick(1);
 	},
 
