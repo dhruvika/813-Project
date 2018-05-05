@@ -1,13 +1,19 @@
 @import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
 @import url('https://fonts.googleapis.com/css?family=Cherry+Swash');
 @import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+@import "compass/css3";
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
 
-
-
-body {
+/*body {
+  
+  background:transparent;
+  
+}
+*/
+/*#contain {
   background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAGUlEQVQYV2NkIBIwEqmOYVQh3pAiNnj+AwALaAEKfsPrZgAAAABJRU5ErkJggg==);
-
   background-position: 18px 11px;
+  height: 500px;
 }
 
 
@@ -67,4 +73,102 @@ body {
   color: gainsboro;
   font: 16px/1 'Do Hyeon', sans-serif;
   text-align:center;
+}*/
+
+
+
+
+h2 {
+    font: 22px/1 'Do Hyeon', sans-serif;
+}
+
+
+#tableGrid {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 74%;
+    font: 16px/1 'Do Hyeon', sans-serif;
+}
+
+#home_icon{
+  grid-column: 1;
+  font-size: 35px;
+  height: 100%;
+  width: 100%;
+}
+#home_icon:hover{
+  color: white;
+}
+
+#grid_icon{
+  grid-column: 2;
+  font-size: 35px;
+  height: 100%;
+  width: 100%;
+}
+#grid_icon:hover{
+  color: white;
+}
+#gridview{
+  width: 1200px;
+  height: 800px;
+}
+#mode {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+
+
+.table-editable {
+  position: relative;
+}
+  
+.glyphicon {
+    font-size: 20px;
+  }
+
+.table-remove {
+  color: #700;
+  cursor: pointer;
+}
+  
+.table-remove:hover {
+    color: #f00;
+  }
+
+
+.table-add {
+  color: #070;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 15px;
+}
+  
+.table-add:hover {
+    color: #0b0;
+  }
+
+#gridViewSettings {
+  height: 400px;
+  width: 100%;
+  display: flex;
+}
+
+img{
+  max-width:180px;
 }
