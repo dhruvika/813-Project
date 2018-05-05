@@ -15,6 +15,52 @@
 
 <body>
 
+<div class="container", id="studentlist">
+
+  <div class="icons">
+     <button id="mode" onclick="loadHome()">
+       <i id="home_icon" class="glyphicon glyphicon-home"></i>
+     </button>
+   </div>
+
+  
+  <div id="table" class="table-editable">
+    <span class="table-add glyphicon glyphicon-plus" style="background-color:transparent"></span>
+    <table class="table">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <!-- This is our clonable table line -->
+      <tr class="hide">
+        <td contenteditable="true">First Name</td>
+        <td contenteditable="true">Last Name</td>
+        <td contenteditable="true">Email</td>
+        <td> 
+          <input type='file' onchange="readURL(this);" />
+          <img id="imgInput" src="#" alt="image" />
+        </td>
+        <td>
+          <span class="table-remove glyphicon glyphicon-remove"></span>
+        </td>
+      </tr>
+    </table>
+  </div>
+  
+</div>
+
+<script>
+function loadHome() {
+  top.location ="../index.html";
+
+
+}
+</script>
+
+
   <div class="container" id="contain">
   <div class='box'>
     <img width="60%" src="https://www.enterprise.com/content/dam/ecom/utilitarian/common/Meet%20the%20Fleet/suv_santa_fe.png.wrend.1280.720.png">
@@ -30,6 +76,7 @@
 
 
     <script  src="js/index.js"></script>
+
 
 
 
