@@ -107,9 +107,17 @@ startlistener();
 addStudentImages();
 
 
-data = class_to_student['class1'];
+function getURLParam(name) {
+  return new URL(location).searchParams.get(name);
+}
+
+var checked = getURLParam("checked") || 1;
+
+data = class_to_student['class' + checked];
 
          drawTable(data);
+
+
 function drawTable(data) {
 
 
@@ -146,12 +154,7 @@ function drawRow(rowData,i) {
 
 $('.table-add').click(function () {
   var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
-  $clone.find("input.datepicker").each(function(){
-    $(this).attr("id", "").removeData().off();
-    $(this).find('.add-on').removeData().off();
-    $(this).find('input').removeData().off();
-    $(this).timepicker({defaultTime:'16:20', minuteStep: 1, showMeridian: false});
-  });
+
 
   $TABLE.find('table').append($clone).find("input.datepicker").addClass('datepicker');
 
