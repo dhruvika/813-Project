@@ -97,7 +97,10 @@ var studentID = -1
   }, false);
 
 function startlistener(){
-  document.addEventListener("mousedown", function(e) {
+  window.addEventListener("mousedown", function(e) {
+
+    console.log(document.getElementById("2fname"));
+
     update_grid();
 
   }, false)
@@ -139,6 +142,7 @@ function editing(x){
   console.log("")
 }
 
+
 function drawRow(rowData) {
     var row = $("<tr />");
     $("#personDataTable").append(row); //this will append tr element to table... keep its rence for a while since we will add cels into it
@@ -150,9 +154,9 @@ function drawRow(rowData) {
 
     var fname = "'" + rowData + "'";
     var curchange = "readURL(this," + fname +","+ studentID.toString() +  ");";
-   row.append($('<td contenteditable="true"' + fid + ' class="info">' + rowData.split("_")[0] +'</td>'));
-   row.append($('<td contenteditable="true"' + lid + ' class="info" >' + rowData.split("_")[1]+' </td>'));
-   row.append($('<td contenteditable="true" class="info">' + rowData.split("_")[0] +"@mit.edu"  +'</td>'));
+   row.append($('<td onkeyup="changer()"contenteditable="true"' + fid + ' class="info">' + rowData.split("_")[0] +'</td>'));
+   row.append($('<td onkeyup="changer()" contenteditable="true"' + lid + ' class="info" >' + rowData.split("_")[1]+' </td>'));
+   row.append($('<td contenteditable="true" onkeyup="changer()" class="info">' + rowData.split("_")[0] +"@mit.edu"  +'</td>'));
    row.append($('<td> <input type="file"' + 'onchange="' + curchange + '"/></td>'));
    row.append($('<td><span class="table-remove fa fa-trash fa-2x"></span></td></tr></table>'));
 }
@@ -175,6 +179,10 @@ $('.table-remove').click(function () {
 
 })
 
+function changer(){
+  console.log("Detected Change");
+  update_grid();
+}
 
  function readURL(input, name, id) {
      var reader = new FileReader(); //create reader
@@ -206,7 +214,7 @@ $('.table-remove').click(function () {
 function update_grid () {
   sessionStorage.setItem("default", JSON.stringify(class_list));
 
-  console.log("updating grid");
+  //console.log("updating grid");
 
   for (var i =0; i <= studentID; i++){
     var fname = document.getElementById(i.toString() + "fname").innerHTML;
@@ -274,7 +282,7 @@ function add_student_to_grid(name,id, newImage=true){
       student_img = student_list_images[id]
       student_img.src = student_img_src;
     }
-    console.log("updating grid");
+    //console.log("updating grid");
 
     name = student_list_grid_name[id]
     var firstName = student_list_names[id].split("_")[0];
