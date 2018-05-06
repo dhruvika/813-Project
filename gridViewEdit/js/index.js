@@ -127,7 +127,7 @@ function drawTable(data) {
 
 
     for (var i = 0; i < data.length; i++) {
-        drawRow(data[i],i);
+        drawRow(data[i]);
         add_student_to_grid(data[i], i);
     }
 }
@@ -136,7 +136,7 @@ function editing(x){
   console.log("")
 }
 
-function drawRow(rowData,i) {
+function drawRow(rowData) {
     var row = $("<tr />");
     $("#personDataTable").append(row); //this will append tr element to table... keep its rence for a while since we will add cels into it
 
@@ -158,7 +158,8 @@ function drawRow(rowData,i) {
 
 
 $('.table-add').click(function () {
-  var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+  drawRow("firstname_lastname")
+  // var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
 
 
   $TABLE.find('table').append($clone).find("input.datepicker").addClass('datepicker');
