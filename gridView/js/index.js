@@ -13,7 +13,9 @@ data = class_to_student['class1'];
 
 
 
+function draw_all_students(){
 
+}
 
 
 

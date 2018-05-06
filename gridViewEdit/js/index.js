@@ -39,7 +39,7 @@ var studentID = -1
     for (var i = 0; i < class_list.length; i++){
         var student_name = class_list[i];
         var student_img_src = "../" + student_to_img[student_name];
-        localStorage.setItem(student_name, student_img_src);
+        sessionStorage.setItem(student_name, student_img_src);
     }
   }
 
@@ -78,7 +78,7 @@ var studentID = -1
           console.log(this.id);
           console.log(this.style.left);
           student_list_seats[this.id.substr(-1)] = [this.style.left, this.style.top];
-          localStorage.setItem("student_list_seats", JSON.stringify(student_list_seats))
+          sessionStorage.setItem("student_list_seats", JSON.stringify(student_list_seats))
       });
   }
 
@@ -113,6 +113,9 @@ startlistener();
 addStudentImages();
 
 var curClass = getClass()[1];
+if (curClass == null){
+  curClass = 1;
+}
 console.log(Number(curClass));
 data = class_to_student['class' + curClass];
 
@@ -140,7 +143,6 @@ function drawRow(rowData) {
     var row = $("<tr />");
     $("#personDataTable").append(row); //this will append tr element to table... keep its rence for a while since we will add cels into it
 
-   console.log(curchange);
    curStudentID = studentID +1;
    studentID = curStudentID;
    var fid = "id=" + studentID.toString() + "fname";
@@ -184,7 +186,7 @@ $('.table-remove').click(function () {
          try {
 
          console.log(reader.result);
-         localStorage[name] = reader.result; //saved to localStorage
+         sessionStorage[name] = reader.result; //saved to sessionStorage
          add_student_to_grid(name, id);
        }
        catch(e){
@@ -203,11 +205,11 @@ $('.table-remove').click(function () {
 
 
 function update_grid () {
-  localStorage.setItem("default", JSON.stringify(class_list));
+  sessionStorage.setItem("default", JSON.stringify(class_list));
 
   console.log("updating grid");
 
-  for (var i =0; i < studentID; i++){
+  for (var i =0; i <= studentID; i++){
     var fname = document.getElementById(i.toString() + "fname").innerHTML;
     var lname = document.getElementById(i.toString() + "lname").innerHTML;
 
@@ -246,7 +248,7 @@ function update_grid () {
 
 
   }
-  localStorage.setItem("student_list_names", JSON.stringify(student_list_names));
+  sessionStorage.setItem("student_list_names", JSON.stringify(student_list_names));
 
 }
 
@@ -268,7 +270,7 @@ function add_student_to_grid(name,id, newImage=true){
 
   if (id in student_list_images){
     if (newImage){
-      var student_img_src = localStorage[name];
+      var student_img_src = sessionStorage[name];
       console.log(student_img_src);
       student_img = student_list_images[id]
       student_img.src = student_img_src;
@@ -287,9 +289,9 @@ function add_student_to_grid(name,id, newImage=true){
     var lastName = student_list_names[id].split("_")[1];
 
     var student_name = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase;
-    var student_img_src = localStorage[name];
+    var student_img_src = sessionStorage[name];
     console.log(student_img_src)
-    console.log(localStorage);
+    console.log(sessionStorage);
     student_img = document.createElement('img');
     drag_box = document.createElement('div');
     drag_box.setAttribute("class", "box")
@@ -324,11 +326,11 @@ function add_student_to_grid(name,id, newImage=true){
 
 
   // Stores the JavaScript object as a string
-  //localStorage.setItem("student_list_emails", JSON.stringify(student_list_emails));
-  localStorage.setItem("student_list_images", JSON.stringify(student_list_images));
-  localStorage.setItem("student_list_names", JSON.stringify(student_list_names));
+  //sessionStorage.setItem("student_list_emails", JSON.stringify(student_list_emails));
+  sessionStorage.setItem("student_list_images", JSON.stringify(student_list_images));
+  sessionStorage.setItem("student_list_names", JSON.stringify(student_list_names));
 
   // Parses the saved string into a JavaScript object again
-  JSON.parse(localStorage.getItem("student_list_emails"));
-  JSON.parse(localStorage.getItem("student_list_images"));
-  JSON.parse(localStorage.getItem("student_list_names"));
+  JSON.parse(sessionStorage.getItem("student_list_emails"));
+  JSON.parse(sessionStorage.getItem("student_list_images"));
+  JSON.parse(sessionStorage.getItem("student_list_names"));
