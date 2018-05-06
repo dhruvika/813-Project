@@ -167,7 +167,7 @@ $('.table-add').click(function () {
   drawRow("firstname_lastname")
 
 
-  $TABLE.find('table').append($clone).find("input.datepicker").addClass('datepicker');
+  // $TABLE.find('table').append($clone).find("input.datepicker").addClass('datepicker');
 
 });
 
