@@ -161,7 +161,6 @@ function drawRow(rowData) {
 
 $('.table-add').click(function () {
   drawRow("firstname_lastname")
-  // var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
 
 
   $TABLE.find('table').append($clone).find("input.datepicker").addClass('datepicker');
