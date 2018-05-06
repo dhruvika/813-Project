@@ -53,7 +53,15 @@ current_class = "class1";
   }
 
 
+  function clickChange(){
+    $(".hide").on('change', function(e) {
+  console.log("Changed")
+});
+  }
+
+
   document.addEventListener('DOMContentLoaded', function() {
+      clickChange()
       addStudentImages();
       $(" .box ")
         .draggable({ grid: [ grid_size, grid_size ] })
@@ -89,26 +97,49 @@ $(document).ready(function() {
 var $TABLE = $('#table');
 
 
+data = class_to_student['class1'];
+       
+         drawTable(data);
+function drawTable(data) {
+
+ 
+    for (var i = 0; i < data.length; i++) {
+        drawRow(data[i],i);       
+    }
+}
+
+function drawRow(rowData,i) {
+    var row = $("<tr />"); 
+    $("#personDataTable").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
+ 
+
+ row.append($('<td contenteditable="true" class="info">' + rowData.split("_")[0] +'</td>'));  
+  row.append($('<td contenteditable="true" class="info" >' + rowData.split("_")[1]+' </td>'));
+  row.append($('<td contenteditable="true" class="info">' + rowData.split("_")[0] +"@mit.edu"  +'</td>'));
+  row.append($('<td> <input type="file" onchange="readURL(this);" /><img id="imgInput" src="#" alt="image" /></td>'));
+  row.append($('<td><span class="table-remove fa fa-trash fa-2x"></span></td></tr></table>'));
+}
+
+
 
 $('.table-add').click(function () {
   var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
-  $TABLE.find('table').append($clone);
+  $clone.find("input.datepicker").each(function(){
+    $(this).attr("id", "").removeData().off();
+    $(this).find('.add-on').removeData().off();
+    $(this).find('input').removeData().off();
+    $(this).timepicker({defaultTime:'16:20', minuteStep: 1, showMeridian: false});
+  });
+
+  $TABLE.find('table').append($clone).find("input.datepicker").addClass('datepicker');
+  
 });
 
 $('.table-remove').click(function () {
   $(this).parents('tr').detach();
 });
 
-$('.table-up').click(function () {
-  var $row = $(this).parents('tr');
-  if ($row.index() === 1) return; // Don't go above the header
-  $row.prev().before($row.get(0));
-});
 
-$('.table-down').click(function () {
-  var $row = $(this).parents('tr');
-  $row.next().after($row.get(0));
-});
 
 })
 

@@ -130,11 +130,28 @@ tr:nth-child(odd) {
 
 
 
+
+input {
+    text-align: center;
+    border: none;
+    background: transparent;
+}
+th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+td {
+  
+    text-align: center;
+    vertical-align: middle;
+}
+
+
 .table-editable {
   position: relative;
-}
-  
-.glyphicon {
+  }
+.table-editable.glyphicon {
     font-size: 20px;
   }
 
@@ -142,10 +159,10 @@ tr:nth-child(odd) {
   color: #700;
   cursor: pointer;
 }
-  
 .table-remove:hover {
     color: #f00;
   }
+
 
 
 .table-add {
@@ -153,17 +170,12 @@ tr:nth-child(odd) {
   cursor: pointer;
   position: absolute;
   top: 8px;
-  right: 15px;
-}
-  
+  right: 25px;
+  }
 .table-add:hover {
     color: #0b0;
   }
-
-#gridViewSettings {
-  height: 400px;
-  width: 100%;
-  display: flex;
+  
 }
 
 img{
