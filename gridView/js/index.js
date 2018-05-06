@@ -1,3 +1,23 @@
+
+
+
+$(document).ready(function() {
+draw_all_students();
+
+startlistener();
+addStudentImages();
+
+
+data = class_to_student['class1'];
+}
+
+
+
+
+
+
+
+//=========Ignor/ TODO: Delete
 grid_size = 10;
 
 current_class = "class1";
@@ -82,17 +102,11 @@ var studentID = -1
       });
   }
 
-  function getClass() {
-    console.log("CURRENT CLASS IS: "+ sessionStorage.getItem("currentClass"));
-    return sessionStorage.getItem("currentClass");
-  }
-
 
   document.addEventListener('DOMContentLoaded', function() {
       clickChange()
       addStudentImages();
       setDraggable();
-
 
   }, false);
 
@@ -112,17 +126,10 @@ var $TABLE = $('#table');
 startlistener();
 addStudentImages();
 
-var curClass = getClass()[1];
-console.log(Number(curClass));
-data = class_to_student['class' + curClass];
 
+data = class_to_student['class1'];
 
-
-
-drawTable(data);
-
-
-
+         drawTable(data);
 function drawTable(data) {
 
 
@@ -159,7 +166,12 @@ function drawRow(rowData,i) {
 
 $('.table-add').click(function () {
   var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
-
+  $clone.find("input.datepicker").each(function(){
+    $(this).attr("id", "").removeData().off();
+    $(this).find('.add-on').removeData().off();
+    $(this).find('input').removeData().off();
+    $(this).timepicker({defaultTime:'16:20', minuteStep: 1, showMeridian: false});
+  });
 
   $TABLE.find('table').append($clone).find("input.datepicker").addClass('datepicker');
 
