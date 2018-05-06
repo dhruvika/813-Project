@@ -119,7 +119,11 @@ if (curClass == null){
 console.log(Number(curClass));
 data = class_to_student['class' + curClass];
 
+
+
+
 drawTable(data);
+
 
 
 function drawTable(data) {
