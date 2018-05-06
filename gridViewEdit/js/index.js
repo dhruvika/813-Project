@@ -82,11 +82,17 @@ var studentID = -1
       });
   }
 
+  function getClass() {
+    console.log("CURRENT CLASS IS: "+ sessionStorage.getItem("currentClass"));
+    return sessionStorage.getItem("currentClass");
+  }
+
 
   document.addEventListener('DOMContentLoaded', function() {
       clickChange()
       addStudentImages();
       setDraggable();
+
 
   }, false);
 
@@ -106,16 +112,11 @@ var $TABLE = $('#table');
 startlistener();
 addStudentImages();
 
+var curClass = getClass()[1];
+console.log(Number(curClass));
+data = class_to_student['class' + curClass];
 
-function getURLParam(name) {
-  return new URL(location).searchParams.get(name);
-}
-
-var checked = getURLParam("checked") || 1;
-
-data = class_to_student['class' + checked];
-
-         drawTable(data);
+drawTable(data);
 
 
 function drawTable(data) {

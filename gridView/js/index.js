@@ -1,3 +1,23 @@
+
+
+
+$(document).ready(function() {
+draw_all_students();
+
+startlistener();
+addStudentImages();
+
+
+data = class_to_student['class1'];
+}
+
+
+
+
+
+
+
+//=========Ignor/ TODO: Delete
 grid_size = 10;
 
 current_class = "class1";
