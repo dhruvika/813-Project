@@ -112,6 +112,7 @@ function getURLParam(name) {
 }
 
 var checked = getURLParam("checked") || 1;
+console.log(checked);
 
 data = class_to_student['class' + checked];
 
