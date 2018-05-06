@@ -53,8 +53,10 @@ var studentID = -1
   function setDraggable(){
     $(" .box ")
       .draggable({ grid: [ grid_size, grid_size ] })
+      .draggable( "option", "containment", "parent")
 
-      .resizable({ grid: grid_size * 2 })
+
+      //.resizable({ grid: grid_size * 2 })
 
       .on("mouseover", function(){
         $( this ).addClass("move-cursor")
