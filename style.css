@@ -21,6 +21,11 @@ blue tab4 - 2D4571
   display: flex;
 }
 
+.home-page{
+  overflow-y:hidden;
+  overflow-x: hidden;
+}
+
 body {
   font: 16px/1 'Advent Pro', sans-serif;
   background:transparent;
