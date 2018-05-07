@@ -11,9 +11,7 @@ body {
 
 }
 
-/*.parentDiv{
-  overflow-x: scroll;
-}*/
+
 
 .containers{
   overflow-x: scroll
@@ -209,6 +207,9 @@ td {
 .table-editable {
   position: relative;
   display: flex;
+  height: 350px;
+  overflow: scroll;
+  margin: 30px;
   }
 .table-editable.glyphicon {
     font-size: 20px;
@@ -234,6 +235,20 @@ td {
 .table-add:hover {
     color: #0b0;
   }
+
+.show{
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 10px;
+  cursor:pointer;
+  border-radius: 12px;
+}
+
+.show:hover{
+  background-color: grey;
+}
+
+
   
 
 
