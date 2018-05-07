@@ -7,14 +7,15 @@
 body {
 
   background:transparent;
-
+  overflow:auto;
+  position:static;
 
 }
 
 
 
 .containers{
-  overflow-x: scroll
+  overflow-x: scroll;
 }
 
 #contain {
