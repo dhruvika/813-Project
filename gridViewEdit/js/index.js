@@ -41,7 +41,9 @@ var students = []
         var student_name = class_list[i];
         var student_img_src = "../" + student_to_img[student_name];
         sessionStorage.setItem(student_name, student_img_src);
+
     }
+    update_grid();
   }
 
 
@@ -79,15 +81,19 @@ var students = []
           .removeClass("grab-cursor")
           .removeClass("opac")
           .addClass("move-cursor");
-          console.log(this.id);
+          console.log(typeof(this.id));
           console.log(this.style.left);
-          student_list_seats[this.id.substr(-1)] = [this.style.left, this.style.top];
+          var id = this.id;
+          student_list_seats[id.split("_")[1]] = [this.style.left, this.style.top];
           sessionStorage.setItem("student_list_seats", JSON.stringify(student_list_seats))
       });
   }
 
   function getClass() {
     console.log("CURRENT CLASS IS: "+ sessionStorage.getItem("currentClass"));
+    if (localStorage.getItem("username") === null) {
+      return "1";
+    }
     return sessionStorage.getItem("currentClass");
   }
 
@@ -118,11 +124,9 @@ var $TABLE = $('#table');
 startlistener();
 addStudentImages();
 
-var curClass = getClass()[1];
-if (curClass == null){
-  curClass = 1;
-}
-console.log(Number(curClass));
+var curClass = getClass();
+console.log(getClass());
+console.log(curClass);
 data = class_to_student['class' + curClass];
 
 
@@ -146,24 +150,27 @@ function editing(x){
 }
 
 
+
 function drawRow(rowData) {
-    var row = $("<tr />");
+    var row = $("<tr>");
     $("#personDataTable").append(row); //this will append tr element to table... keep its rence for a while since we will add cels into it
 
    curStudentID = studentID +1;
    studentID = curStudentID;
    students.push(studentID);
-   var fid = "id=" + studentID.toString() + "fname";
-   var lid = "id=" + studentID.toString() + "lname";
-   var tid = "id=" + studentID.toString() + "trash"
+   var fid = "id=" + "_" + studentID.toString() + "fname";
+   var lid = "id=" + "_" + studentID.toString() + "lname";
+   var tid = "id=" + "_" + studentID.toString() + "trash"
 
     var fname = "'" + rowData + "'";
     var curchange = "readURL(this," + fname +","+ studentID.toString() +  ");";
    row.append($('<td onkeyup="changer()"contenteditable="true"' + fid + ' class="info">' + rowData.split("_")[0] +'</td>'));
    row.append($('<td onkeyup="changer()" contenteditable="true"' + lid + ' class="info" >' + rowData.split("_")[1]+' </td>'));
    row.append($('<td contenteditable="true" onkeyup="changer()" class="info">' + rowData.split("_")[0] +"@mit.edu"  +'</td>'));
-   row.append($('<td> <input class="upload" type="file"' + 'onchange="' + curchange + '"/></td>'));
-   row.append($('<td ' + tid + '><span class="table-remove fa fa-trash fa-2x"></span></td></tr></table>'));
+
+   row.append($('<td> <input  class="upload" type="file"' + 'onchange="' + curchange + '"/></td>'));
+   row.append($('<td ' + tid  +'name="table-remover"' +'><button  onclick="removeElement(this);" class="table-remove fa fa-trash fa-2x"></button></td></tr></table>'));
+
 }
 
 
@@ -177,8 +184,15 @@ $('.table-add').click(function () {
 
 });
 
-$('.table-remove').click(function () {
-  console.log($(this));
+$('td[name=table-remover]').click(function () {
+  var idRemove = $(this).context.parentElement.id.split("_")[0];
+  for (var i = 0; i <students.length; i++){
+    if (students[i]==idRemove){
+      console.log(i);
+      students.splice(i, 1);
+    }
+  }
+  console.log(students);
   $(this).parents('tr').detach();
 
 });
@@ -186,11 +200,6 @@ $('.table-remove').click(function () {
 
 
 })
-
-function changer(){
-  console.log("Detected Change");
-  update_grid();
-}
 
  function readURL(input, name, id) {
      var reader = new FileReader(); //create reader
@@ -203,6 +212,7 @@ function changer(){
          console.log(reader.result);
          sessionStorage[name] = reader.result; //saved to sessionStorage
          add_student_to_grid(name, id);
+         update_grid();
        }
        catch(e){
          console.log(e);
@@ -219,6 +229,20 @@ function changer(){
 }
 
 
+function removeElement(elem){
+  var idRemove = $(elem).context.parentElement.id.splice("_")[0];
+  console.log(idRemove)
+  for (var i = 0; i <students.length; i++){
+    if (students[i]==idRemove){
+      console.log(i);
+      students.splice(i, 1);
+    }
+  }
+  console.log(students);
+  $(elem).parents('tr').detach();
+
+}
+
 function update_grid () {
   sessionStorage.setItem("default", JSON.stringify(class_list));
 
@@ -227,8 +251,8 @@ function update_grid () {
 
   for (var i =0; i <= students.Length; i++){
     j = students[i]
-    var fname = document.getElementById(j.toString() + "fname").innerHTML;
-    var lname = document.getElementById(j.toString() + "lname").innerHTML;
+    var fname = document.getElementById(j.toString() +"_" + "fname").innerHTML;
+    var lname = document.getElementById(j.toString() +"_" +  "lname").innerHTML;
 
     var name =  fname + "_" + lname;
 
@@ -237,34 +261,11 @@ function update_grid () {
       add_student_to_grid(name, j, false)
     }
 
-    // id = i;
-    // if (id in student_list_images){
-    //   gridName = document.getElementById("gridName" + id.toString());
-    //   console.log(gridName);
-    //   console.log("updating grid2");
-    //   name = student_list_grid_name[id]
-    //   var firstName = student_list_names[id].split("_")[0];
-    //   var lastName = student_list_names[id].split("_")[1];
-    //   console.log(student_list_names[id]);
-    //
-    //   gridName.innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase();
-    //   console.log(gridName.innerHTML);
-    // }
-    // if (i in student_list_images){
-    //   student_list_names[i] = fname + "_" + lname;
-    //   console.log(student_list_names)
-    //   name = student_list_grid_name[i]
-    //   var firstName = student_list_names[i].split("_")[0];
-    //   var lastName = student_list_names[i].split("_")[1];
-    //   console.log(firstName);
-    //   name.innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase();
-    //   console.log(name);
-    //   console.log(name.innerHTML)
-    // }
 
 
 
   }
+  console.log(student_list_names);
   sessionStorage.setItem("student_list_names", JSON.stringify(student_list_names));
 
 }
@@ -318,11 +319,11 @@ function add_student_to_grid(name,id, newImage=true){
     var src = document.getElementById("contain");
     var table = document.createElement("div");
     var name = document.createElement("div");
-    name.setAttribute("id", "gridName" + id.toString());
+    name.setAttribute("id", "gridName" + "_" + id.toString());
     name.innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase();
     name.setAttribute("class", "name");
     table.setAttribute("class", "studentTable");
-    drag_box.setAttribute("id", "gridBox" +id.toString());
+    drag_box.setAttribute("id", "gridBox" +"_" + id.toString());
     drag_box.appendChild(table);
     drag_box.appendChild(name);
     table.appendChild(student_img);
