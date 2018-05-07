@@ -10,7 +10,7 @@ var class_list_names = {};
 var class_list_seats = {};
 var class_list_images = {};
 var class_list_grid_name = {};
-
+var showMore=false;
   var student_list_names =
   {
     //"id: firstname_lastname"
@@ -267,20 +267,36 @@ function drawRow(rowData) {
    row.append($('<td onkeyup="changer()"contenteditable="true"' + fid + ' class="info">' + rowData.split("_")[0] +'</td>'));
    row.append($('<td onkeyup="changer()" contenteditable="true"' + lid + ' class="info" >' + rowData.split("_")[1]+' </td>'));
    row.append($('<td contenteditable="true" onkeyup="changer()" class="info">' + rowData.split("_")[0] +"@mit.edu"  +'</td>'));
-   row.append($('<td> <input type="file"' + 'onchange="' + curchange + '"/></td>'));
+
+   row.append($('<td> <input  class="upload" type="file"' + 'onchange="' + curchange + '"/></td>'));
    row.append($('<td ' + tid  +'name="table-remover"' +'><button  onclick="removeElement(this);" class="table-remove fa fa-trash fa-2x"></button></td></tr></table>'));
+
 }
 
 
 
 $('.table-add').click(function () {
-  drawRow("firstname_lastname")
-  // var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+  drawRow("firstname_lastname");
+  $(".table-editable").css("height", "auto");
+  $(".table-editable tr:last td:first").focus();
 
-
-  // $TABLE.find('table').append($clone).find("input.datepicker").addClass('datepicker');
 
 });
+
+$('.show').click(function(){
+  if (showMore){
+    $(".table-editable").css("height", "350px");
+    $('.show').html("Show More");
+    showMore=false
+  }
+  else{
+    $(".table-editable").css("height", "auto");
+    $('.show').html("Show Less");
+    showMore=true;
+  }
+
+});
+
 
 $('td[name=table-remover]').click(function () {
   var idRemove = $(this).context.parentElement.id.split("_")[0];
