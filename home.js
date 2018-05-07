@@ -1,7 +1,4 @@
 //TODO:
-// Storage problems: wont go to next page, wont save sections
-// Sections local stroage
-// Tab ordering on delete
 // Edit class name
 
 var currentlyActive;
@@ -227,8 +224,13 @@ function addDeleteClick(classnum){
 			if(confirm){
 				var classId = e.currentTarget.id;
 				var classNum = classId[classId.length-1];
-				delete_class(classNum);
-				classClick(classes[classes.length-1]);
+				var index = classes.indexOf(""+classnum);
+				var focus_class = null;
+				if (index > 0) focus_class = classes[index - 1];
+				else focus_class = classes[index + 1]
+				delete_class(classNum);	
+				classClick(focus_class);
+				
 			}
 	});
 }
