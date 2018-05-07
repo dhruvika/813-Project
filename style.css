@@ -31,11 +31,18 @@ h1 {
   text-align: center;
   font: 50px/1 'Do Hyeon', sans-serif;
 }
+h3{
+
+    font-weight: 500;
+    font: 40px/1 'Advent Pro', sans-serif;
+
+}
 
 h2 {
   font-weight: 50;
   text-align: center;
   font: 25px/1 'Do Hyeon', sans-serif;
+  padding-bottom: 20px;
 }
 
 .logo{
@@ -228,4 +235,14 @@ div[id*="remove"]{
 #settingsCell{
   overflow-y: hidden;
 
+}
+
+.editClass{
+  vertical-align: top;
+
+  position:absolute;
+}
+.editName{
+  position:absolute;
+  vertical-align: top;
 }

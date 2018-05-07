@@ -36,9 +36,28 @@ data = class_to_student['class1'];
 
 function draw_all_students(){
   var curClass = getClass();
-  student_list_names = JSON.parse(sessionStorage.getItem("student_list_names"));
-  student_list_seats = JSON.parse(sessionStorage.getItem("student_list_seats"))
-  console.log(student_list_seats);
+
+  class_list_names = JSON.parse(sessionStorage.getItem("class_list_names"))
+  class_list_seats = JSON.parse(sessionStorage.getItem("class_list_seats"))
+
+  console.log(class_list_seats);
+  if ((getClass() in class_list_names)){
+    console.log("found class")
+    student_list_names = JSON.parse(sessionStorage.getItem("class_list_names"))[getClass()];
+
+  }
+  else{
+    student_list_names = class_to_student['class'+getClass()];
+    console.log(student_list_names)
+
+  }
+
+  if ((getClass() in class_list_seats)){
+    student_list_seats = JSON.parse(sessionStorage.getItem("class_list_seats"))[getClass()];
+  }
+  else{
+    student_list_seats = []
+  }
   for (var key in student_list_names){
     console.log(student_list_names[key])
     add_student_to_grid(student_list_names[key],key);
@@ -65,7 +84,14 @@ function add_student_to_grid(name,id, newImage=true){
 
   if (id in student_list_images){
     if (newImage){
-      var student_img_src = sessionStorage[name];
+      var student_img_src;
+      if (sessionStorage.getItem(name) === null) {
+         student_img_src ="../" + student_to_img[student_name];
+      }
+      else{
+         student_img_src = sessionStorage[name];
+
+      }
       console.log(student_img_src);
       student_img = student_list_images[id]
       student_img.src = student_img_src;
@@ -83,9 +109,15 @@ function add_student_to_grid(name,id, newImage=true){
     var firstName = student_list_names[id].split("_")[0];
     var lastName = student_list_names[id].split("_")[1];
 
+    if (sessionStorage.getItem(name) === null) {
+       student_img_src ="../" + student_to_img[name];
+    }
+    else{
+       student_img_src = sessionStorage[name];
+
+    }
     var student_name = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase;
-    var student_img_src = sessionStorage[name];
-    //console.log(student_img_src)
+    console.log(student_img_src)
     //console.log(sessionStorage);
     student_img = document.createElement('img');
     drag_box = document.createElement('div');
@@ -103,6 +135,7 @@ function add_student_to_grid(name,id, newImage=true){
     name.setAttribute("class", "name");
     table.setAttribute("class", "studentTable");
     drag_box.setAttribute("id", "gridBox" +id.toString());
+    console.log(student_list_seats);
     if (id in student_list_seats){
       var positions = student_list_seats[id];
       console.log(positions,id);
@@ -126,7 +159,7 @@ function add_student_to_grid(name,id, newImage=true){
 //=======Helpers
 function getClass() {
   console.log("CURRENT CLASS IS: "+ sessionStorage.getItem("currentClass"));
-  if (localStorage.getItem("username") === null) {
+  if (sessionStorage.getItem("currentClass") === null) {
     return "1";
   }
   return sessionStorage.getItem("currentClass");
@@ -144,10 +177,6 @@ function setDraggable(){
 
     .on("mousedown", function(){
       $( this )
-        .removeClass("move-cursor")
-        .addClass("grab-cursor")
-        .addClass("ui-helper")
-        .addClass("opac");
 
       //$(" .text ").hide();
 
@@ -157,7 +186,7 @@ function setDraggable(){
       $( this )
         .removeClass("grab-cursor")
         .removeClass("opac")
-        .addClass("move-cursor");
+        
         console.log(this.id);
         console.log(this.style.left);
         student_list_seats[this.id.split("_")[0]] = [this.style.left, this.style.top];
