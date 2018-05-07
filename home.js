@@ -73,8 +73,8 @@ function load_feedback() {
 		total_classes += 1;
 		var class_num = total_classes;
 		classes.push(""+(class_num));
-		window.localStorage.setItem("classes", JSON.stringify(classes));
-		window.localStorage.setItem("total_classes", JSON.stringify(total_classes));
+		window.sessionStorage.setItem("classes", JSON.stringify(classes));
+		window.sessionStorage.setItem("total_classes", JSON.stringify(total_classes));
 		console.log("Classes: ", classes)
 		console.log("Total classes: ", total_classes)
 
@@ -110,7 +110,7 @@ function load_feedback() {
 		tabs_element.appendChild(new_class_radio);
 		tabs_element.appendChild(new_class_label);
 		var page_tabs_html = document.getElementById("page_tabs").innerHTML;
-		window.localStorage.setItem("tabs_code", page_tabs_html);
+		window.sessionStorage.setItem("tabs_code", page_tabs_html);
 
 		add_new_section(class_num);
 
@@ -121,7 +121,7 @@ function load_feedback() {
 		addDeleteClick(class_num);
 
 		var page_sections_html = document.getElementById("page_sections").innerHTML;
-		window.localStorage.setItem("sections_code", page_sections_html);
+		window.sessionStorage.setItem("sections_code", page_sections_html);
 
 	}
 
@@ -194,15 +194,15 @@ function load_feedback() {
 		var class_section = document.getElementById("content"+classnum);
 		class_section.remove();
 
-		// Save to local Storage
+		// Save to session Storage
 		var page_tabs_html = document.getElementById("page_tabs").innerHTML;
-		window.localStorage.setItem("tabs_code", page_tabs_html);
+		window.sessionStorage.setItem("tabs_code", page_tabs_html);
 
 		var page_sections_html = document.getElementById("page_sections").innerHTML;
-		window.localStorage.setItem("sections_code", page_sections_html);
+		window.sessionStorage.setItem("sections_code", page_sections_html);
 
-		window.localStorage.setItem("classes", JSON.stringify(classes));
-		window.localStorage.setItem("total_classes", JSON.stringify(total_classes));
+		window.sessionStorage.setItem("classes", JSON.stringify(classes));
+		window.sessionStorage.setItem("total_classes", JSON.stringify(total_classes));
 	}
 
 
@@ -267,8 +267,8 @@ Util.events(document, {
 
 	"DOMContentLoaded": function(e) {
 		// want to load sections and classes list
-		// localStorage.clear();
-		var page_tabs_html = localStorage.getItem('tabs_code');
+		// sessionStorage.clear();
+		var page_tabs_html = sessionStorage.getItem('tabs_code');
 
 		if(page_tabs_html != null) {
 			console.log("Have tabs stored!")
@@ -277,15 +277,15 @@ Util.events(document, {
 			page_tabs_element.innerHTML = page_tabs_html;		
 
 			// Get most recent sections
-			var page_sections_html = localStorage.getItem('sections_code');
+			var page_sections_html = sessionStorage.getItem('sections_code');
 			if(document.getElementById("page_sections") != null){
 				var page_sections_element = document.getElementById("page_sections");
 				page_sections_element.innerHTML = page_sections_html;
 			}
 
 			// Get most recent class list
-			classes = JSON.parse(localStorage.getItem("classes"));
-			total_classes = JSON.parse(localStorage.getItem("total_classes"));
+			classes = JSON.parse(sessionStorage.getItem("classes"));
+			total_classes = JSON.parse(sessionStorage.getItem("total_classes"));
 
 			window.document.getElementById("class"+checked).checked = true;
 			checkChanges();
@@ -307,7 +307,7 @@ Util.events(document, {
 			classClick(1);
 
 			var page_sections_html = document.getElementById("page_sections").innerHTML;
-			localStorage.setItem("sections_code", page_sections_html);
+			sessionStorage.setItem("sections_code", page_sections_html);
 		}
 
 	},
