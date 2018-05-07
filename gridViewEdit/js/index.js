@@ -4,6 +4,7 @@ current_class = "class1";
 
 
 var studentID = -1
+var students = []
 
 
   var student_list_names =
@@ -52,10 +53,10 @@ var studentID = -1
 
   function setDraggable(){
     $(" .box ")
-      .draggable({ grid: [ grid_size, grid_size ] })
-      .draggable( "option", "containment", "parent")
-
-
+      .draggable({
+         grid: [ grid_size, grid_size ]
+       })
+       .draggable("option", "containment", "parent")
       //.resizable({ grid: grid_size * 2 })
 
       .on("mouseover", function(){
@@ -66,6 +67,7 @@ var studentID = -1
         $( this )
           .removeClass("move-cursor")
           .addClass("grab-cursor")
+          .addClass("ui-helper")
           .addClass("opac");
 
         //$(" .text ").hide();
@@ -150,8 +152,10 @@ function drawRow(rowData) {
 
    curStudentID = studentID +1;
    studentID = curStudentID;
+   students.push(studentID);
    var fid = "id=" + studentID.toString() + "fname";
    var lid = "id=" + studentID.toString() + "lname";
+   var tid = "id=" + studentID.toString() + "trash"
 
     var fname = "'" + rowData + "'";
     var curchange = "readURL(this," + fname +","+ studentID.toString() +  ");";
@@ -159,13 +163,14 @@ function drawRow(rowData) {
    row.append($('<td onkeyup="changer()" contenteditable="true"' + lid + ' class="info" >' + rowData.split("_")[1]+' </td>'));
    row.append($('<td contenteditable="true" onkeyup="changer()" class="info">' + rowData.split("_")[0] +"@mit.edu"  +'</td>'));
    row.append($('<td> <input type="file"' + 'onchange="' + curchange + '"/></td>'));
-   row.append($('<td><span class="table-remove fa fa-trash fa-2x"></span></td></tr></table>'));
+   row.append($('<td ' + tid + '><span class="table-remove fa fa-trash fa-2x"></span></td></tr></table>'));
 }
 
 
 
 $('.table-add').click(function () {
   drawRow("firstname_lastname")
+  // var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
 
 
   // $TABLE.find('table').append($clone).find("input.datepicker").addClass('datepicker');
@@ -175,6 +180,7 @@ $('.table-add').click(function () {
 $('.table-remove').click(function () {
   console.log($(this));
   $(this).parents('tr').detach();
+
 });
 
 
@@ -218,16 +224,17 @@ function update_grid () {
 
   //console.log("updating grid");
 
-  for (var i =0; i <= studentID; i++){
-    // console.log(studentID, i)
-    var fname = document.getElementById(i.toString() + "fname").innerHTML;
-    var lname = document.getElementById(i.toString() + "lname").innerHTML;
+
+  for (var i =0; i <= students.Length; i++){
+    j = students[i]
+    var fname = document.getElementById(j.toString() + "fname").innerHTML;
+    var lname = document.getElementById(j.toString() + "lname").innerHTML;
 
     var name =  fname + "_" + lname;
 
-    if (i in student_list_images){
+    if (j in student_list_images){
 
-      add_student_to_grid(name, i, false)
+      add_student_to_grid(name, j, false)
     }
 
     // id = i;
