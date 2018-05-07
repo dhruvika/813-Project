@@ -64,6 +64,7 @@ function load_feedback() {
 
 	function classClick(classnum){
 		var content = "content" + classnum;
+		console.log("Detected Click");
 		if(previousContent != null && document.getElementById(previousContent) != null) {
 			document.getElementById(previousContent).style["display"] = "none";
 		}
@@ -229,7 +230,9 @@ function addDeleteClick(classnum){
 }
 
 function checkChanges(){
+	console.log($('input[name="tabs"]'));
 	$('input[name="tabs"]').change(function(e){
+		console.log("checking Changes");
 		var classId = e.target.id;
 		var classNum = classId[classId.length-1];
 		classClick(classNum);
@@ -307,6 +310,8 @@ Util.events(document, {
 			for(var i=0; i<4; i++){
 				add_new_class(default_classes[i], true);
 			}
+
+			window.document.getElementById("class"+1).checked = true;
 
 			classClick(1);
 
