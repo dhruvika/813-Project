@@ -21,6 +21,7 @@ function load_feedback() {
 			break
 		}
 	}
+}
 
 
 
@@ -240,56 +241,6 @@ Util.events(document, {
 		}
 
 		classClick(1);
-	},
-
-	// "dblclick": function(e) {
-	// 	var target = e.target;
-	// 	var labels = Util.all("label.text");
-	// 	console.log("Click on: ", target.nodeName);
-	// 	if((target.nodeName == "LABEL" || target.nodeName == "INPUT" || target.nodeName == "TEXT")){
-	// 		console.log("Clicked on editable things")
-	// 		for(var i = 0; i < labels.length; i++){
-	// 			var label = labels[i];
-	// 			console.log("kiddos:", label.children, "of: ", label);
-	// 			var child_label = label.children[0];
-	// 			label.contentEditable = true;
-	// 		}
-	// 	}
-
-	// },
-
-	"click": function(e) {
-		console.log("Clicked on: ", e.target.nodeName)
-	// 	var target = e.target;
-	// 	var labels = Util.all("label.text");
-	// 	if(!(target.nodeName == "LABEL" || target.nodeName == "INPUT" || target.nodeName == "TEXT")){
-	// 		console.log("Clicked on uneditable thing: ", target.nodeName)
-	// 		for(var i = 0; i < labels.length; i++){
-	// 			var label = labels[i];
-	// 			label.contentEditable = false;
-	// 		}
-
-	// 	}
-	},
-
-	// "keypress": function(e) {
-	// 	var target = e.target;
-	// 	var labels = Util.all("label.text");
-	// 	if(e.keyCode == 13){
-	// 		for(var i = 0; i < labels.length; i++){
-	// 			var label = labels[i];
-	// 			label.contentEditable = false;
-	// 		}
-	// 	}
-	// },
-
-
-	// "mousedown": function(e){
-	// 	if (e.detail > 1) {
-	//     e.preventDefault();
-	//   }
-
-	// }
-
+	}
 
 });
