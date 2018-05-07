@@ -25,7 +25,12 @@ body {
   height:100px;
   padding-top: 0px;
   object-fit: contain;
+  width:100%;
 
+}
+
+.ui-helper{
+  width:100%;
 }
 
 .text {
