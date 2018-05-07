@@ -101,7 +101,6 @@ var studentID = -1
 function startlistener(){
   window.addEventListener("mousedown", function(e) {
 
-    console.log(document.getElementById("2fname"));
 
     update_grid();
 
@@ -174,6 +173,7 @@ $('.table-add').click(function () {
 });
 
 $('.table-remove').click(function () {
+  console.log($(this));
   $(this).parents('tr').detach();
 });
 
@@ -219,6 +219,7 @@ function update_grid () {
   //console.log("updating grid");
 
   for (var i =0; i <= studentID; i++){
+    // console.log(studentID, i)
     var fname = document.getElementById(i.toString() + "fname").innerHTML;
     var lname = document.getElementById(i.toString() + "lname").innerHTML;
 
@@ -299,8 +300,6 @@ function add_student_to_grid(name,id, newImage=true){
 
     var student_name = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase;
     var student_img_src = sessionStorage[name];
-    console.log(student_img_src)
-    console.log(sessionStorage);
     student_img = document.createElement('img');
     drag_box = document.createElement('div');
     drag_box.setAttribute("class", "box")
