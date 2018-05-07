@@ -28,9 +28,7 @@ function load_feedback() {
 		}
 	}
 
-	window.location = "feedback.html?checked="+currentlyActive;
 
-				}
 
  function load_settings() {
 
@@ -38,7 +36,7 @@ function load_feedback() {
 		 // console.log(i)
 		 if (document.getElementById("class" + classes[i]).checked){
 			 currentlyActive = classes[i];
-			 sessionStorage.setItem("currentClass", JSON.stringify(currentlyActive));
+			 sessionStorage.setItem("currentClass", currentlyActive.toString());
 			 break
 		 }
 	 }
