@@ -40,7 +40,12 @@ var showMore=false;
   function addStudentImages(){
 
     console.log(getClass());
-    var class_list = class_to_student["class"+getClass()];
+    class_list = []
+    if ("class"+ getClass() in class_to_student){
+       class_list = class_to_student["class"+getClass()];
+
+    }
+
     //console.log(class_to_student);
      class_list_names = JSON.parse(sessionStorage.getItem("class_list_names"))
      class_list_images = JSON.parse(sessionStorage.getItem("class_list_images"))
@@ -258,9 +263,9 @@ function drawRow(rowData) {
    curStudentID = studentID +1;
    studentID = curStudentID;
    students.push(studentID);
-   var fid = "id=" + "_" + studentID.toString() + "fname";
-   var lid = "id=" + "_" + studentID.toString() + "lname";
-   var tid = "id=" + "_" + studentID.toString() + "trash"
+   var fid = "id="  + studentID.toString() +  "_"+ "fname";
+   var lid = "id=" + studentID.toString()  + "_" + "lname";
+   var tid = "id=" + studentID.toString() + "_"  + "trash"
 
     var fname = "'" + rowData + "'";
     var curchange = "readURL(this," + fname +","+ studentID.toString() +  ");";
@@ -344,8 +349,8 @@ $('td[name=table-remover]').click(function () {
 
 
 function removeElement(elem){
-  var idRemove = $(elem).context.parentElement.id.splice("_")[0];
-  console.log(idRemove)
+  var idRemove = $(elem).context.parentElement.id.split("_")[0];
+  console.log($(elem).context.parentElement.id)
   for (var i = 0; i <students.length; i++){
     if (students[i]==idRemove){
       console.log(i);
@@ -354,6 +359,8 @@ function removeElement(elem){
   }
   console.log(students);
   $(elem).parents('tr').detach();
+
+  document.getElementById("gridBox_" + idRemove).parentElement.removeChild(document.getElementById("gridBox_" + idRemove));
 
 }
 

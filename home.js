@@ -64,9 +64,11 @@ function load_feedback() {
 
 	function classClick(classnum){
 		var content = "content" + classnum;
+		console.log("Detected Click");
 		if(previousContent != null && document.getElementById(previousContent) != null) {
 			document.getElementById(previousContent).style["display"] = "none";
 		}
+		sessionStorage.setItem("currentClass", classnum.toString());
 		document.getElementById(content).style["display"] = "flex";
 		previousContent = content;
 	}
@@ -229,10 +231,9 @@ function addDeleteClick(classnum){
 }
 
 function checkChanges(){
-	console.log("check changes!");
-	console.log($('input[name="tabs"]'))
+	console.log($('input[name="tabs"]'));
 	$('input[name="tabs"]').change(function(e){
-		console.log("Change noticed: ",e)
+		console.log("checking Changes");
 		var classId = e.target.id;
 		var classNum = classId[classId.length-1];
 		classClick(classNum);
@@ -314,6 +315,11 @@ Util.events(document, {
 				add_new_class(default_classes[i], true);
 			}
 
+
+			window.document.getElementById("class"+1).checked = true;
+
+			classClick(1);
+			
 			var page_sections_html = document.getElementById("page_sections").innerHTML;
 			sessionStorage.setItem("sections_code", page_sections_html);
 			checkChanges();
