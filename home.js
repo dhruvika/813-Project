@@ -18,6 +18,8 @@ function load_feedback() {
 	for (i in classes) {
 		if (document.getElementById("class" + classes[i]).checked){
 			currentlyActive = classes[i];
+			sessionStorage.setItem("currentClass", currentlyActive.toString());
+
 			break
 		}
 	}
@@ -48,6 +50,7 @@ function load_feedback() {
 		for (i in classes) {
 			if (document.getElementById("class" + classes[i]).checked){
 				currentlyActive = classes[i];
+				sessionStorage.setItem("currentClass", currentlyActive.toString());
 				break
 			}
 		}
@@ -217,9 +220,9 @@ function addDeleteClick(classnum){
 				var focus_class = null;
 				if (index > 0) focus_class = classes[index - 1];
 				else focus_class = classes[index + 1]
-				delete_class(classNum);	
+				delete_class(classNum);
 				classClick(focus_class);
-				
+
 			}
 	});
 }
@@ -274,7 +277,7 @@ Util.events(document, {
 			console.log("Have tabs stored!")
 			// Get most recent tabs
 			var page_tabs_element = document.getElementById("page_tabs");
-			page_tabs_element.innerHTML = page_tabs_html;		
+			page_tabs_element.innerHTML = page_tabs_html;
 
 			// Get most recent sections
 			var page_sections_html = sessionStorage.getItem('sections_code');
