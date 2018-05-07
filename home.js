@@ -98,6 +98,7 @@ function load_feedback() {
 		child_label_tag = document.createElement('label');
 		child_label_tag.id = "text"+class_num;
 		child_label_tag.innerHTML = content;
+		// child_label_tag.htmlFor = "class"+class_num;
 		new_class_label.appendChild(child_label_tag);
 
 
@@ -228,7 +229,10 @@ function addDeleteClick(classnum){
 }
 
 function checkChanges(){
+	console.log("check changes!");
+	console.log($('input[name="tabs"]'))
 	$('input[name="tabs"]').change(function(e){
+		console.log("Change noticed: ",e)
 		var classId = e.target.id;
 		var classNum = classId[classId.length-1];
 		classClick(classNum);
@@ -238,6 +242,8 @@ function checkChanges(){
 		console.log("clicked label");
 		var classId = e.target.id;
 		var classNum = classId[classId.length-1];
+		var radio_button = document.getElementById('class'+classNum)
+		radio_button.checked = true;
 		classClick(classNum);
 	});
 }
@@ -299,6 +305,7 @@ Util.events(document, {
 				var class_num = parseInt(classes[i]);
 				addDeleteClick(class_num);
 			}
+
 		}
 		else{
 			console.log("Dont have tabs stored!")
@@ -307,11 +314,20 @@ Util.events(document, {
 				add_new_class(default_classes[i], true);
 			}
 
-			classClick(1);
-
 			var page_sections_html = document.getElementById("page_sections").innerHTML;
 			sessionStorage.setItem("sections_code", page_sections_html);
+			checkChanges();
+			for(var i in classes){
+				var class_num = parseInt(classes[i]);
+				addDeleteClick(class_num);
+			}
+
 		}
+
+		currentlyActive = sessionStorage.getItem('currentClass');
+		console.log("currentlyActive: ", currentlyActive);
+		if(currentlyActive != null) classClick(currentlyActive);
+		else classClick(1);
 
 	},
 
