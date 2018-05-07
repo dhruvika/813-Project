@@ -8,6 +8,15 @@ body {
 
   background:transparent;
 
+
+}
+
+/*.parentDiv{
+  overflow-x: scroll;
+}*/
+
+.containers{
+  overflow-x: scroll
 }
 
 #contain {
@@ -15,7 +24,52 @@ body {
   background-position: 18px 11px;
   height: 500px;
   display: flex;
+
 }
+
+
+@media only screen and (min-width: 900px){
+  .table{
+    width: 100%;
+  }
+}
+
+@media only screen and (min-width: 200px) and (max-width: 900px){
+
+  .upload{
+    width: 200px;
+  }
+  .container{
+    zoom: 0.8;
+  }
+
+  
+}
+
+  @media only screen and (min-width: 200px) and (max-width: 600px){
+
+    .container{
+    zoom: 0.6;
+  }
+
+  }
+
+    @media only screen and (min-width: 0px) and (max-width: 200px){
+
+    #contain{
+      width: 75vw;
+    }
+
+  }
+
+
+
+@media (min-width: 200px){
+.col-md-8 {
+    width: 100%;
+}
+}
+
 
 
 
@@ -147,7 +201,6 @@ th {
 }
 
 td {
-
     text-align: center;
     vertical-align: middle;
 }
@@ -155,6 +208,7 @@ td {
 
 .table-editable {
   position: relative;
+  display: flex;
   }
 .table-editable.glyphicon {
     font-size: 20px;
