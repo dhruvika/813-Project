@@ -1,6 +1,3 @@
-//TODO:
-// Edit class name
-
 var currentlyActive;
 var previousContent = "content1";
 classes = []
@@ -24,6 +21,8 @@ function load_feedback() {
 			break
 		}
 	}
+
+	window.location = "feedback.html?checked="+currentlyActive;
 }
 
 
@@ -60,13 +59,8 @@ function load_feedback() {
 
 	}
 
-	// window.onbeforeunload = function() {
-	// 	localStorage.removeItem('tabs_code'); return '';
-	// };
-
 	function classClick(classnum){
 		var content = "content" + classnum;
-		// console.log(document.getElementById(content));
 		if(previousContent != null && document.getElementById(previousContent) != null) {
 			document.getElementById(previousContent).style["display"] = "none";
 		}
@@ -75,7 +69,6 @@ function load_feedback() {
 	}
 
 	function add_new_class(classname, def){
-		// console.log("add new class: ", classname)
 		// Update class number and class list
 		total_classes += 1;
 		var class_num = total_classes;
@@ -118,7 +111,6 @@ function load_feedback() {
 		tabs_element.appendChild(new_class_label);
 		var page_tabs_html = document.getElementById("page_tabs").innerHTML;
 		window.localStorage.setItem("tabs_code", page_tabs_html);
-		// console.log("Tabs Code: ", page_tabs_html);
 
 		add_new_section(class_num);
 
@@ -183,8 +175,6 @@ function load_feedback() {
 
 
 	function delete_class(classnum){
-		// console.log("Removing class: ", classnum)
-		// console.log("Total # classes after delete: ", total_classes);
 		// Remove class number from classes
 		for(i in classes){
 			var cur_class = classes[i];
@@ -198,7 +188,6 @@ function load_feedback() {
 		console.log("Total classes: ", total_classes)
 		// Delete button and section
 		var class_radio = document.getElementById("class"+classnum);
-		// console.log(document.getElementById("class"+classnum))
 		class_radio.remove();
 		var class_label = document.getElementById("label"+classnum);
 		class_label.remove();
@@ -278,7 +267,7 @@ Util.events(document, {
 
 	"DOMContentLoaded": function(e) {
 		// want to load sections and classes list
-		localStorage.clear();
+		// localStorage.clear();
 		var page_tabs_html = localStorage.getItem('tabs_code');
 
 		if(page_tabs_html != null) {
@@ -340,7 +329,7 @@ Util.events(document, {
 	// },
 
 	// "click": function(e) {
-		// console.log("Clicked on: ", e.target.nodeName)
+	// 	console.log("Clicked on: ", e.target.nodeName)
 	// 	var target = e.target;
 	// 	var labels = Util.all("label.text");
 	// 	if(!(target.nodeName == "LABEL" || target.nodeName == "INPUT" || target.nodeName == "TEXT")){
