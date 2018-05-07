@@ -216,4 +216,5 @@ input[type=radio]: checked {
 
 #content1{
   display:flex;
+  overflow: hidden;
 }

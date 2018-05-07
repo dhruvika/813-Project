@@ -162,7 +162,7 @@ function drawRow(rowData) {
    row.append($('<td onkeyup="changer()"contenteditable="true"' + fid + ' class="info">' + rowData.split("_")[0] +'</td>'));
    row.append($('<td onkeyup="changer()" contenteditable="true"' + lid + ' class="info" >' + rowData.split("_")[1]+' </td>'));
    row.append($('<td contenteditable="true" onkeyup="changer()" class="info">' + rowData.split("_")[0] +"@mit.edu"  +'</td>'));
-   row.append($('<td> <input type="file"' + 'onchange="' + curchange + '"/></td>'));
+   row.append($('<td> <input class="upload" type="file"' + 'onchange="' + curchange + '"/></td>'));
    row.append($('<td ' + tid + '><span class="table-remove fa fa-trash fa-2x"></span></td></tr></table>'));
 }
 
