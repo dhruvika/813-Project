@@ -6,6 +6,10 @@ current_class = "class1";
 var studentID = -1
 var students = []
 
+var class_list_names = {};
+var class_list_seats = {};
+var class_list_images = {};
+var class_list_grid_name = {};
 
   var student_list_names =
   {
@@ -34,7 +38,13 @@ var students = []
   //adds student images from class_data.js
 
   function addStudentImages(){
-    var class_list = class_to_student[current_class];
+    console.log(getClass());
+    var class_list = class_to_student["class"+getClass()];
+    console.log(class_to_student);
+    class_list_names[getClass()] = []
+    class_list_images[getClass()] = []
+    class_list_seats[getClass()] = []
+    class_list_grid_name[getClass()] = []
     var current_row = 0;
     var current_col = 0;
     for (var i = 0; i < class_list.length; i++){
@@ -84,14 +94,14 @@ var students = []
           console.log(typeof(this.id));
           console.log(this.style.left);
           var id = this.id;
-          student_list_seats[id.split("_")[1]] = [this.style.left, this.style.top];
-          sessionStorage.setItem("student_list_seats", JSON.stringify(student_list_seats))
+          class_list_seats[getClass()][id.split("_")[1]] = [this.style.left, this.style.top];
+          sessionStorage.setItem("class_list_seats", JSON.stringify(class_list_seats))
       });
   }
 
   function getClass() {
     console.log("CURRENT CLASS IS: "+ sessionStorage.getItem("currentClass"));
-    if (localStorage.getItem("username") === null) {
+    if (sessionStorage.getItem("currentClass") === null) {
       return "1";
     }
     return sessionStorage.getItem("currentClass");
@@ -254,7 +264,7 @@ function update_grid () {
 
     var name =  fname + "_" + lname;
 
-    if (j in student_list_images){
+    if (j in class_list_images[getClass()]){
 
       add_student_to_grid(name, j, false)
     }
@@ -263,8 +273,8 @@ function update_grid () {
 
 
   }
-  console.log(student_list_names);
-  sessionStorage.setItem("student_list_names", JSON.stringify(student_list_names));
+  console.log(class_list_names[getClass()]);
+  sessionStorage.setItem("class_list_names", JSON.stringify(class_list_names));
 
 }
 
@@ -276,33 +286,33 @@ function add_student_to_grid(name,id, newImage=true){
   var curStudentID = id         // Create a new image.
 
   //add if id is not present in student_list_names.keys
-
-    student_list_names[id] = name;
+  console.log(class_list_names);
+  class_list_names[getClass()][id] = name;
 
 
 
   //called on changes() or we update the info
 
 
-  if (id in student_list_images){
+  if (id in class_list_images[getClass()]){
     if (newImage){
       var student_img_src = sessionStorage[name];
       console.log(student_img_src);
-      student_img = student_list_images[id]
+      student_img = class_list_images[getClass()][id]
       student_img.src = student_img_src;
     }
     //console.log("updating grid");
 
-    name = student_list_grid_name[id]
-    var firstName = student_list_names[id].split("_")[0];
-    var lastName = student_list_names[id].split("_")[1];
+    name = class_list_grid_name[getClass()][id]
+    var firstName = class_list_names[getClass()][id].split("_")[0];
+    var lastName = class_list_names[getClass()][id].split("_")[1];
     name.innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase();
   }
 
   //if image has been uploaded
   else{
-    var firstName = student_list_names[id].split("_")[0];
-    var lastName = student_list_names[id].split("_")[1];
+    var firstName = class_list_names[getClass()][id].split("_")[0];
+    var lastName = class_list_names[getClass()][id].split("_")[1];
 
     var student_name = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase;
     var student_img_src = sessionStorage[name];
@@ -329,8 +339,8 @@ function add_student_to_grid(name,id, newImage=true){
     src.appendChild(drag_box);
 
     setDraggable();
-    student_list_images[id] = student_img;
-    student_list_grid_name[id] = name;
+    class_list_images[getClass()][id] = student_img;
+    class_list_grid_name[getClass()][id] = name;
   }
 
 }
@@ -341,10 +351,10 @@ function add_student_to_grid(name,id, newImage=true){
 
   // Stores the JavaScript object as a string
   //sessionStorage.setItem("student_list_emails", JSON.stringify(student_list_emails));
-  sessionStorage.setItem("student_list_images", JSON.stringify(student_list_images));
-  sessionStorage.setItem("student_list_names", JSON.stringify(student_list_names));
+  sessionStorage.setItem("class_list_images", JSON.stringify(class_list_images));
+  sessionStorage.setItem("class_list_names", JSON.stringify(class_list_names));
 
   // Parses the saved string into a JavaScript object again
-  JSON.parse(sessionStorage.getItem("student_list_emails"));
-  JSON.parse(sessionStorage.getItem("student_list_images"));
-  JSON.parse(sessionStorage.getItem("student_list_names"));
+  JSON.parse(sessionStorage.getItem("class_list_emails"));
+  JSON.parse(sessionStorage.getItem("class_list_images"));
+  JSON.parse(sessionStorage.getItem("class_list_names"));
