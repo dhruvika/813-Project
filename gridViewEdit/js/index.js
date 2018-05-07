@@ -246,6 +246,7 @@ function update_grid () {
 
   //console.log("updating grid");
 
+
   for (var i =0; i <= students.Length; i++){
     j = students[i]
     var fname = document.getElementById(j.toString() +"_" + "fname").innerHTML;
@@ -305,8 +306,6 @@ function add_student_to_grid(name,id, newImage=true){
 
     var student_name = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase;
     var student_img_src = sessionStorage[name];
-    console.log(student_img_src)
-    console.log(sessionStorage);
     student_img = document.createElement('img');
     drag_box = document.createElement('div');
     drag_box.setAttribute("class", "box")
