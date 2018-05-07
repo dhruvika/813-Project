@@ -41,7 +41,7 @@ body {
     zoom: 0.8;
   }
 
-  
+
 }
 
   @media only screen and (min-width: 200px) and (max-width: 600px){
@@ -207,9 +207,34 @@ td {
 .table-editable {
   position: relative;
   display: flex;
-  height: 350px;
-  overflow: scroll;
-  margin: 30px;
+  overflow: auto;
+  margin: 50px auto;
+  height:200px;
+
+
+  max-height: 500px;
+  background:
+		/* Shadow covers */
+		linear-gradient(white 30%, rgba(255,255,255,0)),
+		linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+
+		/* Shadows */
+		radial-gradient(50% 0, farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)),
+		radial-gradient(50% 100%,farthest-side, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+	background:
+		/* Shadow covers */
+		linear-gradient(white 30%, rgba(255,255,255,0)),
+		linear-gradient(rgba(255,255,255,0), white 70%) 0 100%,
+
+		/* Shadows */
+		radial-gradient(farthest-side at 50% 0, rgba(0,0,0,.2), rgba(0,0,0,0)),
+		radial-gradient(farthest-side at 50% 100%, rgba(0,0,0,.2), rgba(0,0,0,0)) 0 100%;
+	background-repeat: no-repeat;
+	background-size: 100% 00px, 100% 0px, 100% 0px, 100% 10px;
+
+	/* Opera doesn't support this in the shorthand */
+	background-attachment: local, local, scroll, scroll;
+
   }
 .table-editable.glyphicon {
     font-size: 20px;
@@ -247,8 +272,3 @@ td {
 .show:hover{
   background-color: grey;
 }
-
-
-  
-
-

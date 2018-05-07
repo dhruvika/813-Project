@@ -177,10 +177,6 @@ function setDraggable(){
 
     .on("mousedown", function(){
       $( this )
-        .removeClass("move-cursor")
-        .addClass("grab-cursor")
-        .addClass("ui-helper")
-        .addClass("opac");
 
       //$(" .text ").hide();
 
@@ -190,7 +186,7 @@ function setDraggable(){
       $( this )
         .removeClass("grab-cursor")
         .removeClass("opac")
-        .addClass("move-cursor");
+        
         console.log(this.id);
         console.log(this.style.left);
         student_list_seats[this.id.split("_")[0]] = [this.style.left, this.style.top];

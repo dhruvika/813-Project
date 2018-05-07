@@ -67,6 +67,7 @@ function load_feedback() {
 		if(previousContent != null && document.getElementById(previousContent) != null) {
 			document.getElementById(previousContent).style["display"] = "none";
 		}
+		sessionStorage.setItem("currentClass", classnum.toString());
 		document.getElementById(content).style["display"] = "flex";
 		previousContent = content;
 	}
