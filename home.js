@@ -1,7 +1,10 @@
+//TODO:
+// Edit class name
 
 var currentlyActive;
 var previousContent = "content1";
 classes = []
+total_classes = 0;
 var classesReady;
 var radios;
 //Format: button color, section color
@@ -54,13 +57,6 @@ function load_feedback() {
 			}
 
 	window.onload = function () {
-		localStorage.clear();
-		var page_tabs_html = localStorage.getItem('tabs_code');
-		if(page_tabs_html != null) {
-			var page_tabs_element = document.getElementById("page_tabs");
-			page_tabs_element.innerHTML = page_tabs_html;
-		}
-		window.document.getElementById("class"+checked).checked = true;
 
 	}
 
@@ -69,20 +65,25 @@ function load_feedback() {
 	// };
 
 	function classClick(classnum){
-		// console.log("Class Click: ", classnum);
 		var content = "content" + classnum;
 		// console.log(document.getElementById(content));
-		if(previousContent != null){
+		if(previousContent != null && document.getElementById(previousContent) != null) {
 			document.getElementById(previousContent).style["display"] = "none";
 		}
 		document.getElementById(content).style["display"] = "flex";
 		previousContent = content;
 	}
 
-	function add_new_class(classname){
+	function add_new_class(classname, def){
+		// console.log("add new class: ", classname)
 		// Update class number and class list
-		var class_num = classes.length + 1;
+		total_classes += 1;
+		var class_num = total_classes;
 		classes.push(""+(class_num));
+		window.localStorage.setItem("classes", JSON.stringify(classes));
+		window.localStorage.setItem("total_classes", JSON.stringify(total_classes));
+		console.log("Classes: ", classes)
+		console.log("Total classes: ", total_classes)
 
 		// Create label and radio for new class
 		var new_class_radio = document.createElement('input');
@@ -93,7 +94,7 @@ function load_feedback() {
 		var defaultText = 'Class Name Here';
 		var content = classname || defaultText;
 		var new_class_label = document.createElement('label');
-		new_class_label.style.backgroundColor = class_colors[class_num-1][0];
+		new_class_label.style.backgroundColor = class_colors[classes.length-1][0];
 		new_class_label.htmlFor = "class"+class_num;
 		new_class_label.contentEditable = false;
 		new_class_label.id = "label"+class_num;
@@ -103,10 +104,14 @@ function load_feedback() {
 		child_label_tag.innerHTML = content;
 		new_class_label.appendChild(child_label_tag);
 
+
+		close_icon_div = document.createElement('div');
+		close_icon_div.id = "remove"+class_num;
 		close_icon = document.createElement('i');
 		close_icon.classList.add("fa");
 		close_icon.classList.add("fa-times");
-		new_class_label.appendChild(close_icon);
+		close_icon_div.appendChild(close_icon);
+		new_class_label.appendChild(close_icon_div);
 
 		var tabs_element = document.getElementById("main_tabs");
 		tabs_element.appendChild(new_class_radio);
@@ -121,6 +126,10 @@ function load_feedback() {
 		checkEngagementButtons();
 		checkFeedbackButtons();
 		checkSettingsButtons();
+		addDeleteClick(class_num);
+
+		var page_sections_html = document.getElementById("page_sections").innerHTML;
+		window.localStorage.setItem("sections_code", page_sections_html);
 
 	}
 
@@ -128,10 +137,10 @@ function load_feedback() {
 
 		var section_tag = document.createElement('section');
 		section_tag.id = "content"+class_num;
-		section_tag.style.backgroundColor = class_colors[class_num-1][1];
+		section_tag.style.backgroundColor = class_colors[classes.length-1][1];
 
-		var main_element = document.getElementById('main');
-		main_element.appendChild(section_tag);
+		var page_element = document.getElementById('page_sections');
+		page_element.appendChild(section_tag);
 
 		var all_buttons_tag = document.createElement('div');
 		all_buttons_tag.id = "allButtons";
@@ -169,29 +178,62 @@ function load_feedback() {
 			div_element.appendChild(heading_element);
 		}
 
-		// CHECK HERE:
-		// Problems: Without onclick, can't set:
-		// Delete x, switching contents, or main buttons
-		 var class_button = document.getElementById("class"+class_num);
-		 class_button.style.onclick = "classClick(class_num)";
-
 		classClick(class_num);
 	}
 
 
-	function delete_class(){
-		var class_num = classes.length - 1;
-	}
-
-
-	function checkButtons(){
-		// console.log("checking");
-		if (classesReady){
-			// console.log("checked");
-			console.log(document.getElementById("class4").checked);
+	function delete_class(classnum){
+		// console.log("Removing class: ", classnum)
+		// console.log("Total # classes after delete: ", total_classes);
+		// Remove class number from classes
+		for(i in classes){
+			var cur_class = classes[i];
+			if(cur_class == classnum) {
+				var index = classes.indexOf(cur_class);
+				classes.splice(index, 1);
+			}
 		}
 
+		console.log("Classes: ", classes)
+		console.log("Total classes: ", total_classes)
+		// Delete button and section
+		var class_radio = document.getElementById("class"+classnum);
+		// console.log(document.getElementById("class"+classnum))
+		class_radio.remove();
+		var class_label = document.getElementById("label"+classnum);
+		class_label.remove();
+		var class_section = document.getElementById("content"+classnum);
+		class_section.remove();
+
+		// Save to local Storage
+		var page_tabs_html = document.getElementById("page_tabs").innerHTML;
+		window.localStorage.setItem("tabs_code", page_tabs_html);
+
+		var page_sections_html = document.getElementById("page_sections").innerHTML;
+		window.localStorage.setItem("sections_code", page_sections_html);
+
+		window.localStorage.setItem("classes", JSON.stringify(classes));
+		window.localStorage.setItem("total_classes", JSON.stringify(total_classes));
 	}
+
+
+function addDeleteClick(classnum){
+
+	$('div[id*=remove'+classnum+']').on("click", function(e){
+		var confirm = window.confirm("Are you sure you want to delete this class?");
+			if(confirm){
+				var classId = e.currentTarget.id;
+				var classNum = classId[classId.length-1];
+				var index = classes.indexOf(""+classnum);
+				var focus_class = null;
+				if (index > 0) focus_class = classes[index - 1];
+				else focus_class = classes[index + 1]
+				delete_class(classNum);	
+				classClick(focus_class);
+				
+			}
+	});
+}
 
 function checkChanges(){
 	$('input[name="tabs"]').change(function(e){
@@ -235,12 +277,100 @@ Util.events(document, {
 	// runs at the end of start-up when the DOM is ready
 
 	"DOMContentLoaded": function(e) {
-		var default_classes = ['World History', 'AP History', 'Euro. History', 'US History']
-		for(var i=0; i<4; i++){
-			add_new_class(default_classes[i]);
+		// want to load sections and classes list
+		localStorage.clear();
+		var page_tabs_html = localStorage.getItem('tabs_code');
+
+		if(page_tabs_html != null) {
+			console.log("Have tabs stored!")
+			// Get most recent tabs
+			var page_tabs_element = document.getElementById("page_tabs");
+			page_tabs_element.innerHTML = page_tabs_html;		
+
+			// Get most recent sections
+			var page_sections_html = localStorage.getItem('sections_code');
+			if(document.getElementById("page_sections") != null){
+				var page_sections_element = document.getElementById("page_sections");
+				page_sections_element.innerHTML = page_sections_html;
+			}
+
+			// Get most recent class list
+			classes = JSON.parse(localStorage.getItem("classes"));
+			total_classes = JSON.parse(localStorage.getItem("total_classes"));
+
+			window.document.getElementById("class"+checked).checked = true;
+			checkChanges();
+			checkEngagementButtons();
+			checkFeedbackButtons();
+			checkSettingsButtons();
+			for(var i in classes){
+				var class_num = parseInt(classes[i]);
+				addDeleteClick(class_num);
+			}
+		}
+		else{
+			console.log("Dont have tabs stored!")
+			var default_classes = ['World History', 'AP History', 'Euro. History', 'US History']
+			for(var i=0; i<4; i++){
+				add_new_class(default_classes[i], true);
+			}
+
+			classClick(1);
+
+			var page_sections_html = document.getElementById("page_sections").innerHTML;
+			localStorage.setItem("sections_code", page_sections_html);
 		}
 
-		classClick(1);
-	}
+	},
+
+	// "dblclick": function(e) {
+	// 	var target = e.target;
+	// 	var labels = Util.all("label.text");
+	// 	console.log("Click on: ", target.nodeName);
+	// 	if((target.nodeName == "LABEL" || target.nodeName == "INPUT" || target.nodeName == "TEXT")){
+	// 		console.log("Clicked on editable things")
+	// 		for(var i = 0; i < labels.length; i++){
+	// 			var label = labels[i];
+	// 			console.log("kiddos:", label.children, "of: ", label);
+	// 			var child_label = label.children[0];
+	// 			label.contentEditable = true;
+	// 		}
+	// 	}
+
+	// },
+
+	// "click": function(e) {
+		// console.log("Clicked on: ", e.target.nodeName)
+	// 	var target = e.target;
+	// 	var labels = Util.all("label.text");
+	// 	if(!(target.nodeName == "LABEL" || target.nodeName == "INPUT" || target.nodeName == "TEXT")){
+	// 		console.log("Clicked on uneditable thing: ", target.nodeName)
+	// 		for(var i = 0; i < labels.length; i++){
+	// 			var label = labels[i];
+	// 			label.contentEditable = false;
+	// 		}
+
+	// 	}
+	// },
+
+	// "keypress": function(e) {
+	// 	var target = e.target;
+	// 	var labels = Util.all("label.text");
+	// 	if(e.keyCode == 13){
+	// 		for(var i = 0; i < labels.length; i++){
+	// 			var label = labels[i];
+	// 			label.contentEditable = false;
+	// 		}
+	// 	}
+	// },
+
+
+	// "mousedown": function(e){
+	// 	if (e.detail > 1) {
+	//     e.preventDefault();
+	//   }
+
+	// }
+
 
 });
