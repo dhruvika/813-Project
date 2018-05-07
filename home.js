@@ -1,7 +1,13 @@
+//TODO:
+// Storage problems: wont go to next page, wont save sections
+// Sections local stroage
+// Tab ordering on delete
+// Edit class name
 
 var currentlyActive;
 var previousContent = "content1";
 classes = []
+total_classes = 0;
 var classesReady;
 var radios;
 //Format: button color, section color
@@ -54,13 +60,6 @@ function load_feedback() {
 			}
 
 	window.onload = function () {
-		localStorage.clear();
-		var page_tabs_html = localStorage.getItem('tabs_code');
-		if(page_tabs_html != null) {
-			var page_tabs_element = document.getElementById("page_tabs");
-			page_tabs_element.innerHTML = page_tabs_html;
-		}
-		window.document.getElementById("class"+checked).checked = true;
 
 	}
 
@@ -72,7 +71,7 @@ function load_feedback() {
 		// console.log("Class Click: ", classnum);
 		var content = "content" + classnum;
 		// console.log(document.getElementById(content));
-		if(previousContent != null){
+		if(previousContent != null && document.getElementById(previousContent) != null) {
 			document.getElementById(previousContent).style["display"] = "none";
 		}
 		document.getElementById(content).style["display"] = "flex";
@@ -81,8 +80,11 @@ function load_feedback() {
 
 	function add_new_class(classname){
 		// Update class number and class list
-		var class_num = classes.length + 1;
+		total_classes += 1;
+		var class_num = total_classes;
 		classes.push(""+(class_num));
+		window.localStorage.setItem("classes", JSON.stringify(classes));
+		window.localStorage.setItem("total_classes", JSON.stringify(total_classes));
 
 		// Create label and radio for new class
 		var new_class_radio = document.createElement('input');
@@ -103,10 +105,14 @@ function load_feedback() {
 		child_label_tag.innerHTML = content;
 		new_class_label.appendChild(child_label_tag);
 
+
+		close_icon_div = document.createElement('div');
+		close_icon_div.id = "remove"+class_num;
 		close_icon = document.createElement('i');
 		close_icon.classList.add("fa");
 		close_icon.classList.add("fa-times");
-		new_class_label.appendChild(close_icon);
+		close_icon_div.appendChild(close_icon);
+		new_class_label.appendChild(close_icon_div);
 
 		var tabs_element = document.getElementById("main_tabs");
 		tabs_element.appendChild(new_class_radio);
@@ -121,6 +127,10 @@ function load_feedback() {
 		checkEngagementButtons();
 		checkFeedbackButtons();
 		checkSettingsButtons();
+		addDeleteClick();
+
+		var page_sections_html = document.getElementById("page_sections").innerHTML;
+		window.localStorage.setItem("sections_code", page_sections_html);
 
 	}
 
@@ -130,8 +140,8 @@ function load_feedback() {
 		section_tag.id = "content"+class_num;
 		section_tag.style.backgroundColor = class_colors[class_num-1][1];
 
-		var main_element = document.getElementById('main');
-		main_element.appendChild(section_tag);
+		var page_element = document.getElementById('page_sections');
+		page_element.appendChild(section_tag);
 
 		var all_buttons_tag = document.createElement('div');
 		all_buttons_tag.id = "allButtons";
@@ -169,22 +179,52 @@ function load_feedback() {
 			div_element.appendChild(heading_element);
 		}
 
-		// CHECK HERE:
-		// Problems: Without onclick, can't set:
-		// Delete x, switching contents, or main buttons
-		 var class_button = document.getElementById("class"+class_num);
-		 class_button.style.onclick = "classClick(class_num)";
-
 		classClick(class_num);
 	}
 
 
-	function delete_class(){
-		var class_num = classes.length - 1;
+	function delete_class(classnum){
+		total_classes = total_classes - 1;
+		console.log("Total # classes after delete: ", total_classes);
+		var num_classes = total_classes;
+		// Remove class number from classes
+		for(i in classes){
+			var cur_class = classes[i];
+			if(cur_class == classnum) {
+				var index = classes.indexOf(cur_class);
+				classes.splice(index, 1);
+			}
+		}
+		// Delete button and section
+		var class_radio = document.getElementById("class"+classnum);
+		class_radio.remove();
+		var class_label = document.getElementById("label"+classnum);
+		class_label.remove();
+		var class_section = document.getElementById("content"+classnum);
+		class_section.remove();
+
+		// Save to local Storage
+		var page_tabs_html = document.getElementById("page_tabs").innerHTML;
+		window.localStorage.setItem("tabs_code", page_tabs_html);
+
+		var page_sections_html = document.getElementById("page_sections").innerHTML;
+		window.localStorage.setItem("sections_code", page_sections_html);
+
+		window.localStorage.setItem("classes", JSON.stringify(classes));
+		window.localStorage.setItem("total_classes", JSON.stringify(total_classes));
 	}
 
 
-	function checkButtons(){
+function addDeleteClick(){
+	$('div[id*="remove"]').on("click", function(e){
+		var classId = e.currentTarget.id;
+		var classNum = classId[classId.length-1];
+		delete_class(classNum);
+		classClick(classes[classes.length-1]);
+	});
+}
+
+function checkButtons(){
 		// console.log("checking");
 		if (classesReady){
 			// console.log("checked");
@@ -235,12 +275,47 @@ Util.events(document, {
 	// runs at the end of start-up when the DOM is ready
 
 	"DOMContentLoaded": function(e) {
-		var default_classes = ['World History', 'AP History', 'Euro. History', 'US History']
-		for(var i=0; i<4; i++){
-			add_new_class(default_classes[i]);
+		// localStorage.clear();
+		// want to load sections and classes list
+		var page_tabs_html = localStorage.getItem('tabs_code');
+
+		if(page_tabs_html != null) {
+			console.log("Have tabs stored!")
+			// Get most recent tabs
+			var page_tabs_element = document.getElementById("page_tabs");
+			page_tabs_element.innerHTML = page_tabs_html;		
+
+			var page_sections_html = localStorage.getItem('sections_code');
+			var page_sections_element = document.getElementById("page_sections");
+			page_sections_element.innerHTML = page_sections_html;
+
+			// Get most recent class list
+			classes = JSON.parse(localStorage.getItem("classes"));
+			total_classes = JSON.parse(localStorage.getItem("total_classes"));
+			// Get most recent sections
+			// var page_sections_element = document.getElementById("page_sections");
+			// page_sections_element.innerHTML = page_sections_html;
+
+			window.document.getElementById("class"+checked).checked = true;
+		}
+		else{
+			console.log("Dont have tabs stored!")
+			var default_classes = ['World History', 'AP History', 'Euro. History', 'US History']
+			for(var i=0; i<4; i++){
+				add_new_class(default_classes[i]);
+			}
+
+			classClick(1);
+
+			var page_sections_html = document.getElementById("page_sections").innerHTML;
+			localStorage.setItem("sections_code", page_sections_html);
+
+			// console.log("Getting stored: ", localStorage.getItem("sections_code"));
 		}
 
-		classClick(1);
+		// Make sure you load all the relevant buttons by now
+		addDeleteClick();
+
 	},
 
 	// "dblclick": function(e) {
