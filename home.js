@@ -17,7 +17,7 @@ function getURLParam(name) {
 	return new URL(location).searchParams.get(name);
 }
 
-var checked = getURLParam("checked") || "1"
+var checked = getURLParam("checked") || "1";
 
 function load_feedback() {
 
@@ -38,6 +38,7 @@ function load_feedback() {
 		 // console.log(i)
 		 if (document.getElementById("class" + classes[i]).checked){
 			 currentlyActive = classes[i];
+			 sessionStorage.setItem("currentClass", JSON.stringify(currentlyActive));
 			 break
 		 }
 	 }
@@ -250,23 +251,23 @@ function checkChanges(){
 
 function checkEngagementButtons(){
 
-		$('.Engagement').on("click", function(e){		
+		$('.Engagement').on("click", function(e){
 			load_engagement();
-		});	
+		});
 }
 
 function checkFeedbackButtons(){
 
-		$('.Feedback').on("click", function(e){		
+		$('.Feedback').on("click", function(e){
 			load_feedback();
-		});	
+		});
 }
 
 function checkSettingsButtons(){
 
-		$('.Settings').on("click", function(e){		
+		$('.Settings').on("click", function(e){
 			load_settings();
-		});	
+		});
 }
 
 

@@ -1,10 +1,31 @@
+
+
+
+$(document).ready(function() {
+draw_all_students();
+
+startlistener();
+addStudentImages();
+
+
+data = class_to_student['class1'];
+}
+
+
+
+function draw_all_students(){
+
+}
+
+
+
+//=========Ignor/ TODO: Delete
 grid_size = 10;
 
 current_class = "class1";
 
 
 var studentID = -1
-var students = []
 
 
   var student_list_names =
@@ -40,7 +61,7 @@ var students = []
     for (var i = 0; i < class_list.length; i++){
         var student_name = class_list[i];
         var student_img_src = "../" + student_to_img[student_name];
-        sessionStorage.setItem(student_name, student_img_src);
+        localStorage.setItem(student_name, student_img_src);
     }
   }
 
@@ -53,11 +74,9 @@ var students = []
 
   function setDraggable(){
     $(" .box ")
-      .draggable({
-         grid: [ grid_size, grid_size ]
-       })
-       .draggable("option", "containment", "parent")
-      //.resizable({ grid: grid_size * 2 })
+      .draggable({ grid: [ grid_size, grid_size ] })
+
+      .resizable({ grid: grid_size * 2 })
 
       .on("mouseover", function(){
         $( this ).addClass("move-cursor")
@@ -67,7 +86,6 @@ var students = []
         $( this )
           .removeClass("move-cursor")
           .addClass("grab-cursor")
-          .addClass("ui-helper")
           .addClass("opac");
 
         //$(" .text ").hide();
@@ -82,13 +100,8 @@ var students = []
           console.log(this.id);
           console.log(this.style.left);
           student_list_seats[this.id.substr(-1)] = [this.style.left, this.style.top];
-          sessionStorage.setItem("student_list_seats", JSON.stringify(student_list_seats))
+          localStorage.setItem("student_list_seats", JSON.stringify(student_list_seats))
       });
-  }
-
-  function getClass() {
-    console.log("CURRENT CLASS IS: "+ sessionStorage.getItem("currentClass"));
-    return sessionStorage.getItem("currentClass");
   }
 
 
@@ -97,13 +110,10 @@ var students = []
       addStudentImages();
       setDraggable();
 
-
   }, false);
 
 function startlistener(){
-  window.addEventListener("mousedown", function(e) {
-
-
+  document.addEventListener("mousedown", function(e) {
     update_grid();
 
   }, false)
@@ -118,25 +128,15 @@ var $TABLE = $('#table');
 startlistener();
 addStudentImages();
 
-var curClass = getClass()[1];
-if (curClass == null){
-  curClass = 1;
-}
-console.log(Number(curClass));
-data = class_to_student['class' + curClass];
 
+data = class_to_student['class1'];
 
-
-
-drawTable(data);
-
-
-
+         drawTable(data);
 function drawTable(data) {
 
 
     for (var i = 0; i < data.length; i++) {
-        drawRow(data[i]);
+        drawRow(data[i],i);
         add_student_to_grid(data[i], i);
     }
 }
@@ -145,52 +145,48 @@ function editing(x){
   console.log("")
 }
 
-
-function drawRow(rowData) {
+function drawRow(rowData,i) {
     var row = $("<tr />");
     $("#personDataTable").append(row); //this will append tr element to table... keep its rence for a while since we will add cels into it
 
+   console.log(curchange);
    curStudentID = studentID +1;
    studentID = curStudentID;
-   students.push(studentID);
    var fid = "id=" + studentID.toString() + "fname";
    var lid = "id=" + studentID.toString() + "lname";
-   var tid = "id=" + studentID.toString() + "trash"
 
     var fname = "'" + rowData + "'";
     var curchange = "readURL(this," + fname +","+ studentID.toString() +  ");";
-   row.append($('<td onkeyup="changer()"contenteditable="true"' + fid + ' class="info">' + rowData.split("_")[0] +'</td>'));
-   row.append($('<td onkeyup="changer()" contenteditable="true"' + lid + ' class="info" >' + rowData.split("_")[1]+' </td>'));
-   row.append($('<td contenteditable="true" onkeyup="changer()" class="info">' + rowData.split("_")[0] +"@mit.edu"  +'</td>'));
+   row.append($('<td contenteditable="true"' + fid + ' class="info">' + rowData.split("_")[0] +'</td>'));
+   row.append($('<td contenteditable="true"' + lid + ' class="info" >' + rowData.split("_")[1]+' </td>'));
+   row.append($('<td contenteditable="true" class="info">' + rowData.split("_")[0] +"@mit.edu"  +'</td>'));
    row.append($('<td> <input type="file"' + 'onchange="' + curchange + '"/></td>'));
-   row.append($('<td ' + tid + '><span class="table-remove fa fa-trash fa-2x"></span></td></tr></table>'));
+   row.append($('<td><span class="table-remove fa fa-trash fa-2x"></span></td></tr></table>'));
 }
 
 
 
 $('.table-add').click(function () {
-  drawRow("firstname_lastname")
-  // var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+  var $clone = $TABLE.find('tr.hide').clone(true).removeClass('hide table-line');
+  $clone.find("input.datepicker").each(function(){
+    $(this).attr("id", "").removeData().off();
+    $(this).find('.add-on').removeData().off();
+    $(this).find('input').removeData().off();
+    $(this).timepicker({defaultTime:'16:20', minuteStep: 1, showMeridian: false});
+  });
 
-
-  // $TABLE.find('table').append($clone).find("input.datepicker").addClass('datepicker');
+  $TABLE.find('table').append($clone).find("input.datepicker").addClass('datepicker');
 
 });
 
 $('.table-remove').click(function () {
-  console.log($(this));
   $(this).parents('tr').detach();
-
 });
 
 
 
 })
 
-function changer(){
-  console.log("Detected Change");
-  update_grid();
-}
 
  function readURL(input, name, id) {
      var reader = new FileReader(); //create reader
@@ -201,7 +197,7 @@ function changer(){
          try {
 
          console.log(reader.result);
-         sessionStorage[name] = reader.result; //saved to sessionStorage
+         localStorage[name] = reader.result; //saved to localStorage
          add_student_to_grid(name, id);
        }
        catch(e){
@@ -220,21 +216,19 @@ function changer(){
 
 
 function update_grid () {
-  sessionStorage.setItem("default", JSON.stringify(class_list));
+  localStorage.setItem("default", JSON.stringify(class_list));
 
-  //console.log("updating grid");
+  console.log("updating grid");
 
-
-  for (var i =0; i <= students.Length; i++){
-    j = students[i]
-    var fname = document.getElementById(j.toString() + "fname").innerHTML;
-    var lname = document.getElementById(j.toString() + "lname").innerHTML;
+  for (var i =0; i < studentID; i++){
+    var fname = document.getElementById(i.toString() + "fname").innerHTML;
+    var lname = document.getElementById(i.toString() + "lname").innerHTML;
 
     var name =  fname + "_" + lname;
 
-    if (j in student_list_images){
+    if (i in student_list_images){
 
-      add_student_to_grid(name, j, false)
+      add_student_to_grid(name, i, false)
     }
 
     // id = i;
@@ -265,7 +259,7 @@ function update_grid () {
 
 
   }
-  sessionStorage.setItem("student_list_names", JSON.stringify(student_list_names));
+  localStorage.setItem("student_list_names", JSON.stringify(student_list_names));
 
 }
 
@@ -287,12 +281,12 @@ function add_student_to_grid(name,id, newImage=true){
 
   if (id in student_list_images){
     if (newImage){
-      var student_img_src = sessionStorage[name];
+      var student_img_src = localStorage[name];
       console.log(student_img_src);
       student_img = student_list_images[id]
       student_img.src = student_img_src;
     }
-    //console.log("updating grid");
+    console.log("updating grid");
 
     name = student_list_grid_name[id]
     var firstName = student_list_names[id].split("_")[0];
@@ -306,7 +300,9 @@ function add_student_to_grid(name,id, newImage=true){
     var lastName = student_list_names[id].split("_")[1];
 
     var student_name = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase;
-    var student_img_src = sessionStorage[name];
+    var student_img_src = localStorage[name];
+    console.log(student_img_src)
+    console.log(localStorage);
     student_img = document.createElement('img');
     drag_box = document.createElement('div');
     drag_box.setAttribute("class", "box")
@@ -341,11 +337,11 @@ function add_student_to_grid(name,id, newImage=true){
 
 
   // Stores the JavaScript object as a string
-  //sessionStorage.setItem("student_list_emails", JSON.stringify(student_list_emails));
-  sessionStorage.setItem("student_list_images", JSON.stringify(student_list_images));
-  sessionStorage.setItem("student_list_names", JSON.stringify(student_list_names));
+  //localStorage.setItem("student_list_emails", JSON.stringify(student_list_emails));
+  localStorage.setItem("student_list_images", JSON.stringify(student_list_images));
+  localStorage.setItem("student_list_names", JSON.stringify(student_list_names));
 
   // Parses the saved string into a JavaScript object again
-  JSON.parse(sessionStorage.getItem("student_list_emails"));
-  JSON.parse(sessionStorage.getItem("student_list_images"));
-  JSON.parse(sessionStorage.getItem("student_list_names"));
+  JSON.parse(localStorage.getItem("student_list_emails"));
+  JSON.parse(localStorage.getItem("student_list_images"));
+  JSON.parse(localStorage.getItem("student_list_names"));
