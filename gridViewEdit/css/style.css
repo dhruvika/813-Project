@@ -41,6 +41,9 @@ body {
   .container{
     zoom: 0.8;
   }
+  #draginfo{
+    zoom: 0.8;
+  }
 
 
 }
@@ -50,6 +53,9 @@ body {
     .container{
     zoom: 0.6;
   }
+    #draginfo{
+    zoom: 0.8;
+  }
 
   }
 
@@ -58,6 +64,9 @@ body {
     #contain{
       width: 75vw;
     }
+    #draginfo{
+    zoom: 0.8;
+  }
 
   }
 
@@ -209,7 +218,7 @@ td {
   position: relative;
   display: flex;
   overflow: auto;
-  margin: 50px auto;
+  margin: 20px auto;
   height:200px;
 
 
