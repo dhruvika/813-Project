@@ -43,7 +43,7 @@
 					Message: <br>
 					<textarea name="message" rows="20" cols="60"> </textarea> <br><br>
 
-					<input type="submit" value="Submit" class="submit_button">
+					<input onclick="popup();" type="submit" value="Submit" class="submit_button">
 
 				</form>
 
@@ -59,6 +59,10 @@
 <script>
 function loadHome() {
 	top.location ="index.html";
+}
+
+function popup(){
+	alert("Your message has been submitted");
 }
 </script>
 

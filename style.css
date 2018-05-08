@@ -241,30 +241,12 @@ div[id*="remove"]{
   display: inline-block;
 }
 
-#content1{
+div[id*="content"]{
   display:flex;
   zoom: auto;
   overflow: hidden;
   overflow-x: scroll; 
   overflow-y: visible;
-  position:static;
-}
-
-#content2{
-  overflow: hidden;
-  overflow-y: visible; 
-  position:static;
-}
-
-#content3{
-  overflow: hidden;
-  overflow-y: visible; 
-  position:static;
-}
-
-#content4{
-  overflow: hidden;
-  overflow-y: visible; 
   position:static;
 }
 
