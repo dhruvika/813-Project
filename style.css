@@ -100,21 +100,6 @@ section {
 #allButtons {
 }
 
-/*section[id*='1'] {
-  background-color: #8C9BAB;
-
-}
-section[id*='2'] {
-  background-color: #E39496;
-}
-section[id*='3'] {
-  background-color: #EBA060;
-}
-section[id*='4'] {
-  background-color: #98B879;
-
-}*/
-
 #feedbackCell {
   width: 1000px;
   height: 600px;
@@ -244,21 +229,43 @@ div[id*="remove"]{
 #content1{
   display:flex;
   overflow: hidden;
+  overflow-y: visible;
+  position:static;
+}
+
+#content2{
+  overflow: hidden;
+  overflow-y: visible; 
+  position:static;
+}
+
+#content3{
+  overflow: hidden;
+  overflow-y: visible; 
+  position:static;
+}
+
+#content4{
+  overflow: hidden;
   overflow-y: visible; 
   position:static;
 }
 
 #settingsCell{
   overflow-y: hidden;
+  margin-top: 76px;
 
 }
 
 .editClass{
   vertical-align: top;
 
+  left:30px;
   position:absolute;
+
 }
 .editName{
-  position:absolute;
+  position:relative;
   vertical-align: top;
+  left: 30px;
 }

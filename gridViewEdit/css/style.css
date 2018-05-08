@@ -273,3 +273,8 @@ td {
 .show:hover{
   background-color: grey;
 }
+
+.icons{
+  padding-top: 25px;
+  padding-right: 25px;
+}

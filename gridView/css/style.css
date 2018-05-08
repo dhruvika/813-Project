@@ -17,6 +17,27 @@ body {
 }
 
 
+.pointer-events-none{
+  pointer-events: none;
+}
+
+.add-present-border{
+  border-style: solid;
+  border-color: green;
+  border-width: 3px;
+}
+
+.add-absent-border{
+  border-style: solid;
+  border-color: red;
+  border-width: 3px;
+}
+.add-late-border{
+  border-style: solid;
+  border-color: #DAA520;
+  border-width: 3px;
+}
+
 
 .box {
   margin: 0 auto;
@@ -26,6 +47,7 @@ body {
   padding-top: 0px;
   object-fit: contain;
   width:100%;
+  max-width: 100px;
 
 }
 
@@ -165,7 +187,7 @@ td {
 }
 .table-remove:hover {
     color: #f00;
-  }
+}
 
 
 
