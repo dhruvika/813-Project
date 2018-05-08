@@ -21,15 +21,24 @@ blue tab4 - 2D4571
   display: flex;
 }
 
+.home-page{
+  overflow-y:hidden;
+  overflow-x: hidden;
+}
+
 body {
   font: 16px/1 'Advent Pro', sans-serif;
   background:transparent;
 }
 h1 {
-  padding: 20px 10px 0px 10px;
+  padding: 10px 5px 0px 5px;
   font-weight: 700;
-  text-align: center;
-  font: 50px/1 'Do Hyeon', sans-serif;
+  text-align: left;
+  font: 37px/1 'Do Hyeon', sans-serif;
+  margin-bottom: 7px;
+  margin-left: 5%;
+  margin-top: 0px;
+  padding-top: 4px;
 }
 h3{
 
@@ -46,8 +55,8 @@ h2 {
 }
 
 .logo{
-  height: 10%;
-  width: 4.5%;
+  height: 6.5%;
+  width: 3%;
 }
 
 p{
@@ -83,10 +92,12 @@ section {
 
   border-top: 1px solid #ddd;
   width: auto;
-  height: 700px;
   display: None;
   justify-content: center;
   align-items: center;
+}
+
+#allButtons {
 }
 
 section[id*='1'] {
@@ -126,16 +137,21 @@ section[id*='4'] {
 }
 
 #allButtons {
+  display: inline-grid;
+  grid-template-rows: 100%;
   width: 900;
-  height: 600px;
+  height: 500px;
   display: inline-block;
   font-weight: 600;
   text-align: center;
+  align-items: center;
+  justify-items: center;
 
 }
 
 #Engagement, #Feedback, #Settings{
-    margin: 100px 50px 50px 10px;
+    grid-row: 1;
+    margin: 15% 50px 50px 10px;
     width: 200px;
     height: 200px;
     background-color: snow;
@@ -166,7 +182,7 @@ input {
 label[for*='class'] {
   display: inline-block;
   margin: 0 5 -1px;
-  padding: 15px 50px;
+  padding: 13px 35px;
   font-weight: 600;
   text-align: center;
   border-radius: 20px 20px 0px 0px;
