@@ -244,7 +244,7 @@ div[id*="remove"]{
 #content1{
   display:flex;
   overflow: hidden;
-  overflow-y: visible; 
+  overflow-y: visible;
   position:static;
 }
 
@@ -268,13 +268,16 @@ div[id*="remove"]{
 
 #settingsCell{
   overflow-y: hidden;
+  margin-top: 76px;
 
 }
 
 .editClass{
   vertical-align: top;
 
-  position:relative;
+  left:30px;
+  position:absolute;
+
 }
 .editName{
   position:relative;

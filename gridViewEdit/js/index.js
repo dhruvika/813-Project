@@ -140,7 +140,7 @@ var showMore=false;
         sessionStorage.setItem(student_name, student_img_src);
 
     }
-    console.log( "addStudentImages", sessionStorage);
+//..console.log( "addStudentImages", sessionStorage);
     update_grid();
 
   }
@@ -357,22 +357,23 @@ function update_grid () {
   sessionStorage.setItem("default", JSON.stringify(class_list));
 
 
-  
+
   for (var i =0; i < students.length; i++){
     j = students[i]
     // console.log(i);
     var fname = document.getElementById(j.toString() +"_" + "fname").innerHTML;
     var lname = document.getElementById(j.toString() +"_" +  "lname").innerHTML;
 
-    var name =  fname + "_" + lname;
+    var name =  fname + "_" + lname.replace(/\s/g,'');
 
 
     if (j in class_list_images[getClass()]){
-
+      console.log(name)
       add_student_to_grid(name, j, false)
     }
     else{
       studentID +=1;
+      //console.log(name)
       class_list_names[getClass()][studentID] = name;
       //class_list_images[getClass()][studentID] =
 
@@ -383,7 +384,7 @@ function update_grid () {
 
   }
   sessionStorage.setItem("class_list_names", JSON.stringify(class_list_names));
-  console.log("updategrid", class_list_images);
+  //console.log("updategrid", class_list_images);
   sessionStorage.setItem("class_list_images", JSON.stringify(class_list_images));
 }
 
@@ -395,15 +396,16 @@ function add_student_to_grid(name,id, newImage=true){
   var curStudentID = id         // Create a new image.
 
   //add if id is not present in student_list_names.keys
+  console.log(name);
   class_list_names[getClass()][id] = name;
 
 
 
 
   //if image was uploaded
-  console.log("classlistimage", class_list_images);
+  //console.log("classlistimage", class_list_images);
   if (id in class_list_images[getClass()]){
-    console.log("I am in new image");
+    //console.log("I am in new image");
     if (newImage){
 
       var student_img_src = sessionStorage[name];
@@ -414,7 +416,7 @@ function add_student_to_grid(name,id, newImage=true){
     //console.log("updating grid");
 
     var nameDiv = class_list_grid_name[getClass()][id]
-    console.log("nameDiv", nameDiv)
+    //console.log("nameDiv", nameDiv)
     var firstName = class_list_names[getClass()][id].split("_")[0];
     var lastName = class_list_names[getClass()][id].split("_")[1];
     nameDiv.innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase();
@@ -460,9 +462,6 @@ function add_student_to_grid(name,id, newImage=true){
     class_list_images[getClass()][id] = student_img;
     class_list_grid_name[getClass()][id] = name;
   }
-  console.log(class_list_names);
-  console.log(class_list_images);
-  console.log(class_list_grid_name)
 
 }
 
