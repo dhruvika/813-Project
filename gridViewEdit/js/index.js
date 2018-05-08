@@ -163,7 +163,8 @@ var showMore=false;
         $( this ).addClass("move-cursor")
       })
 
-      .on("mousedown", function(){
+      .on("mousedown", function(e){
+        console.log(e);
         $( this )
           .removeClass("move-cursor")
           .addClass("grab-cursor")
@@ -197,6 +198,7 @@ var showMore=false;
 
   document.addEventListener('DOMContentLoaded', function() {
       clickChange()
+      startlistener();
       // addStudentImages();
       setDraggable();
 
@@ -205,8 +207,7 @@ var showMore=false;
 
 function startlistener(){
   window.addEventListener("mousedown", function(e) {
-
-
+    console.log(e);
     update_grid();
 
   }, false)

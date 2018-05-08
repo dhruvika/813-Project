@@ -228,6 +228,7 @@ div[id*="remove"]{
 
 div[id*="content"]{
   display:flex;
+  zoom: auto;
   overflow: hidden;
   overflow-y: visible;
   position:static;
@@ -235,7 +236,7 @@ div[id*="content"]{
 
 #settingsCell{
   overflow-y: hidden;
-  margin-top: 76px;
+  margin-top: 20px;
 
 }
 
