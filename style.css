@@ -274,11 +274,13 @@ div[id*="remove"]{
 
 .editClass{
   vertical-align: top;
+
   left:30px;
   position:absolute;
+
 }
 .editName{
-  position:absolute;
+  position:relative;
   vertical-align: top;
-  top: 30%;
+  left: 30px;
 }
