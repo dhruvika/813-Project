@@ -226,28 +226,10 @@ div[id*="remove"]{
   display: inline-block;
 }
 
-#content1{
+div[id*="content"]{
   display:flex;
   overflow: hidden;
   overflow-y: visible;
-  position:static;
-}
-
-#content2{
-  overflow: hidden;
-  overflow-y: visible; 
-  position:static;
-}
-
-#content3{
-  overflow: hidden;
-  overflow-y: visible; 
-  position:static;
-}
-
-#content4{
-  overflow: hidden;
-  overflow-y: visible; 
   position:static;
 }
 
