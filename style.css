@@ -171,27 +171,14 @@ label[for*='class'] {
   font-weight: 600;
   text-align: center;
   border-radius: 20px 20px 0px 0px;
-  color: white;
+  color: #010101;
 }
 
-
-label[for*='4']{
-  background-color: #0A5DBA;
-
-}
-label[for*='3']{
-  background-color: #D92A2E;
-}
-label[for*='2']{
-  background-color: #C0783A;
-}
-label[for*='1']{
-  background-color: #5A9620;
-}
 
 label:hover {
   cursor: pointer;
-  filter: brightness(130%);
+  color: white;
+
 }
 
 .fa-times{
@@ -212,9 +199,7 @@ input{
 
 
 input:checked + label{
-  color: white;
-  z-index: 10;
-  border-top: 2px solid orange;
+  z-index: 10; 
 
 }
 

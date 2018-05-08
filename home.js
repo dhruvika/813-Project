@@ -6,13 +6,13 @@
 
 var currentlyActive;
 var previousContent = "content1";
-var previousClass = "class1";
+var previousLabel = "label1";
 classes = []
 total_classes = 0;
 var classesReady;
 var radios;
 //Format: button color, section color
-class_colors = [["#0A5DBA","#8C9BAB"], ["#D92A2E","#E39496"], ["#C0783A","#EBA060"], ["#5A9620","#98B879"], ["purple","#874a87"], ["#FF1493","#FFB6C1"]]
+class_colors = ["#6EA0C7" ,"#C76E6E", "#E6C578", "#98B879", "#B98FDE", "#FFB6C1"]
 
 function getURLParam(name) {
 	return new URL(location).searchParams.get(name);
@@ -71,15 +71,28 @@ function load_feedback() {
 	}
 
 	function classClick(classnum){
+		console.log("Class Num: ", classnum)
 		var content = "content" + classnum;
 		if(previousContent != null && document.getElementById(previousContent) != null) {
 			document.getElementById(previousContent).style["display"] = "none";
+			for(var i=1; i<=classes.length; i++){
+				if(i != classnum) {
+					console.log("Lightening label: ", i)
+					document.getElementById('label'+i).style.filter = "opacity(45%)";
+					document.getElementById('label'+i).style.color = "black";
+				}
+			}
 		}
 		sessionStorage.setItem("currentClass", classnum.toString());
 		console.log("Content: ", document.getElementById(content))
-		document.getElementById(content).style["display"] = "flex";
-		document.getElementById(content).style.backgroundColor = class_colors[parseInt(classnum)-1][1];
-		var selected_class = document.getElementById("class"+classnum)
+		var selected_content = document.getElementById(content);
+		selected_content.style["display"] = "flex";
+		selected_content.style.backgroundColor = class_colors[parseInt(classnum)-1];
+		selected_content.style.filter = "opacity(100%)"
+		var selected_label = document.getElementById('label'+classnum);
+		selected_label.style.filter = "opacity(100%)";
+		selected_label.style.color = "white";
+		var selected_class = document.getElementById("class"+classnum);
 		selected_class.checked = true;
 
 		previousContent = content;
@@ -102,7 +115,7 @@ function load_feedback() {
 		var defaultText = 'Class Name Here';
 		var content = classname || defaultText;
 		var new_class_label = document.createElement('label');
-		new_class_label.style.backgroundColor = class_colors[parseInt(class_num)-1][1];
+		new_class_label.style.backgroundColor = class_colors[parseInt(class_num)-1];
 
 		new_class_label.htmlFor = "class"+class_num;
 		new_class_label.contentEditable = false;
@@ -137,7 +150,7 @@ function load_feedback() {
 
 		var section_tag = document.createElement('section');
 		section_tag.id = "content"+class_num;
-		section_tag.style.backgroundColor = class_colors[parseInt(class_num)-1][1];
+		section_tag.style.backgroundColor = class_colors[parseInt(class_num)-1];
 
 		var page_element = document.getElementById('page_sections');
 		page_element.appendChild(section_tag);
