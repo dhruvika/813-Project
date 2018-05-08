@@ -39,7 +39,7 @@ var showMore=false;
 
   function addStudentImages(){
 
-    console.log(getClass());
+
     class_list = []
     if ("class"+ getClass() in class_to_student){
        class_list = class_to_student["class"+getClass()];
@@ -90,12 +90,11 @@ var showMore=false;
       }
     }
     else {
-      console.log(class_list_grid_name);
       class_list_grid_name = {}
       class_list_grid_name[getClass()] = {}
 
     }
-    console.log(class_list_names);
+
 
 
 
@@ -137,19 +136,18 @@ var showMore=false;
     for (var i = 0; i < class_list.length; i++){
 
         var student_name = class_list[i];
-        console.log(student_to_img[student_name])
         var student_img_src = "../" + student_to_img[student_name];
         sessionStorage.setItem(student_name, student_img_src);
 
     }
+    console.log( "addStudentImages", sessionStorage);
     update_grid();
-    console.log(class_list_names);
+
   }
 
 
   function clickChange(){
     $(".hide").on('change', function(e) {
-  console.log("Changed")
 });
   }
 
@@ -181,18 +179,15 @@ var showMore=false;
           .removeClass("grab-cursor")
           .removeClass("opac")
           .addClass("move-cursor");
-          console.log(typeof(this.id));
-          console.log(this.style.left);
+
+
           var id = this.id;
-          console.log(class_list_seats)
           class_list_seats[getClass()][id.split("_")[1]] = [this.style.left, this.style.top];
-          console.log(class_list_seats);
           sessionStorage.setItem("class_list_seats", JSON.stringify(class_list_seats))
       });
   }
 
   function getClass() {
-    console.log("CURRENT CLASS IS: "+ sessionStorage.getItem("currentClass"));
     if (sessionStorage.getItem("currentClass") === null) {
       return "1";
     }
@@ -202,7 +197,7 @@ var showMore=false;
 
   document.addEventListener('DOMContentLoaded', function() {
       clickChange()
-      //addStudentImages();
+      // addStudentImages();
       setDraggable();
 
 
@@ -225,13 +220,11 @@ $(document).ready(function() {
 var $TABLE = $('#table');
 startlistener();
 addStudentImages();
-console.log(class_list_names);
 
 var curClass = getClass();
-console.log(getClass());
-console.log(curClass);
+
 data = class_to_student['class' + curClass];
-console.log(class_list_names);
+
 
 
 
@@ -251,7 +244,7 @@ function drawTable(data) {
 }
 
 function editing(x){
-  console.log("")
+
 }
 
 
@@ -269,9 +262,9 @@ function drawRow(rowData) {
 
     var fname = "'" + rowData + "'";
     var curchange = "readURL(this," + fname +","+ studentID.toString() +  ");";
-   row.append($('<td onkeyup="changer()"contenteditable="true"' + fid + ' class="info">' + rowData.split("_")[0] +'</td>'));
-   row.append($('<td onkeyup="changer()" contenteditable="true"' + lid + ' class="info" >' + rowData.split("_")[1]+' </td>'));
-   row.append($('<td contenteditable="true" onkeyup="changer()" class="info">' + rowData.split("_")[0] +"@mit.edu"  +'</td>'));
+   row.append($('<td onkeyup="update_grid()" contenteditable="true"' + fid + ' class="info">' + rowData.split("_")[0] +'</td>'));
+   row.append($('<td onkeyup="update_grid()" contenteditable="true"' + lid + ' class="info" >' + rowData.split("_")[1]+' </td>'));
+   row.append($('<td contenteditable="true" onkeyup="update_grid()" class="info">' + rowData.split("_")[0] +"@mit.edu"  +'</td>'));
 
    row.append($('<td> <input  class="upload" type="file"' + 'onchange="' + curchange + '"/></td>'));
    row.append($('<td ' + tid  +'name="table-remover"' +'><button  onclick="removeElement(this);" class="table-remove fa fa-trash fa-2x"></button></td></tr></table>'));
@@ -307,11 +300,9 @@ $('td[name=table-remover]').click(function () {
   var idRemove = $(this).context.parentElement.id.split("_")[0];
   for (var i = 0; i <students.length; i++){
     if (students[i]==idRemove){
-      console.log(i);
       students.splice(i, 1);
     }
   }
-  console.log(students);
   $(this).parents('tr').detach();
 
 });
@@ -322,19 +313,18 @@ $('td[name=table-remover]').click(function () {
 
  function readURL(input, name, id) {
      var reader = new FileReader(); //create reader
-     console.log(input)
+
        reader.onload = function() { //attach onload
          //do something with the result
 
          try {
 
-         console.log(reader.result);
+
          sessionStorage[name] = reader.result; //saved to sessionStorage
          add_student_to_grid(name, id);
          update_grid();
        }
        catch(e){
-         console.log(e);
          alert(e);
        }
 
@@ -350,14 +340,11 @@ $('td[name=table-remover]').click(function () {
 
 function removeElement(elem){
   var idRemove = $(elem).context.parentElement.id.split("_")[0];
-  console.log($(elem).context.parentElement.id)
   for (var i = 0; i <students.length; i++){
     if (students[i]==idRemove){
-      console.log(i);
       students.splice(i, 1);
     }
   }
-  console.log(students);
   $(elem).parents('tr').detach();
 
   document.getElementById("gridBox_" + idRemove).parentElement.removeChild(document.getElementById("gridBox_" + idRemove));
@@ -365,18 +352,18 @@ function removeElement(elem){
 }
 
 function update_grid () {
-  console.log(class_list_names);
   sessionStorage.setItem("default", JSON.stringify(class_list));
 
-  console.log("updating grid");
 
-
-  for (var i =0; i <= students.Length; i++){
+  
+  for (var i =0; i < students.length; i++){
     j = students[i]
+    // console.log(i);
     var fname = document.getElementById(j.toString() +"_" + "fname").innerHTML;
     var lname = document.getElementById(j.toString() +"_" +  "lname").innerHTML;
 
     var name =  fname + "_" + lname;
+
 
     if (j in class_list_images[getClass()]){
 
@@ -393,9 +380,9 @@ function update_grid () {
 
 
   }
-  console.log(class_list_names);
   sessionStorage.setItem("class_list_names", JSON.stringify(class_list_names));
-  console.log(sessionStorage.getItem("class_list_names"));
+  console.log("updategrid", class_list_images);
+  sessionStorage.setItem("class_list_images", JSON.stringify(class_list_images));
 }
 
 
@@ -406,27 +393,29 @@ function add_student_to_grid(name,id, newImage=true){
   var curStudentID = id         // Create a new image.
 
   //add if id is not present in student_list_names.keys
-  console.log(class_list_names);
   class_list_names[getClass()][id] = name;
-  console.log(class_list_names[getClass()]);
 
 
 
 
   //if image was uploaded
+  console.log("classlistimage", class_list_images);
   if (id in class_list_images[getClass()]){
+    console.log("I am in new image");
     if (newImage){
+
       var student_img_src = sessionStorage[name];
-      console.log(student_img_src);
+
       student_img = class_list_images[getClass()][id]
       student_img.src = student_img_src;
     }
     //console.log("updating grid");
 
-    name = class_list_grid_name[getClass()][id]
+    var nameDiv = class_list_grid_name[getClass()][id]
+    console.log("nameDiv", nameDiv)
     var firstName = class_list_names[getClass()][id].split("_")[0];
     var lastName = class_list_names[getClass()][id].split("_")[1];
-    name.innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase();
+    nameDiv.innerHTML = firstName.charAt(0).toUpperCase() + firstName.slice(1) + " " + lastName.charAt(0).toUpperCase();
   }
 
   //if image has been uploaded
@@ -453,10 +442,8 @@ function add_student_to_grid(name,id, newImage=true){
     table.setAttribute("class", "studentTable");
     drag_box.setAttribute("id", "gridBox" +"_" + id.toString());
     student_list_seats = class_list_seats[getClass()];
-    console.log(class_list_seats[getClass()]);
     if (id in student_list_seats){
       var positions = student_list_seats[id];
-      console.log(positions,id);
       drag_box.style.left = positions[0];
       drag_box.style.top = positions[1];
 
@@ -471,8 +458,12 @@ function add_student_to_grid(name,id, newImage=true){
     class_list_images[getClass()][id] = student_img;
     class_list_grid_name[getClass()][id] = name;
   }
+  console.log(class_list_names);
+  console.log(class_list_images);
+  console.log(class_list_grid_name)
 
 }
+
 
     //----------
 
