@@ -78,7 +78,7 @@ function switchToAttendance(){
 
 function switchToParticipation(){
 	var currDiv = document.getElementById('gridview');
-	currDiv.data = "gridview/gridview.html";
+	currDiv.data = "gridviewparticipation/gridview.html";
 	//currDiv.data = "gridviewparticipation.html" //TODO Change
 
 }

@@ -190,56 +190,41 @@ function getClass() {
 }
 
 function startlistener(){
-  window.addEventListener("mousedown", function(e) {
+  var span = document.getElementById("x");
+  var modal = document.getElementById("myModal");
+  span.onclick = function() { 
+      modal.style.display = "none";
+  }
+  "mousedown": function(e){
+      e.preventDefault();
+      console.log("mousedown", e);
+      globalimage = e.target;
+      if (globalimage.id.includes("img")){
+        image = true;
+        console.log("found image");
 
-    e.preventDefault();
-    console.log("mousedown", e.toElement.parentElement.parentElement);
-    
-    original_sq = e.toElement.parentElement.parentElement;
-    globalimage = original_sq;
-    console.log("globalimage", globalimage);
-    if (globalimage.id.includes("gridBox")){
-      image = true;
-      console.log("found image");
-    }
-    
-  }, false);
+      }
+      original_sq = globalimage.parentElement;
+  },
 
-  window.addEventListener("mouseup", function(e){
+
+  "mouseup": function(e){
+    console.log(is_participation_mode);
     e.preventDefault();
-    console.log("mouseup", e.toElement.parentElement.parentElement);
+    console.log("mouseup", e.toElement);
     if (image){
-      var divsq = e.toElement.parentElement.parentElement;
-      console.log(divsq);
-      if (divsq == original_sq){
-        if (divsq.counter > 0 ){
-          //do nothing
-        }else{
-          divsq.counter = 0;
-        }
-        var counter = divsq.counter;
-        if ((counter == 0) && (!is_participation_mode)){
-          console.log("adding present border");
-          divsq.classList.add("add-present-border");
-
-        } else if ((counter == 1) && (!is_participation_mode)){
-          divsq.classList.remove("add-present-border");
-          divsq.classList.add("add-late-border");
-        } else if ((counter == 2) && (!is_participation_mode)){
-          divsq.classList.remove("add-late-border");
-          divsq.classList.add("add-absent-border");
-        } else if ((counter == 3) && (!is_participation_mode)){
-          counter = -1;
-          divsq.classList.remove("add-absent-border");
-
-        }
-        counter += 1;
-        globalimage.counter = counter;
+      var divsq = e.toElement;
+      if (divsq == globalimage){
+        console.log("Click Detected Mouseup");
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
+        var modalImg = document.getElementById("imgTest");
+        modalImg.src = "popup2.png";
       }
     }
     image = false;
+  }
 
-  }, false);
 }
 
 function setDraggable(){
