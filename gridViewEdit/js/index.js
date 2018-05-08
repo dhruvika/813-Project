@@ -277,6 +277,8 @@ $('.table-add').click(function () {
   drawRow("firstname_lastname");
   $(".table-editable").css("height", "auto");
   $(".table-editable tr:last td:first").focus();
+  $('.show').html("Show Less");
+    showMore=true;
 
 
 });
