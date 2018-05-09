@@ -73,7 +73,12 @@ function load_feedback() {
 	function classClick(classnum){
 		console.log("Class Num: ", classnum)
 		var content = "content" + classnum;
-		if(previousContent != null && document.getElementById(previousContent) != null) {
+		var previousContent = JSON.parse(sessionStorage.getItem('previousContent'));
+		if(previousContent == null){
+			previousContent = "content1";
+		}
+		if(document.getElementById(previousContent) != null) {
+			console.log("Prevous Content: ", previousContent)
 			document.getElementById(previousContent).style["display"] = "none";
 			for(var i=1; i<=classes.length; i++){
 				if(i != classnum && document.getElementById('label'+i) != null) {
@@ -96,6 +101,7 @@ function load_feedback() {
 		selected_class.checked = true;
 
 		previousContent = content;
+		sessionStorage.setItem('previousContent', JSON.stringify(previousContent));
 	}
 
 	function add_new_class(classname){
@@ -410,6 +416,16 @@ Util.events(document, {
 			window.document.getElementById('class'+current_class).checked = true;
 
 			classClick(current_class);
+
+			console.log("CURRENT CLASS HERE: ", current_class)
+			for(var i=0; i<classes.length; i++){
+				var class_name = classes[i];
+				var class_content = document.getElementById('content'+class_name)
+				if(class_name != current_class){
+					console.log("Making invisible: ", class_name)
+					class_content.style["display"] = "none";
+				}
+			}
 
 			checkChanges();
 
