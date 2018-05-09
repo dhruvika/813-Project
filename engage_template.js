@@ -7,7 +7,6 @@ Util.events(document, {
 
 		is_participation_mode = false
 		console.log("is_participation_mode has be set to False", is_participation_mode)
-
 		Util.one("#attend_button").addEventListener("click", function(){
 			attend_button = document.getElementById('attend_button');
 			attend_button.classList.remove('inactive');
@@ -74,14 +73,11 @@ function switchToAttendance(){
 	var currDiv = document.getElementById('gridview');
 	currDiv.data = "gridview/gridview.html"
 
-	var message = "Click on student images to mark attendance";
-	document.getElementById("message").innerHTML = message;
 }
 
 function switchToParticipation(){
 	var currDiv = document.getElementById('gridview');
-	currDiv.data = "gridviewparticipation/gridview.html";
-	document.getElementById("message").innerHTML = "Click on student images to measure participation"
+	currDiv.data = "gridview/gridview.html";
 	//currDiv.data = "gridviewparticipation.html" //TODO Change
 
 }
