@@ -12,7 +12,7 @@ total_classes = 0;
 var classesReady;
 var radios;
 //Format: button color, section color
-class_colors = ["#6EA0C7" ,"#C76E6E", "#E6C578", "#98B879", "#B98FDE", "#FFB6C1"]
+class_colors = ["#6EA0C7" ,"#C76E6E", "#E6C578", "#98B879", "#B98FDE", "#FFB6C1", "#6E9DB5"]
 
 function getURLParam(name) {
 	return new URL(location).searchParams.get(name);
@@ -115,7 +115,8 @@ function load_feedback() {
 		var defaultText = 'Class Name Here';
 		var content = classname || defaultText;
 		var new_class_label = document.createElement('label');
-		new_class_label.style.backgroundColor = class_colors[parseInt(class_num)-1];
+		console.log("COLOR INDEX: ", (parseInt(class_num)%class_colors.length)-1)
+		new_class_label.style.backgroundColor = class_colors[(parseInt(class_num)-1)%(class_colors.length-1)];
 
 		new_class_label.htmlFor = "class"+class_num;
 		new_class_label.contentEditable = false;
@@ -151,7 +152,7 @@ function load_feedback() {
 
 		var section_tag = document.createElement('section');
 		section_tag.id = "content"+class_num;
-		section_tag.style.backgroundColor = class_colors[parseInt(class_num)-1];
+		section_tag.style.backgroundColor = class_colors[(parseInt(class_num)-1)%(class_colors.length-1)];
 
 		var page_element = document.getElementById('page_sections');
 		page_element.appendChild(section_tag);
