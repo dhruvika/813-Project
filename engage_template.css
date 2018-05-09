@@ -112,7 +112,7 @@ body {
 
 	.container{
 		zoom: 0.25;
-		overflow: scroll;
+		overflow-x: scroll;
 
 	}
 }
@@ -120,7 +120,7 @@ body {
 
 
 .container{
-	overflow: scroll;
+	overflow: fixed;
 	display: inline-grid;
 	grid-template-rows: 9% 10% 10% 10%;
 	height: 100%;
