@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Simple jQuery drag, resize and snap to grid</title>
+
+  <script src="../util.js"></script>
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+  <script src="../class_data.js"></script>
+  <script src="../global_variables.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+  <link rel="stylesheet" href="notecarddiv.css">
+  <link rel='stylesheet prefetch' href='http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css'>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
+
+  <script  src="js/index.js"></script>
+  <script src ="../class_data.js"> </script>
+
+
+  <link rel='stylesheet prefetch' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+
+
+<body>
+
+<div id = "myModal" class = "modal">
+  <span class = "close" id="x"> &times;</span>
+  <div class="notecard">
+  <div class="front">
+    <p id = "text">  Apurva Shrivastava  </p>
+    <div class = "center"> 
+    <img src="../student_images/class1/apurva_shrivastava.jpg" height="120" margin-top = "2em" justify-content="center" id = "popupimg">
+    </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+        <div class = "center">
+        <div class="box2" id = "a">    
+        <label for="dist"><abbr title="dist">Distracted</abbr></label>
+        <input id="dist" value="0" />
+        <button id="down1" onclick="modify_distracted(-1)">-1</button>
+        <button id="up1" onclick="modify_distracted(1)">+1</button>
+        </div>
+        </div>
+
+        <div class = "right">
+        <div class="box3" id = "b">    
+        <label for="comment"><abbr title="comment">Comment</abbr></label>
+        <input id="comment" value="0" />
+        <button id="down2" onclick="modify_comment(-1)">-1</button>
+        <button id="up2" onclick="modify_comment(1)">+1</button>
+        </div>
+      </div>
+
+        <div class = "left">
+        <div class="box4" id = "c">    
+        <label for="question"><abbr title="question">Question</abbr></label>
+        <input id="question" value="0" />
+        <button id="down3" onclick="modify_question(-1)">-1</button>
+        <button id="up3" onclick="modify_question(1)">+1</button>
+        </div>
+      </div>
+</div>
+
+  
+  <div class="back">
+    <p>Specific Comments</p>
+    <div id="message">
+      <textarea id="msg" name="user_message" type="input"></textarea>
+    </div>
+    <div class="button">
+      <button type="submit">Send your message</button>
+    </div>
+  </div>
+  </div>
+  
+
+</div>
+
+<script>
+function loadHome() {
+  top.location ="../index.html";
+
+
+
+}
+</script>
+
+
+  <div class="container" id="contain">
+
+
+</div>
+
+
+</body>
+
+
+
+
+
+</html>

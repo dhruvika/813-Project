@@ -1,0 +1,255 @@
+/*Home stylesheet */
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
+@import url('https://fonts.googleapis.com/css?family=Cherry+Swash');
+@import url('https://fonts.googleapis.com/css?family=Advent+Pro');
+/*
+
+green tab1 - #226764
+red tab 2 - #9F3548
+
+orange tab3 - #C0783A
+
+blue tab4 - 2D4571
+
+
+*/
+
+.container{
+  background: transparent;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+.home-page{
+  overflow-y:hidden;
+  overflow-x: hidden;
+}
+
+body {
+  font: 16px/1 'Advent Pro', sans-serif;
+  background:transparent;
+}
+h1 {
+  padding: 10px 5px 0px 5px;
+  font-weight: 700;
+  text-align: left;
+  font: 37px/1 'Do Hyeon', sans-serif;
+  margin-bottom: 7px;
+  margin-left: 5%;
+  margin-top: 0px;
+  padding-top: 4px;
+}
+h3{
+
+    font-weight: 500;
+    font: 40px/1 'Advent Pro', sans-serif;
+
+}
+
+h2 {
+  font-weight: 50;
+  text-align: center;
+  font: 25px/1 'Do Hyeon', sans-serif;
+  padding-bottom: 20px;
+}
+
+.logo{
+  height: 6.5%;
+  width: 3%;
+}
+
+p{
+  margin: 0 0 20px;
+  line-height: 1.5;
+  font: 16px;
+}
+
+main {
+  padding: 10px 50px 50px 50px;
+  margin: 0 auto;
+}
+
+#add_class_icon {
+  font-size: 20px;
+  color: #135309;
+}
+
+#add_class_icon:hover {
+    color: #33A245;
+}
+
+#add_class {
+  background-color: transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+
+section {
+
+  border-top: 1px solid #ddd;
+  width: auto;
+  display: None;
+  justify-content: center;
+  align-items: center;
+}
+
+#allButtons {
+}
+
+section[id*='1'] {
+  background-color: #8C9BAB;
+
+}
+section[id*='2'] {
+  background-color: #E39496;
+}
+section[id*='3'] {
+  background-color: #EBA060;
+}
+section[id*='4'] {
+  background-color: #98B879;
+
+}
+
+#feedbackCell {
+  width: 1000px;
+  height: 600px;
+}
+
+#settingsCell {
+  width: 1200px;
+  height: 600px;
+}
+#engagementCell{
+  width: 1200px;
+  height: 600px;
+
+}
+
+#home{
+  margin-left: 20px;
+  position: absolute;
+  margin-top: 20px;
+}
+
+#allButtons {
+  display: inline-grid;
+  grid-template-rows: 100%;
+  width: 900;
+  height: 500px;
+  display: inline-block;
+  font-weight: 600;
+  text-align: center;
+  align-items: center;
+  justify-items: center;
+
+}
+
+#Engagement, #Feedback, #Settings{
+    grid-row: 1;
+    margin: 15% 50px 50px 10px;
+    width: 200px;
+    height: 200px;
+    background-color: snow;
+    vertical-align: middle;
+    color: grey;
+    box-shadow: 1px 1px 1px 1px;
+}
+
+#Engagement:hover{
+  cursor: pointer;
+  color: black
+}
+#Settings:hover{
+  cursor: pointer;
+  color: black
+}
+#Feedback:hover{
+  cursor: pointer;
+  color: black
+}
+
+
+input {
+  display: none;
+  position: absolute;
+}
+
+label[for*='class'] {
+  display: inline-block;
+  margin: 0 5 -1px;
+  padding: 13px 35px;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 20px 20px 0px 0px;
+  color: #010101;
+}
+
+
+label:hover {
+  cursor: pointer;
+  color: white;
+
+}
+
+.fa-times{
+  color: white;
+  font-size: 15px;
+  position: relative;
+  left: 20px;
+}
+
+.fa-times:hover{
+  color: #696969;
+}
+
+
+input{
+  margin: 10px;
+}
+
+
+input:checked + label{
+  z-index: 10; 
+
+}
+
+input[type=radio]: checked {
+  z-index: 10;
+}
+
+div[id*="remove"]{
+  display: inline-block;
+}
+
+div[id*="content"]{
+  display:flex;
+  zoom: auto;
+  overflow: hidden;
+  overflow-x: scroll; 
+  overflow-y: visible;
+  position:static;
+}
+
+#settingsCell{
+  overflow-y: hidden;
+  margin-top: 20px;
+
+}
+
+.editClass{
+  vertical-align: top;
+
+  left:30px;
+  position:absolute;
+
+}
+.editName{
+  position:relative;
+  vertical-align: top;
+  left: 30px;
+}

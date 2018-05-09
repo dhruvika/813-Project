@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<!--
+GR4 - Settings Page
+-->
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+  <script src="util.js"></script>
+  <script src="game.js"></script>
+
+  <link rel="stylesheet" href="game.css">
+</head>
+
+
+<div class="container">
+
+  <div class="icons">
+     <button id="mode" onclick="loadHome()">
+       <i id="home_icon" class="glyphicon glyphicon-home"></i>
+     </button>
+   </div>
+
+  
+  <div id="table" class="table-editable">
+    <span class="table-add glyphicon glyphicon-plus" style="background-color:transparent"></span>
+    <table class="table">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th></th>
+        <th></th>
+      </tr>
+      <!-- This is our clonable table line -->
+      <tr class="hide">
+        <td contenteditable="true">First Name</td>
+        <td contenteditable="true">Last Name</td>
+        <td contenteditable="true">Email</td>
+        <td> 
+          <input type='file' onchange="readURL(this);" />
+          <img id="imgInput" src="#" alt="image" />
+        </td>
+        <td>
+          <span class="table-remove glyphicon glyphicon-remove"></span>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <section id = "gridSettings">
+    <object id="gridViewSettings" type="text/html" data="../gridViewEdit/gridViewEdit.html" ></object>
+  
+</div>
+
+<script>
+function loadHome() {
+	top.location ="../index.html";
+
+
+}
+ </script>
+
+
+
+</html>

@@ -1,0 +1,221 @@
+/*Engage Template CSS*/
+@import url('https://fonts.googleapis.com/css?family=Do+Hyeon');
+
+html {
+	height: 100%;
+	width: 100%;
+	background-color: transparent;
+}
+
+body {
+	width: 100%;
+  	height: 100%;
+	background-color: transparent;
+	overflow: hidden;
+}
+
+@media only screen and (min-width: 1100px) and (max-width: 1180px){
+
+	.container{
+		zoom: 0.95;
+	}
+	}
+@media only screen and (min-width: 1023px) and (max-width: 1100px){
+
+	.container{
+		zoom: 0.90;
+
+	}
+}
+
+@media only screen and (min-width: 970px) and (max-width: 1023px){
+
+	.container{
+		zoom: 0.85;
+
+	}
+}
+
+@media only screen and (min-width: 870px) and (max-width: 970px){
+
+	.container{
+		zoom: 0.81;
+
+	}
+}
+
+@media only screen and (min-width: 800px) and (max-width: 870px){
+
+	.container{
+		zoom: 0.73;
+
+	}
+}
+
+@media only screen and (min-width: 750px) and (max-width: 800px){
+
+	.container{
+		zoom: 0.65;
+
+	}
+}
+
+@media only screen and (min-width: 700px) and (max-width: 750px){
+
+	.container{
+		zoom: 0.60;
+
+	}
+}
+
+@media only screen and (min-width: 650px) and (max-width: 700px){
+
+	.container{
+		zoom: 0.55;
+
+	}
+}
+
+@media only screen and (min-width: 600px) and (max-width: 650px){
+
+	.container{
+		zoom: 0.50;
+
+	}
+}
+
+@media only screen and (min-width: 550px) and (max-width: 600px){
+
+	.container{
+		zoom: 0.45;
+
+	}
+}
+
+@media only screen and (min-width: 500px) and (max-width: 550px){
+
+	.container{
+		zoom: 0.40;
+
+	}
+}
+
+@media only screen and (min-width: 450px) and (max-width: 500px){
+
+	.container{
+		zoom: 0.35;
+
+	}
+}
+
+@media only screen and (max-width: 450px) {
+
+	.container{
+		zoom: 0.25;
+		overflow: scroll;
+
+	}
+}
+
+
+
+.container{
+	overflow: scroll;
+	display: inline-grid;
+	grid-template-rows: 9% 10% 10% 10%;
+	height: 100%;
+	width: 100%;
+}
+
+.top{
+	font: 16px/1 'Do Hyeon', sans-serif;
+	height: 100%;
+	width: 100%;
+	grid-row: 1;
+	display: inline-grid;
+	grid-template-columns: 35% 30% 35%;
+	align-items: center;
+	justify-items: center;
+}
+.bottom{
+	grid-row:2;
+  padding-top: 20px
+}
+
+
+.button_div{
+	width: 100%;
+	grid-column: 2;
+	align-items: center;
+	justify-items: center;
+}
+
+button[id*="button"]{
+	width: 49.275%;
+	height: 70%;
+	text-align: center;
+}
+
+.active{
+	background-color: #4169E1;
+	color: white;
+}
+
+.inactive{
+	background-color: gray;
+	color: black;
+}
+
+.icons{
+	width: 100%;
+	grid-column: 1;
+	display: inline-grid;
+	grid-template-columns: 20% 20% 60%;
+	justify-items: center;
+}
+
+#home_icon{
+	grid-column: 1;
+	font-size: 35px;
+	height: 100%
+	width: 100%;
+}
+#home_icon:hover{
+	color: white;
+}
+
+#grid_icon{
+	grid-column: 2;
+	font-size: 35px;
+	height: 100%
+	width: 100%;
+}
+#grid_icon:hover{
+	color: white;
+}
+#gridview{
+	width: 1200px;
+	height: 800px;
+}
+#mode {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+.date_form_div{
+	width: 100%;
+	height: 100%;
+	grid-column: 3;
+	display: inline-grid;
+	grid-template-rows: 100%;
+	justify-items: center;
+	align-items: end;
+}
+.date_form{
+	grid-row: 1;
+	text-align: center;
+}

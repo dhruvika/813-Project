@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Simple jQuery drag, resize and snap to grid</title>
+
+  <script src="../util.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script src='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js'></script>
+  <script src="../class_data.js"></script>
+  <script src="../global_variables.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  <link rel='stylesheet prefetch' href='https://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css'>
+
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+
+
+  <script  src="js/index.js"></script>
+
+
+  <link rel='stylesheet prefetch' href='https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+<div id="wrapper">
+
+
+<div class="container", id="studentlist">
+
+   <div class="icons">
+     <button id="mode" onclick="loadHome()">
+       <i id="home_icon" class="glyphicon glyphicon-home"></i>
+     </button>
+   </div>
+
+   <div class="editName">
+        <h1 align="center"> Class Settings</h1>
+        <h5 align="center"> This table is editable. You can add a new student as well as click on existing student's name to begin editing.
+        </h5>
+      </div>
+
+  <div class="parentDiv">
+
+  <div id="table" class="table-editable col-md-8 centered-vertically" >
+    <span class="table-add fa fa-plus-circle fa-2x"></span>
+
+    <table class="table" id="personDataTable">
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </table>
+  </div>
+
+
+</div>
+
+
+</div>
+
+<script>
+function loadHome() {
+  top.location ="../index.html";
+
+
+}
+</script>
+
+  <button class="show"/> Show More</button>
+  <h5 id = "draginfo" align="center"> This Pictures in this grid are draggable. You can drag each student and set position to match the class layout.
+        </h5>
+  <div class="container" id="contain">
+  
+
+</div>
+
+
+</div>
+
+
+
+</body>
+
+</html>

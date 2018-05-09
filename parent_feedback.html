@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+
+<meta charset="utf-8">
+
+
+<!-- Load style sheets -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="parent_feedback.css">
+
+
+<div class="container">
+
+	<div class="leftcol">
+		<div class="icons">
+			<button id="mode" onclick="loadHome()">
+				<i id="home_icon" class="glyphicon glyphicon-home"></i>
+			</button>
+		</div>
+	</div>
+
+	<div class="middlecol">
+		<div class="middlebox">
+			<h1> Parent Feedback </h1>
+
+
+			<div class="form_div">
+
+				<form>
+
+					Student Name: <br>
+					<select name="student_name">
+						  <option value="apurva">Apurva Shrivastava</option>
+						  <option value="dhruvika">Dhruvika Sahni</option>
+						  <option value="eswar">Eswar A.</option>
+						  <option value="taranjit">Taranjit Singh</option>
+					</select>  <br><br>
+
+					Subject: <br>
+					<input type="text" class="subject_div_text" size="62"> <br><br>
+
+					Message: <br>
+					<textarea name="message" rows="20" cols="60"> </textarea> <br><br>
+
+					<input onclick="popup();" type="submit" value="Submit" class="submit_button">
+
+				</form>
+
+			</div>
+
+		</div>
+	</div>
+
+	<div class="rightcol">
+	</div>
+
+</div>
+<script>
+function loadHome() {
+	top.location ="index.html";
+}
+
+function popup(){
+	alert("Your message has been submitted");
+}
+</script>
+
+
+</html>
