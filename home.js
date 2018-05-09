@@ -375,7 +375,7 @@ Util.events(document, {
 					add_new_section(class_num, body_tag_id);
 				}
 			}
-				
+
 			if(body_tag_id == 'body_home'){
 				console.log("In home!")
 				checkEngagementButtons();
@@ -406,7 +406,7 @@ Util.events(document, {
 			window.document.getElementById("class"+1).checked = true;
 
 			classClick(1);
-			
+
 			var page_sections_html = document.getElementById("page_sections").innerHTML;
 			sessionStorage.setItem("body_home_code", page_sections_html);
 			checkChanges();

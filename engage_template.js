@@ -7,7 +7,7 @@ Util.events(document, {
 
 		is_participation_mode = false
 		console.log("is_participation_mode has be set to False", is_participation_mode)
-
+		sessionStorage.setItem("engagementMode", "attendance");
 		Util.one("#attend_button").addEventListener("click", function(){
 			attend_button = document.getElementById('attend_button');
 			attend_button.classList.remove('inactive');
@@ -73,12 +73,14 @@ function loadHome() {
 function switchToAttendance(){
 	var currDiv = document.getElementById('gridview');
 	currDiv.data = "gridview/gridview.html"
+	sessionStorage.setItem("engagementMode", "attendance");
 
 }
 
 function switchToParticipation(){
 	var currDiv = document.getElementById('gridview');
-	currDiv.data = "gridviewparticipation/gridview.html";
+	currDiv.data = "gridview/gridview.html";
+	sessionStorage.setItem("engagementMode", "participation");
 	//currDiv.data = "gridviewparticipation.html" //TODO Change
 
 }

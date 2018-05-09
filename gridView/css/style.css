@@ -7,6 +7,7 @@
 body {
 
   background:transparent;
+  font: 16px/1 'Advent Pro', sans-serif;
 
 }
 
@@ -206,4 +207,53 @@ td {
 
 img{
   max-width:180px;
+}
+
+.popup{
+  background-color: Ivory;
+  width: 500px;
+  height:250px;
+  top: 90px;
+  left: 28%;
+  position: fixed;
+  display: none;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+
+}
+
+.popupnotes{
+  margin-left:260px;
+  margin-top: 20px;
+}
+.popupImg{
+  width: 100px;
+  height: 100px;
+  margin-left: 60px;
+  position: absolute;
+  margin-top: 20px;
+}
+.popupstudentname{
+  margin-left: 80px;
+  top: 140px;
+
+  position: absolute;
+}
+
+.studentbuttons{
+  position: absolute;
+  top: 180px;
+}
+
+.title{
+  position:absolute;
+  margin-left:50px
+}
+.popupcontent{
+  margin-top:20px
+}
+.exit{
+  left: 90%;
+    top: 1%;
+    position: absolute;
+
 }

@@ -60,7 +60,7 @@ function draw_all_students(){
 
     }
   }
-  
+
   if (class_list_seats != null){
     if ((getClass() in class_list_seats)){
       student_list_seats = JSON.parse(sessionStorage.getItem("class_list_seats"))[getClass()];
@@ -181,6 +181,51 @@ function add_student_to_grid(name,id, newImage=true){
 }
 
 //=======Helpers
+
+function callpopup(id){
+  console.log(id)
+  popupvisible = true;
+  idnum = null;
+  foundId=false;
+  for (var i = 0; i < id.length; i++) {
+      if (id[i]==="x") {
+        foundId = true;
+        console.log(id.slice(i, id.length)[1]);
+        idnum = id.slice(i, id.length)[1]
+        }
+  }
+
+  if (foundId){
+
+    document.getElementById("popup").style.display="block";
+    class_list = class_to_student["class"+sessionStorage.getItem("currentClass")];
+    curClass = sessionStorage.getItem("currentClass");
+    if (sessionStorage.getItem("class_list_names")!= null){
+      classNames = JSON.parse(sessionStorage.getItem("class_list_names"))
+      classNames = JSON.parse(sessionStorage.getItem("class_list_names"))
+      sname = classNames[curClass][idnum]
+      console.log(sessionStorage.getItem(sname))
+      document.getElementById("popupImg").src = sessionStorage.getItem(sname)
+    }
+    else{
+      console.log()
+
+    }
+
+  }
+}
+
+
+
+
+
+function closepopup(){
+  document.getElementById("popup").style.display="none";
+
+}
+
+
+
 function getClass() {
   //console.log("CURRENT CLASS IS: "+ sessionStorage.getItem("currentClass"));
   if (sessionStorage.getItem("currentClass") === null) {
@@ -194,7 +239,7 @@ function startlistener(){
 
     e.preventDefault();
     console.log("mousedown", e.toElement.parentElement.parentElement);
-    
+
     original_sq = e.toElement.parentElement.parentElement;
     globalimage = original_sq;
     console.log("globalimage", globalimage);
@@ -202,40 +247,53 @@ function startlistener(){
       image = true;
       console.log("found image");
     }
-    
+
   }, false);
 
   window.addEventListener("mouseup", function(e){
+    if (sessionStorage.getItem("engagementMode") == "participation"){
+      //TODO
+      var x = e.toElement.parentElement.parentElement
+      console.log(x, x.id);
+
+        callpopup(x.id)
+
+    }
+
     e.preventDefault();
     console.log("mouseup", e.toElement.parentElement.parentElement);
     if (image){
       var divsq = e.toElement.parentElement.parentElement;
       console.log(divsq);
-      if (divsq == original_sq){
-        if (divsq.counter > 0 ){
-          //do nothing
-        }else{
-          divsq.counter = 0;
-        }
-        var counter = divsq.counter;
-        if ((counter == 0) && (!is_participation_mode)){
-          console.log("adding present border");
-          divsq.classList.add("add-present-border");
+      if (sessionStorage.getItem("engagementMode") == "attendance"){
+        if (divsq == original_sq){
+          if (divsq.counter > 0 ){
+            //do nothing
+          }else{
+            divsq.counter = 0;
+          }
+          var counter = divsq.counter;
 
-        } else if ((counter == 1) && (!is_participation_mode)){
-          divsq.classList.remove("add-present-border");
-          divsq.classList.add("add-late-border");
-        } else if ((counter == 2) && (!is_participation_mode)){
-          divsq.classList.remove("add-late-border");
-          divsq.classList.add("add-absent-border");
-        } else if ((counter == 3) && (!is_participation_mode)){
-          counter = -1;
-          divsq.classList.remove("add-absent-border");
+          if ((counter == 0) && (!is_participation_mode)){
+            console.log("adding present border");
+            divsq.classList.add("add-present-border");
 
+          } else if ((counter == 1) && (!is_participation_mode)){
+            divsq.classList.remove("add-present-border");
+            divsq.classList.add("add-late-border");
+          } else if ((counter == 2) && (!is_participation_mode)){
+            divsq.classList.remove("add-late-border");
+            divsq.classList.add("add-absent-border");
+          } else if ((counter == 3) && (!is_participation_mode)){
+            counter = -1;
+            divsq.classList.remove("add-absent-border");
+
+          }
+          counter += 1;
+          globalimage.counter = counter;
         }
-        counter += 1;
-        globalimage.counter = counter;
       }
+
     }
     image = false;
 
