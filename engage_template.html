@@ -16,7 +16,7 @@
 
 </head>
 
-<body>
+<body onload="myFunction()">
 
 	<div class="container">
 		<div class="top">
@@ -34,7 +34,13 @@
 
 			<div class="date_form_div">
 				<form class="date_form">
-					DATE: <input type="text" id="date_textbox" placeholder="MM-DD-YY">
+					DATE: <input type="text" id="date_textbox">
+					<script>
+					function myFunction() {
+						var event = new Date()
+						document.getElementById('date_textbox').value= event.toDateString();
+					}
+					</script>
 				</form>
 			</div>
 
