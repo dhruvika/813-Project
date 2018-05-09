@@ -12,7 +12,7 @@ total_classes = 0;
 var classesReady;
 var radios;
 //Format: button color, section color
-class_colors = ["#6EA0C7" ,"#C76E6E", "#E6C578", "#98B879", "#B98FDE", "#FFB6C1"]
+class_colors = ["#6EA0C7" ,"#C76E6E", "#E6C578", "#98B879", "#B98FDE", "#FFB6C1", "#6E9DB5"]
 
 function getURLParam(name) {
 	return new URL(location).searchParams.get(name);
@@ -73,10 +73,15 @@ function load_feedback() {
 	function classClick(classnum){
 		console.log("Class Num: ", classnum)
 		var content = "content" + classnum;
-		if(previousContent != null && document.getElementById(previousContent) != null) {
+		var previousContent = JSON.parse(sessionStorage.getItem('previousContent'));
+		if(previousContent == null){
+			previousContent = "content1";
+		}
+		if(document.getElementById(previousContent) != null) {
+			console.log("Prevous Content: ", previousContent)
 			document.getElementById(previousContent).style["display"] = "none";
 			for(var i=1; i<=classes.length; i++){
-				if(i != classnum) {
+				if(i != classnum && document.getElementById('label'+i) != null) {
 					console.log("Lightening label: ", i)
 					document.getElementById('label'+i).style.filter = "opacity(45%)";
 					document.getElementById('label'+i).style.color = "black";
@@ -96,6 +101,7 @@ function load_feedback() {
 		selected_class.checked = true;
 
 		previousContent = content;
+		sessionStorage.setItem('previousContent', JSON.stringify(previousContent));
 	}
 
 	function add_new_class(classname){
@@ -115,7 +121,8 @@ function load_feedback() {
 		var defaultText = 'Class Name Here';
 		var content = classname || defaultText;
 		var new_class_label = document.createElement('label');
-		new_class_label.style.backgroundColor = class_colors[parseInt(class_num)-1];
+		console.log("COLOR INDEX: ", (parseInt(class_num)%class_colors.length)-1)
+		new_class_label.style.backgroundColor = class_colors[(parseInt(class_num)-1)%(class_colors.length-1)];
 
 		new_class_label.htmlFor = "class"+class_num;
 		new_class_label.contentEditable = false;
@@ -141,6 +148,7 @@ function load_feedback() {
 		var page_tabs_html = document.getElementById("page_tabs").innerHTML;
 		window.sessionStorage.setItem("tabs_code", page_tabs_html);
 
+		console.log("Adding new section to: ", class_num)
 		add_new_section(class_num, 'body_home');
 		classClick(class_num);
 
@@ -150,12 +158,13 @@ function load_feedback() {
 
 		var section_tag = document.createElement('section');
 		section_tag.id = "content"+class_num;
-		section_tag.style.backgroundColor = class_colors[parseInt(class_num)-1];
+		section_tag.style.backgroundColor = class_colors[(parseInt(class_num)-1)%(class_colors.length-1)];
 
 		var page_element = document.getElementById('page_sections');
 		page_element.appendChild(section_tag);
 
 		if(page_type == 'body_home'){
+			console.log("Creating section for body home")
 
 			var all_buttons_tag = document.createElement('div');
 			all_buttons_tag.id = "allButtons";
@@ -197,7 +206,7 @@ function load_feedback() {
 			checkEngagementButtons();
 			checkFeedbackButtons();
 			checkSettingsButtons();
-			// addDeleteClick(class_num);
+			addDeleteClick(class_num);
 
 			var page_sections_html = document.getElementById("page_sections").innerHTML;
 			window.sessionStorage.setItem(page_type+"_code", page_sections_html);
@@ -212,7 +221,7 @@ function load_feedback() {
 			object_element.data = "engage_template.html";
 			section_tag.appendChild(object_element);
 
-			// addDeleteClick(class_num);
+			addDeleteClick(class_num);
 
 			var page_sections_html = document.getElementById("page_sections").innerHTML;
 			window.sessionStorage.setItem(page_type+"_code", page_sections_html);
@@ -226,7 +235,7 @@ function load_feedback() {
 			object_element.data = "parent_feedback.html";
 			section_tag.appendChild(object_element);
 
-			// addDeleteClick(class_num);
+			addDeleteClick(class_num);
 
 			var page_sections_html = document.getElementById("page_sections").innerHTML;
 			window.sessionStorage.setItem(page_type+"_code", page_sections_html);
@@ -240,7 +249,7 @@ function load_feedback() {
 			object_element.data = "gridViewEdit/gridViewEdit.html";
 			section_tag.appendChild(object_element);
 
-			// addDeleteClick(class_num);
+			addDeleteClick(class_num);
 
 			var page_sections_html = document.getElementById("page_sections").innerHTML;
 			window.sessionStorage.setItem(page_type+"_code", page_sections_html);
@@ -266,15 +275,35 @@ function load_feedback() {
 		var class_section = document.getElementById("content"+classnum);
 		class_section.remove();
 
+		// Class Click to previous class
+		if(classes.length == 1){
+			console.log("Only one class left");
+			console.log(classes);
+			classClick(classes[0]);
+		}
+		else if(classes.length > 1){
+			var index = classes.indexOf(classnum);
+			if(index > 0){
+				classClick(classes[index - 1]);
+			}
+			else {
+				console.log("Many classes but deleting first")
+				console.log(classes[index + 1]);
+				classClick(classes[index + 1]);
+			}
+		}
+		
+
 		// Save to session Storage
 		var page_tabs_html = document.getElementById("page_tabs").innerHTML;
 		window.sessionStorage.setItem("tabs_code", page_tabs_html);
 
 		var page_sections_html = document.getElementById("page_sections").innerHTML;
-		window.sessionStorage.setItem("sections_code", page_sections_html);
+
+		var body_tag_id = document.getElementsByTagName("body")[0].id;
+		window.sessionStorage.setItem(body_tag_id+"_code", page_sections_html);
 
 		window.sessionStorage.setItem("classes", JSON.stringify(classes));
-		window.sessionStorage.setItem("total_classes", JSON.stringify(total_classes));
 	}
 
 
@@ -388,6 +417,16 @@ Util.events(document, {
 
 			classClick(current_class);
 
+			console.log("CURRENT CLASS HERE: ", current_class)
+			for(var i=0; i<classes.length; i++){
+				var class_name = classes[i];
+				var class_content = document.getElementById('content'+class_name)
+				if(class_name != current_class){
+					console.log("Making invisible: ", class_name)
+					class_content.style["display"] = "none";
+				}
+			}
+
 			checkChanges();
 
 			for(var i in classes){
@@ -410,10 +449,6 @@ Util.events(document, {
 			var page_sections_html = document.getElementById("page_sections").innerHTML;
 			sessionStorage.setItem("body_home_code", page_sections_html);
 			checkChanges();
-			for(var i in classes){
-				var class_num = parseInt(classes[i]);
-				addDeleteClick(class_num);
-			}
 
 		}
 
