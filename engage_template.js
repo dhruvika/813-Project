@@ -71,13 +71,13 @@ function loadHome() {
 
 function switchToAttendance(){
 	var currDiv = document.getElementById('gridview');
-	currDiv.data = "gridview/gridview.html"
+	currDiv.data = "gridView/gridView.html"
 
 }
 
 function switchToParticipation(){
 	var currDiv = document.getElementById('gridview');
-	currDiv.data = "gridview/gridview.html";
-	//currDiv.data = "gridviewparticipation.html" //TODO Change
+	// currDiv.data = "gridView/gridView.html";
+	currDiv.data = "gridViewParticipation/gridView.html" //TODO Change
 
 }
