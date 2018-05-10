@@ -218,20 +218,31 @@ function startlistener(){
           divsq.counter = 0;
         }
         var counter = divsq.counter;
+        var present_elem = document.getElementById('attendance_message_present');
+        var present_num = present_elem.innerHTML.match(/\d+/)[0];
+        var late_elem = document.getElementById('attendance_message_late');
+        var late_num = late_elem.innerHTML.match(/\d+/)[0];
+        var absent_elem = document.getElementById('attendance_message_absent');
+        var absent_num = absent_elem.innerHTML.match(/\d+/)[0];
         if ((counter == 0) && (!is_participation_mode)){
           console.log("adding present border");
           divsq.classList.add("add-present-border");
+          present_elem.innerHTML = "Present: " + (parseInt(present_num) + 1);
 
         } else if ((counter == 1) && (!is_participation_mode)){
           divsq.classList.remove("add-present-border");
           divsq.classList.add("add-late-border");
+          present_elem.innerHTML = "Present: " + (parseInt(present_num) -1);
+          late_elem.innerHTML = "Late: " + (parseInt(late_num) + 1);
         } else if ((counter == 2) && (!is_participation_mode)){
           divsq.classList.remove("add-late-border");
           divsq.classList.add("add-absent-border");
+          late_elem.innerHTML = "Late: " + (parseInt(late_num) - 1);
+          absent_elem.innerHTML = "Absent: " + (parseInt(absent_num) + 1);
         } else if ((counter == 3) && (!is_participation_mode)){
           counter = -1;
           divsq.classList.remove("add-absent-border");
-
+          absent_elem.innerHTML = "Absent: " + (parseInt(absent_num) - 1);
         }
         counter += 1;
         globalimage.counter = counter;
