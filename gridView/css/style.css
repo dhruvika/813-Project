@@ -269,6 +269,10 @@ img{
   background-color: lightgrey;
   align-items: bottom;
   position: fixed;
-  bottom: 350px;
+  top: 0;
   left: 0;
+  margin-bottom:20px;
+}
+.container{
+  margin-top: 90px;
 }
