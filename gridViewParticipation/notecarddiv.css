@@ -6,7 +6,7 @@ body {
 
   -webkit-perspective-origin: 50% 50%;
   -moz-perspective-origin: 50% 50%;
-  perspective-origin: 50% 50%; 
+  perspective-origin: 50% 50%;
 }
 
 @font-face {
@@ -19,8 +19,7 @@ body {
 
 .notecard {
   position: relative;
-  top: 10%;
-  left: 10%;
+
   justify-content: center;
   max-width: 700px;
   margin: 4% auto;

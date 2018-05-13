@@ -33,11 +33,14 @@
 </head>
 
 <body>
-             <b class = "green" id = "attendance_message_present" display = "inline-block" text-align="right" color = "green"> Present: 0
-            </b> </div>
-            <b class = "yellow" id = "attendance_message_late" display = "inline-block" text-align="right" color = "yellow"> Late: 0 </b>
-            <b class = "red" id = "attendance_message_absent" display = "inline-block" text-align="right" color = "red"> Absent: 0 </b>
+      <div class="attendanceTracker">
+             <b class = "green" id = "attendance_message_present" display = "inline-block" text-align="right"> Present: <span style=" color:green">0<span>
+            </b>
 
+            <b class = "yellow" id = "attendance_message_late" display = "inline-block" text-align="right" color = "yellow"> Late: <span style="color:yello">0<span > </b>
+
+            <b class = "red" id = "attendance_message_absent" display = "inline-block" text-align="right" color = "red"> Absent: <span style="color:red">0<span> </b>
+      </div>
 
 <script>
 function loadHome() {

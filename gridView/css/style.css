@@ -17,17 +17,14 @@ body {
 }
 
 .green{
-  color: green;
   }
 
 
 
 .red{
-  color: red;
 }
 
 .yellow{
-  color: yellow;
 }
 .pointer-events-none{
   pointer-events: none;
@@ -265,4 +262,13 @@ td {
 
 img{
   max-width:180px;
+}
+.attendanceTracker{
+  border: 1px solid #626c75;
+  width: 100px;
+  background-color: lightgrey;
+  align-items: bottom;
+  position: fixed;
+  bottom: 350px;
+  left: 0;
 }
