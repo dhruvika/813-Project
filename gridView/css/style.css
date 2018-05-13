@@ -16,7 +16,19 @@ body {
   display: flex;
 }
 
+.green{
+  color: green;
+  }
 
+
+
+.red{
+  color: red;
+}
+
+.yellow{
+  color: yellow;
+}
 .pointer-events-none{
   pointer-events: none;
 }

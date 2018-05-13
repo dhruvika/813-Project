@@ -69,7 +69,7 @@ function loadHome() {
 
 function switchToAttendance(){
 	var currDiv = document.getElementById('gridview');
-	currDiv.data = "gridview/gridview.html"
+	currDiv.data = "gridView/gridView.html"
 
 	var message = "Click on student images to mark attendance";
 	document.getElementById("message").innerHTML = message;
@@ -77,7 +77,7 @@ function switchToAttendance(){
 
 function switchToParticipation(){
 	var currDiv = document.getElementById('gridview');
-	currDiv.data = "gridviewparticipation/gridview.html";
+	currDiv.data = "gridViewParticipation/gridView.html";
 	document.getElementById("message").innerHTML = "Click on student images to measure participation"
 	//currDiv.data = "gridviewparticipation.html" //TODO Change
 
